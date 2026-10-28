@@ -1,0 +1,9 @@
+/* Inner-page interaction states retain the captured source design. */
+.service-select.import-service-trigger { width: 100%; min-width: 0; }
+.service-select.import-service-trigger > span:first-child { min-width: 0; white-space: normal; text-align: left; }
+.import-menu-sheet .mobile-nav a { color: inherit; }
+.import-menu-sheet .mobile-nav .button { color: var(--color-white); }
+.import-menu-sheet .mobile-phone { font-size: 1rem; }
+@media (prefers-reduced-motion: reduce) {
+  .site-theme:not(.theme-home) * { scroll-behavior: auto; animation-duration: .01ms; transition-duration: .01ms; }
+}
