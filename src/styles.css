@@ -142,3 +142,107 @@
     color: var(--color-foreground);
   }
 }
+
+/* site-import tokens: begin (generated; re-import replaces this block) */
+/* Imported clone roles use prefixed Tailwind utilities
+   (bg-site-import-primary, text-site-import-foreground, …); edit the
+   --site-import-* variables to restyle the clone. Unprefixed roles theme new UI. */
+:root {
+  --background: oklch(1 0 0);
+  --site-import-background: oklch(1 0 0);
+  --foreground: oklch(0.21427 0.00388 286.07);
+  --site-import-foreground: oklch(0.21427 0.00388 286.07);
+  --primary: oklch(0.46324 0.17885 25.23);
+  --site-import-primary: oklch(0.46324 0.17885 25.23);
+  --primary-foreground: oklch(0.985 0 0);
+  --site-import-primary-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.77987 0.08865 12.2);
+  --site-import-accent: oklch(0.77987 0.08865 12.2);
+  --border: oklch(0.89294 0.00524 67.76);
+  --site-import-border: oklch(0.89294 0.00524 67.76);
+  --muted-foreground: oklch(0.47426 0.00608 48.6);
+  --site-import-muted-foreground: oklch(0.47426 0.00608 48.6);
+  --card: oklch(1 0 0 / 0.33);
+  --site-import-card: oklch(1 0 0 / 0.33);
+  --muted: oklch(1 0 0 / 0.17);
+  --site-import-muted: oklch(1 0 0 / 0.17);
+}
+/* Design tokens captured from the imported site, registered as Tailwind
+   utilities (bg-<name>, text-<name>, font-<name>). var() values live in
+   the imported stylesheet's :root. */
+@theme inline {
+  --font-sans: "DM Sans", Arial, Helvetica, sans-serif;
+  --color-site-import-background: var(--site-import-background);
+  --color-site-import-foreground: var(--site-import-foreground);
+  --color-site-import-primary: var(--site-import-primary);
+  --color-site-import-primary-foreground: var(--site-import-primary-foreground);
+  --color-site-import-accent: var(--site-import-accent);
+  --color-site-import-border: var(--site-import-border);
+  --color-site-import-muted-foreground: var(--site-import-muted-foreground);
+  --color-site-import-card: var(--site-import-card);
+  --color-site-import-muted: var(--site-import-muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-destructive: var(--destructive);
+  --color-foreground: var(--foreground);
+  --color-forest: var(--forest);
+  --color-ink: var(--ink);
+  --color-input: var(--input);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-quiet: var(--quiet);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+  --color-ring: var(--ring);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-steel: var(--steel);
+}
+@theme reference {
+  --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
+  --animate-spin: spin 1s linear infinite;
+  --aspect-video: 16 / 9;
+  --color-border: #dedbd8;
+  --container-lg: 32rem;
+  --container-sm: 24rem;
+  --container-xs: 20rem;
+  --ease-in-out: cubic-bezier(.4, 0, .2, 1);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-snug: 1.375;
+  --leading-tight: 1.25;
+  --radius-xs: .125rem;
+  --spacing: .25rem;
+  --text-base: 1rem;
+  --text-base--line-height: calc(1.5 / 1);
+  --text-lg: 1.125rem;
+  --text-lg--line-height: calc(1.75 / 1.125);
+  --text-sm: .875rem;
+  --text-sm--line-height: calc(1.25 / .875);
+  --text-xs: .75rem;
+  --text-xs--line-height: calc(1 / .75);
+  --tracking-tight: -.025em;
+  --tracking-widest: .1em;
+}
+/* site-import tokens: end */
