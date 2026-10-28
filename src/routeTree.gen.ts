@@ -14,6 +14,11 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as LegalPrivacyRouteImport } from './routes/legal_.privacy'
+import { Route as LegalTermsRouteImport } from './routes/legal_.terms'
+import { Route as ServicesJunkRemovalRouteImport } from './routes/services_.junk-removal'
+import { Route as ServicesPaintingRouteImport } from './routes/services_.painting'
+import { Route as ServicesPoolCleaningRouteImport } from './routes/services_.pool-cleaning'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +45,31 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal_/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalTermsRoute = LegalTermsRouteImport.update({
+  id: '/legal_/terms',
+  path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesJunkRemovalRoute = ServicesJunkRemovalRouteImport.update({
+  id: '/services_/junk-removal',
+  path: '/services/junk-removal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPaintingRoute = ServicesPaintingRouteImport.update({
+  id: '/services_/painting',
+  path: '/services/painting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPoolCleaningRoute = ServicesPoolCleaningRouteImport.update({
+  id: '/services_/pool-cleaning',
+  path: '/services/pool-cleaning',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +77,11 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
   '/services': typeof ServicesRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
+  '/services/junk-removal': typeof ServicesJunkRemovalRoute
+  '/services/painting': typeof ServicesPaintingRoute
+  '/services/pool-cleaning': typeof ServicesPoolCleaningRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +89,11 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
   '/services': typeof ServicesRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
+  '/services/junk-removal': typeof ServicesJunkRemovalRoute
+  '/services/painting': typeof ServicesPaintingRoute
+  '/services/pool-cleaning': typeof ServicesPoolCleaningRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +102,49 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
   '/services': typeof ServicesRoute
+  '/legal_/privacy': typeof LegalPrivacyRoute
+  '/legal_/terms': typeof LegalTermsRoute
+  '/services_/junk-removal': typeof ServicesJunkRemovalRoute
+  '/services_/painting': typeof ServicesPaintingRoute
+  '/services_/pool-cleaning': typeof ServicesPoolCleaningRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/legal' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/legal'
+    | '/services'
+    | '/legal/privacy'
+    | '/legal/terms'
+    | '/services/junk-removal'
+    | '/services/painting'
+    | '/services/pool-cleaning'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/legal' | '/services'
-  id: '__root__' | '/' | '/about' | '/contact' | '/legal' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/legal'
+    | '/services'
+    | '/legal/privacy'
+    | '/legal/terms'
+    | '/services/junk-removal'
+    | '/services/painting'
+    | '/services/pool-cleaning'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/legal'
+    | '/services'
+    | '/legal_/privacy'
+    | '/legal_/terms'
+    | '/services_/junk-removal'
+    | '/services_/painting'
+    | '/services_/pool-cleaning'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +153,11 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   LegalRoute: typeof LegalRoute
   ServicesRoute: typeof ServicesRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalTermsRoute: typeof LegalTermsRoute
+  ServicesJunkRemovalRoute: typeof ServicesJunkRemovalRoute
+  ServicesPaintingRoute: typeof ServicesPaintingRoute
+  ServicesPoolCleaningRoute: typeof ServicesPoolCleaningRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +197,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal_/privacy': {
+      id: '/legal_/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal_/terms': {
+      id: '/legal_/terms'
+      path: '/legal/terms'
+      fullPath: '/legal/terms'
+      preLoaderRoute: typeof LegalTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/junk-removal': {
+      id: '/services_/junk-removal'
+      path: '/services/junk-removal'
+      fullPath: '/services/junk-removal'
+      preLoaderRoute: typeof ServicesJunkRemovalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/painting': {
+      id: '/services_/painting'
+      path: '/services/painting'
+      fullPath: '/services/painting'
+      preLoaderRoute: typeof ServicesPaintingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/pool-cleaning': {
+      id: '/services_/pool-cleaning'
+      path: '/services/pool-cleaning'
+      fullPath: '/services/pool-cleaning'
+      preLoaderRoute: typeof ServicesPoolCleaningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +241,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   LegalRoute: LegalRoute,
   ServicesRoute: ServicesRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalTermsRoute: LegalTermsRoute,
+  ServicesJunkRemovalRoute: ServicesJunkRemovalRoute,
+  ServicesPaintingRoute: ServicesPaintingRoute,
+  ServicesPoolCleaningRoute: ServicesPoolCleaningRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
