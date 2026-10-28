@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import repairCSS from "../styles/import-repairs.css?raw";
+import innerRepairCSS from "../styles/inner-page-repairs.css?raw";
 import capturedCSS from "../styles/pages/contact.css?raw";
 import { ImportedFaq, ImportedPageMenu, ImportedServiceSelect, useImportedQuoteNotice } from "../components/imported-page-controls";
 
@@ -11,7 +13,7 @@ export const Route = createFileRoute("/contact")({
 function Index() {
   return (
     <>
-      <style>{capturedCSS}</style>
+      <style>{capturedCSS + repairCSS + innerRepairCSS}</style>
       <div className={"site-theme theme-contact"}>
         <a className={"skip-link"} href="#main">Skip to content</a>
         <div className={"utility-bar"}>

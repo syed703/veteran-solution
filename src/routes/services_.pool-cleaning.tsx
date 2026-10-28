@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import repairCSS from "../styles/import-repairs.css?raw";
+import innerRepairCSS from "../styles/inner-page-repairs.css?raw";
 import capturedCSS from "../styles/pages/services.pool-cleaning.css?raw";
 import { ImportedPageMenu, ImportedServiceSelect, useImportedQuoteNotice } from "../components/imported-page-controls";
 
@@ -12,7 +14,7 @@ export const Route = createFileRoute("/services_/pool-cleaning")({
 function Index() {
   return (
     <>
-      <style>{capturedCSS}</style>
+      <style>{capturedCSS + repairCSS + innerRepairCSS}</style>
       <div className={"site-theme theme-service"} style={{ "--red": "#a6111d" } as CSSProperties}>
         <a className={"skip-link"} href="#main">Skip to content</a>
         <div className={"utility-bar"}>
