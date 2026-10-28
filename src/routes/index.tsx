@@ -61,7 +61,7 @@ function Index() {
               <Dialog.Portal>
                 <Dialog.Overlay className="import-menu-overlay" />
                 <Dialog.Content className="menu-sheet import-menu-sheet" data-slot="sheet-content" aria-describedby={undefined}>
-                  <div data-slot="sheet-header" className="flex flex-col gap-1.5 p-4"><Dialog.Title data-slot="sheet-title" className="font-semibold">Veteran Solutions</Dialog.Title></div>
+                  <div data-slot="sheet-header" className="flex flex-col gap-1.5 p-4"><Dialog.Title data-slot="sheet-title" className="font-semibold import-menu-brand"><img src="/site-assets/f0a3c5858a327278.webp" alt="Veteran Solutions and Services LLC" width="80" height="44" /></Dialog.Title></div>
                   <nav className="mobile-nav" aria-label="Mobile navigation">
                     <a href="/">Home</a><a href="/about">About Us</a><a href="/services">Services</a><a href="/contact">Contact Us</a><a href="/legal">Legal Pages</a>
                     <a className="button button-dark" href="/contact">Request a quote</a><a className="mobile-phone" href="tel:+18573455076">(857) 345-5076</a>

@@ -8,3 +8,24 @@
 .import-service-options { z-index: 65; min-width: var(--radix-select-trigger-width); max-height: var(--radix-select-content-available-height); overflow-y: auto; border: 1px solid var(--border); background: var(--color-white); color: var(--ink); border-radius: 6px; padding: 4px; }
 .import-service-option { padding: 10px 12px; display: flex; justify-content: space-between; gap: 12px; outline: none; font-size: .9375rem; }
 .import-service-option[data-highlighted] { background: var(--accent); }
+
+/* Mobile refinements */
+.import-menu-brand { line-height: 0; }
+.import-menu-brand img { width: 76px; height: auto; }
+.import-menu-sheet .mobile-nav .button { white-space: nowrap; justify-content: center; text-align: center; }
+
+@media (max-width: 700px) {
+  /* Assurance strip: tidy two-column rows */
+  .assurance-inner { gap: 16px 12px; }
+  .assurance-inner > span, .assurance-inner > a { justify-content: flex-start; border-right: 0; font-size: 0.8rem; gap: 9px; }
+  .assurance-inner svg { flex-shrink: 0; }
+  /* Services outro: centered on mobile */
+  .services-outro { align-items: center; text-align: center; }
+  /* Mission eyebrow: keep on one line */
+  .mission-copy > .eyebrow { white-space: nowrap; letter-spacing: 0.09em; font-size: 0.66rem; gap: 8px; }
+  /* Tighter gap between personal training and quote sections */
+  .personal-training-section { padding: 64px 0 44px; }
+  .quote-section { padding-top: 52px; }
+  /* Footer wordmark: fit without clipping */
+  .footer-wordmark { font-size: clamp(2.4rem, 13vw, 6rem); letter-spacing: -0.05em; padding-right: 0; }
+}
