@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Website import
+- Keep imported homepage markup and interactions in its route file, with source CSS retained separately, to preserve captured structure and visual fidelity.
+- Use existing Radix primitives for captured sheet, select, and accordion controls so keyboard access and focus behavior remain consistent.
+- Quote submission must not report delivery until a real delivery service is connected; show the available phone contact instead.

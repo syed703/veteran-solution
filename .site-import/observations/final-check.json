@@ -1,0 +1,130 @@
+[
+  {
+    "site": "source",
+    "layout": "desktop",
+    "trigger": "Request a quote",
+    "url": "https://veterenda.dotclickpro.com/contact",
+    "status": "pass",
+    "note": ""
+  },
+  {
+    "site": "source",
+    "layout": "desktop",
+    "trigger": "Explore our services",
+    "url": "https://veterenda.dotclickpro.com/services",
+    "status": "pass",
+    "note": ""
+  },
+  {
+    "site": "source",
+    "layout": "desktop",
+    "trigger": "bottom scroll",
+    "scroll": 7240,
+    "status": "pass",
+    "errors": []
+  },
+  {
+    "site": "source",
+    "layout": "phone",
+    "trigger": "phone navigation",
+    "width": 292.5,
+    "links": [
+      "/",
+      "/about",
+      "/services",
+      "/contact",
+      "/legal",
+      "/contact",
+      "tel:+18573455076"
+    ],
+    "status": "pass"
+  },
+  {
+    "site": "source",
+    "layout": "phone",
+    "trigger": "Request a quote",
+    "url": "https://veterenda.dotclickpro.com/contact",
+    "status": "pass",
+    "note": ""
+  },
+  {
+    "site": "source",
+    "layout": "phone",
+    "trigger": "Explore our services",
+    "url": "https://veterenda.dotclickpro.com/services",
+    "status": "pass",
+    "note": ""
+  },
+  {
+    "site": "source",
+    "layout": "phone",
+    "trigger": "bottom scroll",
+    "scroll": 1327,
+    "status": "pass",
+    "errors": []
+  },
+  {
+    "site": "preview",
+    "layout": "desktop",
+    "trigger": "Request a quote",
+    "url": "http://localhost:8080/contact",
+    "status": "pass",
+    "note": "Destination page not imported"
+  },
+  {
+    "site": "preview",
+    "layout": "desktop",
+    "trigger": "Explore our services",
+    "url": "http://localhost:8080/services",
+    "status": "pass",
+    "note": "Destination page not imported"
+  },
+  {
+    "site": "preview",
+    "layout": "desktop",
+    "trigger": "bottom scroll",
+    "scroll": 7243,
+    "status": "pass",
+    "errors": []
+  },
+  {
+    "site": "preview",
+    "layout": "phone",
+    "trigger": "phone navigation",
+    "width": 292.5,
+    "links": [
+      "/",
+      "/about",
+      "/services",
+      "/contact",
+      "/legal",
+      "/contact",
+      "tel:+18573455076"
+    ],
+    "status": "pass"
+  },
+  {
+    "site": "preview",
+    "layout": "phone",
+    "trigger": "Request a quote",
+    "url": "http://localhost:8080/contact",
+    "status": "pass",
+    "note": "Destination page not imported"
+  },
+  {
+    "site": "preview",
+    "layout": "phone",
+    "trigger": "Explore our services",
+    "url": "http://localhost:8080/services",
+    "status": "pass",
+    "note": "Destination page not imported"
+  },
+  {
+    "site": "preview",
+    "layout": "phone",
+    "trigger": "bottom scroll",
+    "scroll": 12627,
+    "status": "pass",
+    "errors": []
+  }
+]
