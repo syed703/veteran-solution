@@ -24,7 +24,7 @@ export function ImportedPageMenu() {
   </Dialog.Root>;
 }
 
-const services = [
+const services: [string, string][] = [
   ["junk-removal", "Junk Removal"], ["painting", "Painting"], ["pool-cleaning", "Pool Cleaning"],
   ["power-washing", "Power Washing"], ["renovating", "Renovating"], ["property-cleaning", "Property Cleaning"],
   ["tile-replacement-installation", "Tile Replacement & Installation"], ["floor-renovation", "Floor Renovation"],
