@@ -12,7 +12,7 @@
       },
       {
         "section": "assurance-strip",
-        "scroll": 118,
+        "scroll": 119,
         "text": "VETERAN OWNED & OPERATED\nAVAILABLE 24/7\nONE TEAM. NINE SERVICES.\n(857) 345-5076",
         "path": "/tmp/browser/veteran/source-desktop-section-1.png"
       },
@@ -42,13 +42,13 @@
       },
       {
         "section": "demolition-feature",
-        "scroll": 418,
+        "scroll": 417,
         "text": "CLEAR & PREPARE / DEMOLITION\nEvery new beginning\nneeds a clear start.\n\nSelective removal, demolition requests and debris planning. Let\u2019s discuss what ",
         "path": "/tmp/browser/veteran/source-desktop-section-6.png"
       },
       {
         "section": "personal-training-section",
-        "scroll": 478,
+        "scroll": 477,
         "text": "PROPERTY CARE / VETERAN OWNED\nPERSONAL TRAINING\nA personal approach\nto your goals.\n\nVeteran Solutions & Services is built around caring for people and",
         "path": "/tmp/browser/veteran/source-desktop-section-7.png"
       },
@@ -60,13 +60,13 @@
       },
       {
         "section": "faq-section section",
-        "scroll": 598,
+        "scroll": 597,
         "text": "A LITTLE MORE CLARITY\nGood questions.\nClear answers.\n\nStill have something on your mind?\nGive us a call.\n\nCan I request more than one service?\nHow do ",
         "path": "/tmp/browser/veteran/source-desktop-section-9.png"
       },
       {
         "section": "site-footer",
-        "scroll": 655,
+        "scroll": 656,
         "text": "VETERAN SOLUTIONS & SERVICES LLC\nYour needs.\nOur mission.\n\nProperty care with purpose.\nOne team. Nine ways to make a difference.\n\n(857) 345-5076\nAvail",
         "path": "/tmp/browser/veteran/source-desktop-section-10.png"
       }
@@ -74,23 +74,23 @@
     "controls": [
       {
         "trigger": "Can I request more than one service?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Yes. Choose \u2018More than one service\u2019 in the quote form and tell us which services you need. We can review the work together and discuss an appropriate plan."
       },
       {
         "trigger": "How do I get an estimate?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Complete the quote form with your service, property ZIP code and a brief description, or call (857) 345-5076. We\u2019ll review the scope and may need more details or a property assessment before confirming an estimate."
       },
       {
         "trigger": "Do you offer urgent service?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "You can contact us 24/7. Call to discuss urgent work. Scheduling depends on the service, the location and team availability; a request does not confirm a booking."
       },
       {
         "trigger": "Which areas do you serve?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Include your property ZIP code in your request or call the team. We\u2019ll confirm coverage for your location before arranging the work."
       },
       {
         "trigger": "service selector",
@@ -250,7 +250,7 @@
       },
       {
         "section": "assurance-strip",
-        "scroll": 500,
+        "scroll": 498,
         "text": "VETERAN OWNED & OPERATED\nAVAILABLE 24/7\nONE TEAM. NINE SERVICES.\n(857) 345-5076",
         "path": "/tmp/browser/veteran/source-phone-section-1.png"
       },
@@ -317,23 +317,23 @@
       },
       {
         "trigger": "Can I request more than one service?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Yes. Choose \u2018More than one service\u2019 in the quote form and tell us which services you need. We can review the work together and discuss an appropriate plan."
       },
       {
         "trigger": "How do I get an estimate?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Complete the quote form with your service, property ZIP code and a brief description, or call (857) 345-5076. We\u2019ll review the scope and may need more details or a property assessment before confirming an estimate."
       },
       {
         "trigger": "Do you offer urgent service?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "You can contact us 24/7. Call to discuss urgent work. Scheduling depends on the service, the location and team availability; a request does not confirm a booking."
       },
       {
         "trigger": "Which areas do you serve?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Include your property ZIP code in your request or call the team. We\u2019ll confirm coverage for your location before arranging the work."
       },
       {
         "trigger": "service selector",
@@ -488,13 +488,13 @@
     "screenshots": [
       {
         "section": "home-hero",
-        "scroll": 0,
+        "scroll": 60,
         "text": "PROPERTY SOLUTIONS\nWITH PURPOSE\nTHE STANDARD IS PERSONAL.\nYour needs.\nOur mission.\n\nOne trusted team for the spaces you live in, work in, and care abo",
         "path": "/tmp/browser/veteran/preview-desktop-section-0.png"
       },
       {
         "section": "assurance-strip",
-        "scroll": 60,
+        "scroll": 120,
         "text": "VETERAN OWNED & OPERATED\nAVAILABLE 24/7\nONE TEAM. NINE SERVICES.\n(857) 345-5076",
         "path": "/tmp/browser/veteran/preview-desktop-section-1.png"
       },
@@ -536,19 +536,19 @@
       },
       {
         "section": "quote-section section",
-        "scroll": 6311,
+        "scroll": 6025,
         "text": "ONE LESS THING ON YOUR LIST\nLet\u2019s take care\nof your next project.\n\nSomething to clear, clean or completely reimagine? Tell us what you have in mind.\n\n",
         "path": "/tmp/browser/veteran/preview-desktop-section-8.png"
       },
       {
         "section": "faq-section section",
-        "scroll": 6833,
+        "scroll": 6547,
         "text": "A LITTLE MORE CLARITY\nGood questions.\nClear answers.\n\nStill have something on your mind?\nGive us a call.\n\nCan I request more than one service?\nHow do ",
         "path": "/tmp/browser/veteran/preview-desktop-section-9.png"
       },
       {
         "section": "site-footer",
-        "scroll": 7530,
+        "scroll": 7243,
         "text": "VETERAN SOLUTIONS & SERVICES LLC\nYour needs.\nOur mission.\n\nProperty care with purpose.\nOne team. Nine ways to make a difference.\n\n(857) 345-5076\nAvail",
         "path": "/tmp/browser/veteran/preview-desktop-section-10.png"
       }
@@ -556,23 +556,23 @@
     "controls": [
       {
         "trigger": "Can I request more than one service?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Yes. Choose \u2018More than one service\u2019 in the quote form and tell us which services you need. We can review the work together and discuss an appropriate plan."
       },
       {
         "trigger": "How do I get an estimate?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Complete the quote form with your service, property ZIP code and a brief description, or call (857) 345-5076. We\u2019ll review the scope and may need more details or a property assessment before confirming an estimate."
       },
       {
         "trigger": "Do you offer urgent service?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "You can contact us 24/7. Call to discuss urgent work. Scheduling depends on the service, the location and team availability; a request does not confirm a booking."
       },
       {
         "trigger": "Which areas do you serve?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Include your property ZIP code in your request or call the team. We\u2019ll confirm coverage for your location before arranging the work."
       },
       {
         "trigger": "service selector",
@@ -582,7 +582,7 @@
     ],
     "buttons": [
       "",
-      "Choose your service",
+      "Choose your service\u2304",
       "Request my quote",
       "Can I request more than one service?",
       "How do I get an estimate?",
@@ -630,11 +630,11 @@
         "href": "/services"
       }
     ],
-    "selection": "Choose your service",
+    "selection": "Painting\n\u2304",
     "slider": {
       "value": "51",
-      "stage": "--split:50%",
-      "clip": "clip-path:inset(0px 50% 0px 0px)"
+      "stage": "--split: 51%;",
+      "clip": "clip-path: inset(0px 49% 0px 0px);"
     },
     "video1": {
       "time": 0,
@@ -774,19 +774,19 @@
       },
       {
         "section": "quote-section section",
-        "scroll": 11029,
+        "scroll": 10886,
         "text": "ONE LESS THING ON YOUR LIST\nLet\u2019s take care\nof your next project.\n\nSomething to clear, clean or completely reimagine? Tell us what you have in mind.\n\n",
         "path": "/tmp/browser/veteran/preview-phone-section-8.png"
       },
       {
         "section": "faq-section section",
-        "scroll": 12312,
+        "scroll": 12027,
         "text": "A LITTLE MORE CLARITY\nGood questions.\nClear answers.\n\nStill have something on your mind?\nGive us a call.\n\nCan I request more than one service?\nHow do ",
         "path": "/tmp/browser/veteran/preview-phone-section-9.png"
       },
       {
         "section": "site-footer",
-        "scroll": 13024,
+        "scroll": 12739,
         "text": "VETERAN SOLUTIONS & SERVICES LLC\nYour needs.\nOur mission.\n\nProperty care with purpose.\nOne team. Nine ways to make a difference.\n\n(857) 345-5076\nAvail",
         "path": "/tmp/browser/veteran/preview-phone-section-10.png"
       }
@@ -794,28 +794,28 @@
     "controls": [
       {
         "trigger": "phone navigation",
-        "status": "failed",
-        "reason": "No visible dialog"
+        "status": "pass",
+        "content": "Veteran Solutions\nHome\nAbout Us\nServices\nContact Us\nLegal Pages\nREQUEST A QUOTE\n(857) 345-5076"
       },
       {
         "trigger": "Can I request more than one service?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Yes. Choose \u2018More than one service\u2019 in the quote form and tell us which services you need. We can review the work together and discuss an appropriate plan."
       },
       {
         "trigger": "How do I get an estimate?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Complete the quote form with your service, property ZIP code and a brief description, or call (857) 345-5076. We\u2019ll review the scope and may need more details or a property assessment before confirming an estimate."
       },
       {
         "trigger": "Do you offer urgent service?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "You can contact us 24/7. Call to discuss urgent work. Scheduling depends on the service, the location and team availability; a request does not confirm a booking."
       },
       {
         "trigger": "Which areas do you serve?",
-        "status": "failed",
-        "content": ""
+        "status": "pass",
+        "content": "Include your property ZIP code in your request or call the team. We\u2019ll confirm coverage for your location before arranging the work."
       },
       {
         "trigger": "service selector",
@@ -825,7 +825,7 @@
     ],
     "buttons": [
       "",
-      "Choose your service",
+      "Choose your service\u2304",
       "Request my quote",
       "Can I request more than one service?",
       "How do I get an estimate?",
@@ -873,11 +873,12 @@
         "href": "/services"
       }
     ],
-    "selection": "Choose your service",
+    "menu": "Veteran Solutions\nHome\nAbout Us\nServices\nContact Us\nLegal Pages\nREQUEST A QUOTE\n(857) 345-5076",
+    "selection": "Painting\n\u2304",
     "slider": {
       "value": "51",
-      "stage": "--split:50%",
-      "clip": "clip-path:inset(0px 50% 0px 0px)"
+      "stage": "--split: 51%;",
+      "clip": "clip-path: inset(0px 49% 0px 0px);"
     },
     "video1": {
       "time": 0,
