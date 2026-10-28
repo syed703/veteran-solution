@@ -1,0 +1,122 @@
+[
+  {
+    "layout": "desktop",
+    "scroll": 864,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-0.png"
+  },
+  {
+    "layout": "desktop",
+    "scroll": 1742,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-1.png"
+  },
+  {
+    "layout": "desktop",
+    "scroll": 2626,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-2.png"
+  },
+  {
+    "layout": "desktop",
+    "scroll": 3546,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-3.png"
+  },
+  {
+    "layout": "desktop",
+    "scroll": 4496,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-4.png"
+  },
+  {
+    "layout": "desktop",
+    "scroll": 5377,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-5.png"
+  },
+  {
+    "layout": "desktop",
+    "scroll": 6219,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-6.png"
+  },
+  {
+    "layout": "desktop",
+    "scroll": 7083,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-7.png"
+  },
+  {
+    "layout": "desktop",
+    "scroll": 7238,
+    "screenshot": "/tmp/browser/veteran/source-desktop-settled-scroll-8.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 900,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-0.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 1800,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-1.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 2700,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-2.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 3600,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-3.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 4500,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-4.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 5400,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-5.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 6300,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-6.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 7200,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-7.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 8100,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-8.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 9000,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-9.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 9900,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-10.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 10800,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-11.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 11700,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-12.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 12600,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-13.png"
+  },
+  {
+    "layout": "phone",
+    "scroll": 12884,
+    "screenshot": "/tmp/browser/veteran/source-phone-settled-scroll-14.png"
+  }
+]
