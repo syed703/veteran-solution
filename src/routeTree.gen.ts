@@ -16,6 +16,7 @@ import { Route as LegalRouteImport } from './routes/legal'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as LegalPrivacyRouteImport } from './routes/legal_.privacy'
 import { Route as LegalTermsRouteImport } from './routes/legal_.terms'
+import { Route as ServicesDemolitionRouteImport } from './routes/services_.demolition'
 import { Route as ServicesFloorRenovationRouteImport } from './routes/services_.floor-renovation'
 import { Route as ServicesJunkRemovalRouteImport } from './routes/services_.junk-removal'
 import { Route as ServicesPaintingRouteImport } from './routes/services_.painting'
@@ -58,6 +59,11 @@ const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
 const LegalTermsRoute = LegalTermsRouteImport.update({
   id: '/legal_/terms',
   path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesDemolitionRoute = ServicesDemolitionRouteImport.update({
+  id: '/services_/demolition',
+  path: '/services/demolition',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesFloorRenovationRoute = ServicesFloorRenovationRouteImport.update({
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/services/demolition': typeof ServicesDemolitionRoute
   '/services/floor-renovation': typeof ServicesFloorRenovationRoute
   '/services/junk-removal': typeof ServicesJunkRemovalRoute
   '/services/painting': typeof ServicesPaintingRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/services/demolition': typeof ServicesDemolitionRoute
   '/services/floor-renovation': typeof ServicesFloorRenovationRoute
   '/services/junk-removal': typeof ServicesJunkRemovalRoute
   '/services/painting': typeof ServicesPaintingRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/legal_/privacy': typeof LegalPrivacyRoute
   '/legal_/terms': typeof LegalTermsRoute
+  '/services_/demolition': typeof ServicesDemolitionRoute
   '/services_/floor-renovation': typeof ServicesFloorRenovationRoute
   '/services_/junk-removal': typeof ServicesJunkRemovalRoute
   '/services_/painting': typeof ServicesPaintingRoute
@@ -165,6 +174,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/legal/privacy'
     | '/legal/terms'
+    | '/services/demolition'
     | '/services/floor-renovation'
     | '/services/junk-removal'
     | '/services/painting'
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/legal/privacy'
     | '/legal/terms'
+    | '/services/demolition'
     | '/services/floor-renovation'
     | '/services/junk-removal'
     | '/services/painting'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/legal_/privacy'
     | '/legal_/terms'
+    | '/services_/demolition'
     | '/services_/floor-renovation'
     | '/services_/junk-removal'
     | '/services_/painting'
@@ -217,6 +229,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalTermsRoute: typeof LegalTermsRoute
+  ServicesDemolitionRoute: typeof ServicesDemolitionRoute
   ServicesFloorRenovationRoute: typeof ServicesFloorRenovationRoute
   ServicesJunkRemovalRoute: typeof ServicesJunkRemovalRoute
   ServicesPaintingRoute: typeof ServicesPaintingRoute
@@ -276,6 +289,13 @@ declare module '@tanstack/react-router' {
       path: '/legal/terms'
       fullPath: '/legal/terms'
       preLoaderRoute: typeof LegalTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/demolition': {
+      id: '/services_/demolition'
+      path: '/services/demolition'
+      fullPath: '/services/demolition'
+      preLoaderRoute: typeof ServicesDemolitionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services_/floor-renovation': {
@@ -345,6 +365,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalTermsRoute: LegalTermsRoute,
+  ServicesDemolitionRoute: ServicesDemolitionRoute,
   ServicesFloorRenovationRoute: ServicesFloorRenovationRoute,
   ServicesJunkRemovalRoute: ServicesJunkRemovalRoute,
   ServicesPaintingRoute: ServicesPaintingRoute,
