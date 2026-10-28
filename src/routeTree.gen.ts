@@ -10,33 +10,234 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LegalRouteImport } from './routes/legal'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as LegalPrivacyRouteImport } from './routes/legal_.privacy'
+import { Route as LegalTermsRouteImport } from './routes/legal_.terms'
+import { Route as ServicesDemolitionRouteImport } from './routes/services_.demolition'
+import { Route as ServicesFloorRenovationRouteImport } from './routes/services_.floor-renovation'
+import { Route as ServicesJunkRemovalRouteImport } from './routes/services_.junk-removal'
+import { Route as ServicesPaintingRouteImport } from './routes/services_.painting'
+import { Route as ServicesPoolCleaningRouteImport } from './routes/services_.pool-cleaning'
+import { Route as ServicesPowerWashingRouteImport } from './routes/services_.power-washing'
+import { Route as ServicesPropertyCleaningRouteImport } from './routes/services_.property-cleaning'
+import { Route as ServicesRenovatingRouteImport } from './routes/services_.renovating'
+import { Route as ServicesTileReplacementInstallationRouteImport } from './routes/services_.tile-replacement-installation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal_/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalTermsRoute = LegalTermsRouteImport.update({
+  id: '/legal_/terms',
+  path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesDemolitionRoute = ServicesDemolitionRouteImport.update({
+  id: '/services_/demolition',
+  path: '/services/demolition',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesFloorRenovationRoute = ServicesFloorRenovationRouteImport.update({
+  id: '/services_/floor-renovation',
+  path: '/services/floor-renovation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesJunkRemovalRoute = ServicesJunkRemovalRouteImport.update({
+  id: '/services_/junk-removal',
+  path: '/services/junk-removal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPaintingRoute = ServicesPaintingRouteImport.update({
+  id: '/services_/painting',
+  path: '/services/painting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPoolCleaningRoute = ServicesPoolCleaningRouteImport.update({
+  id: '/services_/pool-cleaning',
+  path: '/services/pool-cleaning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPowerWashingRoute = ServicesPowerWashingRouteImport.update({
+  id: '/services_/power-washing',
+  path: '/services/power-washing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPropertyCleaningRoute =
+  ServicesPropertyCleaningRouteImport.update({
+    id: '/services_/property-cleaning',
+    path: '/services/property-cleaning',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesRenovatingRoute = ServicesRenovatingRouteImport.update({
+  id: '/services_/renovating',
+  path: '/services/renovating',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesTileReplacementInstallationRoute =
+  ServicesTileReplacementInstallationRouteImport.update({
+    id: '/services_/tile-replacement-installation',
+    path: '/services/tile-replacement-installation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/legal': typeof LegalRoute
+  '/services': typeof ServicesRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
+  '/services/demolition': typeof ServicesDemolitionRoute
+  '/services/floor-renovation': typeof ServicesFloorRenovationRoute
+  '/services/junk-removal': typeof ServicesJunkRemovalRoute
+  '/services/painting': typeof ServicesPaintingRoute
+  '/services/pool-cleaning': typeof ServicesPoolCleaningRoute
+  '/services/power-washing': typeof ServicesPowerWashingRoute
+  '/services/property-cleaning': typeof ServicesPropertyCleaningRoute
+  '/services/renovating': typeof ServicesRenovatingRoute
+  '/services/tile-replacement-installation': typeof ServicesTileReplacementInstallationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/legal': typeof LegalRoute
+  '/services': typeof ServicesRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
+  '/services/demolition': typeof ServicesDemolitionRoute
+  '/services/floor-renovation': typeof ServicesFloorRenovationRoute
+  '/services/junk-removal': typeof ServicesJunkRemovalRoute
+  '/services/painting': typeof ServicesPaintingRoute
+  '/services/pool-cleaning': typeof ServicesPoolCleaningRoute
+  '/services/power-washing': typeof ServicesPowerWashingRoute
+  '/services/property-cleaning': typeof ServicesPropertyCleaningRoute
+  '/services/renovating': typeof ServicesRenovatingRoute
+  '/services/tile-replacement-installation': typeof ServicesTileReplacementInstallationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/legal': typeof LegalRoute
+  '/services': typeof ServicesRoute
+  '/legal_/privacy': typeof LegalPrivacyRoute
+  '/legal_/terms': typeof LegalTermsRoute
+  '/services_/demolition': typeof ServicesDemolitionRoute
+  '/services_/floor-renovation': typeof ServicesFloorRenovationRoute
+  '/services_/junk-removal': typeof ServicesJunkRemovalRoute
+  '/services_/painting': typeof ServicesPaintingRoute
+  '/services_/pool-cleaning': typeof ServicesPoolCleaningRoute
+  '/services_/power-washing': typeof ServicesPowerWashingRoute
+  '/services_/property-cleaning': typeof ServicesPropertyCleaningRoute
+  '/services_/renovating': typeof ServicesRenovatingRoute
+  '/services_/tile-replacement-installation': typeof ServicesTileReplacementInstallationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/legal'
+    | '/services'
+    | '/legal/privacy'
+    | '/legal/terms'
+    | '/services/demolition'
+    | '/services/floor-renovation'
+    | '/services/junk-removal'
+    | '/services/painting'
+    | '/services/pool-cleaning'
+    | '/services/power-washing'
+    | '/services/property-cleaning'
+    | '/services/renovating'
+    | '/services/tile-replacement-installation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/legal'
+    | '/services'
+    | '/legal/privacy'
+    | '/legal/terms'
+    | '/services/demolition'
+    | '/services/floor-renovation'
+    | '/services/junk-removal'
+    | '/services/painting'
+    | '/services/pool-cleaning'
+    | '/services/power-washing'
+    | '/services/property-cleaning'
+    | '/services/renovating'
+    | '/services/tile-replacement-installation'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/legal'
+    | '/services'
+    | '/legal_/privacy'
+    | '/legal_/terms'
+    | '/services_/demolition'
+    | '/services_/floor-renovation'
+    | '/services_/junk-removal'
+    | '/services_/painting'
+    | '/services_/pool-cleaning'
+    | '/services_/power-washing'
+    | '/services_/property-cleaning'
+    | '/services_/renovating'
+    | '/services_/tile-replacement-installation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  LegalRoute: typeof LegalRoute
+  ServicesRoute: typeof ServicesRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalTermsRoute: typeof LegalTermsRoute
+  ServicesDemolitionRoute: typeof ServicesDemolitionRoute
+  ServicesFloorRenovationRoute: typeof ServicesFloorRenovationRoute
+  ServicesJunkRemovalRoute: typeof ServicesJunkRemovalRoute
+  ServicesPaintingRoute: typeof ServicesPaintingRoute
+  ServicesPoolCleaningRoute: typeof ServicesPoolCleaningRoute
+  ServicesPowerWashingRoute: typeof ServicesPowerWashingRoute
+  ServicesPropertyCleaningRoute: typeof ServicesPropertyCleaningRoute
+  ServicesRenovatingRoute: typeof ServicesRenovatingRoute
+  ServicesTileReplacementInstallationRoute: typeof ServicesTileReplacementInstallationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +249,132 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal_/privacy': {
+      id: '/legal_/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal_/terms': {
+      id: '/legal_/terms'
+      path: '/legal/terms'
+      fullPath: '/legal/terms'
+      preLoaderRoute: typeof LegalTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/demolition': {
+      id: '/services_/demolition'
+      path: '/services/demolition'
+      fullPath: '/services/demolition'
+      preLoaderRoute: typeof ServicesDemolitionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/floor-renovation': {
+      id: '/services_/floor-renovation'
+      path: '/services/floor-renovation'
+      fullPath: '/services/floor-renovation'
+      preLoaderRoute: typeof ServicesFloorRenovationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/junk-removal': {
+      id: '/services_/junk-removal'
+      path: '/services/junk-removal'
+      fullPath: '/services/junk-removal'
+      preLoaderRoute: typeof ServicesJunkRemovalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/painting': {
+      id: '/services_/painting'
+      path: '/services/painting'
+      fullPath: '/services/painting'
+      preLoaderRoute: typeof ServicesPaintingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/pool-cleaning': {
+      id: '/services_/pool-cleaning'
+      path: '/services/pool-cleaning'
+      fullPath: '/services/pool-cleaning'
+      preLoaderRoute: typeof ServicesPoolCleaningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/power-washing': {
+      id: '/services_/power-washing'
+      path: '/services/power-washing'
+      fullPath: '/services/power-washing'
+      preLoaderRoute: typeof ServicesPowerWashingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/property-cleaning': {
+      id: '/services_/property-cleaning'
+      path: '/services/property-cleaning'
+      fullPath: '/services/property-cleaning'
+      preLoaderRoute: typeof ServicesPropertyCleaningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/renovating': {
+      id: '/services_/renovating'
+      path: '/services/renovating'
+      fullPath: '/services/renovating'
+      preLoaderRoute: typeof ServicesRenovatingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services_/tile-replacement-installation': {
+      id: '/services_/tile-replacement-installation'
+      path: '/services/tile-replacement-installation'
+      fullPath: '/services/tile-replacement-installation'
+      preLoaderRoute: typeof ServicesTileReplacementInstallationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  LegalRoute: LegalRoute,
+  ServicesRoute: ServicesRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalTermsRoute: LegalTermsRoute,
+  ServicesDemolitionRoute: ServicesDemolitionRoute,
+  ServicesFloorRenovationRoute: ServicesFloorRenovationRoute,
+  ServicesJunkRemovalRoute: ServicesJunkRemovalRoute,
+  ServicesPaintingRoute: ServicesPaintingRoute,
+  ServicesPoolCleaningRoute: ServicesPoolCleaningRoute,
+  ServicesPowerWashingRoute: ServicesPowerWashingRoute,
+  ServicesPropertyCleaningRoute: ServicesPropertyCleaningRoute,
+  ServicesRenovatingRoute: ServicesRenovatingRoute,
+  ServicesTileReplacementInstallationRoute:
+    ServicesTileReplacementInstallationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
