@@ -1,6 +1,6 @@
-import type { CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/pages/contact.css?raw";
+import { ImportedFaq, ImportedPageMenu, ImportedServiceSelect, useImportedQuoteNotice } from "../components/imported-page-controls";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({ meta: [{ title: "Contact Us | Veteran Solutions \u0026 Services" }] }),
@@ -33,17 +33,11 @@ function Index() {
               <a className={""} href="/">Home</a>
               <a className={""} href="/about">About Us</a>
               <a className={""} href="/services">Services</a>
-              <a className={"active"} href="#">Contact Us</a>
+              <a className={"active"} href="/contact">Contact Us</a>
               <a className={""} href="/legal">Legal Pages</a>
             </nav>
-            <a className={"button button-dark header-quote"} href="#">Start a project</a>
-            <button type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-slot="sheet-trigger" className={"mobile-menu"} aria-label="Open navigation">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-menu"} aria-hidden="true">
-                <path d="M4 5h16" />
-                <path d="M4 12h16" />
-                <path d="M4 19h16" />
-              </svg>
-            </button>
+            <a className={"button button-dark header-quote"} href="/contact">Start a project</a>
+            <ImportedPageMenu />
           </div>
         </header>
         <main id="main">
@@ -79,6 +73,7 @@ function Index() {
 }
 
 function ImportedSectionTellUsAboutyourProject() {
+  const { onSubmit, notice } = useImportedQuoteNotice();
   return (
     <section id="quote" className={"quote-section section contact-quote-section"}>
       <div className={"\x63ontainer quote-layout"}>
@@ -105,7 +100,7 @@ function ImportedSectionTellUsAboutyourProject() {
           <p className={"quote-small"}>Your property. Your priorities.<br />Our mission is to help with both.</p>
         </div>
         <div className={"quote-panel reveal-ready revealed"}>
-          <form className={"quote-form"}>
+          <form className={"quote-form"} onSubmit={onSubmit}>
             <div className={"form-heading"}>
               <span className={"eyebrow"}>LET’S GET STARTED</span>
               <h3>Tell us what you need.</h3>
@@ -120,50 +115,13 @@ function ImportedSectionTellUsAboutyourProject() {
               <label>Property ZIP code <span>*</span><input required autoComplete="postal-code" inputMode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxLength={10} placeholder="ZIP code" title="Enter a 5-digit US ZIP code, optionally followed by a 4-digit extension." defaultValue="" name="zip" /></label>
             </div>
             <label className={"service-label"} id="service-label">Which service do you need? <span>*</span></label>
-            <button type="button" role="combobox" aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placeholder="" data-slot="select-trigger" data-size="default" className={"\x66lex \x77-fit \x69tems-center \x6austify-between \x67ap-2 \x72ounded-md \x62order \x62order-input \x62g-transparent \x70x-3 \x70y-2 \x74ext-sm \x77hitespace-nowrap \x73hadow-xs \x74ransition-[\x63olor,\x62ox-shadow] \x6futline-none \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x63ursor-not-allowed \x64isabled:\x6fpacity-50 \x61ria-invalid:\x62order-destructive \x61ria-invalid:\x72ing-destructive/\x320 \x64ata-[\x70laceholder]:\x74ext-muted-foreground \x64ata-[\x73ize=\x64efault]:\x68-9 \x64ata-[\x73ize=\x73m]:\x68-8 *:\x64ata-[\x73lot=\x73elect-value]:\x6cine-clamp-1 *:\x64ata-[\x73lot=\x73elect-value]:\x66lex *:\x64ata-[\x73lot=\x73elect-value]:\x69tems-center *:\x64ata-[\x73lot=\x73elect-value]:\x67ap-2 \x64ark:\x62g-input/\x330 \x64ark:\x68over:\x62g-input/\x350 \x64ark:\x61ria-invalid:\x72ing-destructive/\x340 [&\x5fsvg]:\x70ointer-events-none [&\x5fsvg]:\x73hrink-0 [&\x5fsvg:\x6eot([\x63lass*='\x73ize-'])]:\x73ize-4 [&\x5fsvg:\x6eot([\x63lass*='\x74ext-'])]:\x74ext-muted-foreground service-select"} aria-labelledby="service-label">
-              <span data-slot="select-value" style={{ pointerEvents: "none" }}>Choose your service</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x73ize-4 \x6fpacity-50"} aria-hidden="true">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </button>
-            <div className={"bb-custom-select-container bb-customSelect"}>
-              <span className={"bb-custom-select-opener"} role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="bb-customSelect-WFlCK-panel" aria-activedescendant="bb-customSelect-WFlCK-selectedOption" tabIndex={0}>
-                <span />
-              </span>
-              <select aria-hidden="true" tabIndex={-1} name="service" style={{ position: "absolute", border: "0px", width: "1px", height: "1px", padding: "0px", margin: "-1px", overflow: "hidden", clip: "rect(0px, 0px, 0px, 0px)", whiteSpace: "nowrap", overflowWrap: "normal" } as CSSProperties} defaultValue="">
-                <option value="" selected />
-                <option value="junk-removal">Junk Removal</option>
-                <option value="painting">Painting</option>
-                <option value="pool-cleaning">Pool Cleaning</option>
-                <option value="power-washing">Power Washing</option>
-                <option value="renovating">Renovating</option>
-                <option value="property-cleaning">Property Cleaning</option>
-                <option value="tile-replacement-installation">Tile Replacement &amp; Installation</option>
-                <option value="floor-renovation">Floor Renovation</option>
-                <option value="demolition">Demolition</option>
-                <option value="multiple">More than one service</option>
-                <option value="personal-training">Personal Training</option>
-              </select>
-              <div id="bb-customSelect-WFlCK-panel" className={"bb-custom-select-panel"} role="listbox">
-                <div className={"bb-custom-select-option bb-is-selected bb-has-focus"} role="option" id="bb-customSelect-WFlCK-selectedOption" />
-                <div className={"bb-custom-select-option"} role="option">Junk Removal</div>
-                <div className={"bb-custom-select-option"} role="option">Painting</div>
-                <div className={"bb-custom-select-option"} role="option">Pool Cleaning</div>
-                <div className={"bb-custom-select-option"} role="option">Power Washing</div>
-                <div className={"bb-custom-select-option"} role="option">Renovating</div>
-                <div className={"bb-custom-select-option"} role="option">Property Cleaning</div>
-                <div className={"bb-custom-select-option"} role="option">Tile Replacement &amp; Installation</div>
-                <div className={"bb-custom-select-option"} role="option">Floor Renovation</div>
-                <div className={"bb-custom-select-option"} role="option">Demolition</div>
-                <div className={"bb-custom-select-option"} role="option">More than one service</div>
-                <div className={"bb-custom-select-option"} role="option">Personal Training</div>
-              </div>
-            </div>
+            <ImportedServiceSelect />
             <label className={"message-label"}>A little about your project <span>*</span><textarea name="message" required minLength={10} maxLength={3000} rows={4} placeholder="What needs attention? Include the approximate size, current condition and your preferred timing." /></label>
             <div className={"honeypot"} aria-hidden="true">
               <label>Company website<input tabIndex={-1} autoComplete="off" defaultValue="" name="company" /></label>
             </div>
             <button className={"button button-dark form-submit"} type="submit">Request my quote</button>
+            {notice && <p role="status">Online quote requests are not connected yet. Please call (857) 345-5076 to discuss your project.</p>}
             <p className={"form-note"}>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-check"} aria-hidden="true">
                 <path d="M20 6 9 17l-5-5" />
@@ -186,32 +144,7 @@ function ImportedSectionAFewThingsyouMight() {
           <h2>A few things<br /><em>you might ask.</em></h2>
           <p>Still have something on your mind?<br /><a href="tel:+18573455076">Give us a call.</a></p>
         </div>
-        <div data-slot="accordion" className={"faq-list"} data-orientation="vertical">
-          <div data-state="closed" data-orientation="vertical" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
-            <h3 data-orientation="vertical" data-state="closed" className={"\x66lex"}>
-              <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_r_4_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Can I request more than one service?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
-            </h3>
-            <div data-state="closed" id="radix-_r_5_" hidden role="region" aria-labelledby="radix-_r_4_" data-orientation="vertical" data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties} />
-          </div>
-          <div data-state="closed" data-orientation="vertical" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
-            <h3 data-orientation="vertical" data-state="closed" className={"\x66lex"}>
-              <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_r_6_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>How do I get an estimate?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
-            </h3>
-            <div data-state="closed" id="radix-_r_7_" hidden role="region" aria-labelledby="radix-_r_6_" data-orientation="vertical" data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties} />
-          </div>
-          <div data-state="closed" data-orientation="vertical" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
-            <h3 data-orientation="vertical" data-state="closed" className={"\x66lex"}>
-              <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_r_8_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Do you offer urgent service?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
-            </h3>
-            <div data-state="closed" id="radix-_r_9_" hidden role="region" aria-labelledby="radix-_r_8_" data-orientation="vertical" data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties} />
-          </div>
-          <div data-state="closed" data-orientation="vertical" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
-            <h3 data-orientation="vertical" data-state="closed" className={"\x66lex"}>
-              <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_r_a_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Which areas do you serve?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
-            </h3>
-            <div data-state="closed" id="radix-_r_b_" hidden role="region" aria-labelledby="radix-_r_a_" data-orientation="vertical" data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties} />
-          </div>
-        </div>
+        <ImportedFaq />
       </div>
     </section>
   );
@@ -234,7 +167,7 @@ function ImportedFooterYourNeedsOurMission() {
             <a href="/">Home</a>
             <a href="/about">About Us</a>
             <a href="/services">Services</a>
-            <a href="#">Contact Us</a>
+            <a href="/contact">Contact Us</a>
             <a href="/legal">Legal Pages</a>
           </div>
           <div className={"footer-links footer-services"}>

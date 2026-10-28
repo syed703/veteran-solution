@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/pages/legal.terms.css?raw";
+import { ImportedPageMenu } from "../components/imported-page-controls";
 
 export const Route = createFileRoute("/legal_/terms")({
   head: () => ({ meta: [{ title: "Terms of Use | Veteran Solutions \u0026 Services" }] }),
@@ -36,13 +37,7 @@ function Index() {
               <a className={"active"} href="/legal">Legal Pages</a>
             </nav>
             <a className={"button button-dark header-quote"} href="/contact">Start a project</a>
-            <button type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-slot="sheet-trigger" className={"mobile-menu"} aria-label="Open navigation">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-menu"} aria-hidden="true">
-                <path d="M4 5h16" />
-                <path d="M4 12h16" />
-                <path d="M4 19h16" />
-              </svg>
-            </button>
+            <ImportedPageMenu />
           </div>
         </header>
         <main id="main">
@@ -171,7 +166,7 @@ function ImportedFooterYourNeedsOurMission() {
           <span>© 2026 Veteran Solutions and Services LLC</span>
           <span className={"footer-policy-links"}>
             <a href="/legal/privacy">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
+            <a href="/legal/terms">Terms of Use</a>
           </span>
         </div>
       </div>

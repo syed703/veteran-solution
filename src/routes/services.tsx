@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/pages/services.css?raw";
+import { ImportedPageMenu } from "../components/imported-page-controls";
 
 export const Route = createFileRoute("/services")({
   head: () => ({ meta: [{ title: "Our Services | Veteran Solutions \u0026 Services" }] }),
@@ -32,18 +33,12 @@ function Index() {
             <nav className={"desktop-nav"} aria-label="Main navigation">
               <a className={""} href="/">Home</a>
               <a className={""} href="/about">About Us</a>
-              <a className={"active"} href="#">Services</a>
+              <a className={"active"} href="/services">Services</a>
               <a className={""} href="/contact">Contact Us</a>
               <a className={""} href="/legal">Legal Pages</a>
             </nav>
             <a className={"button button-dark header-quote"} href="/contact">Start a project</a>
-            <button type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-slot="sheet-trigger" className={"mobile-menu"} aria-label="Open navigation">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-menu"} aria-hidden="true">
-                <path d="M4 5h16" />
-                <path d="M4 12h16" />
-                <path d="M4 19h16" />
-              </svg>
-            </button>
+            <ImportedPageMenu />
           </div>
         </header>
         <main id="main">
@@ -313,7 +308,7 @@ function ImportedFooterYourNeedsOurMission() {
             <h3>Explore</h3>
             <a href="/">Home</a>
             <a href="/about">About Us</a>
-            <a href="#">Services</a>
+            <a href="/services">Services</a>
             <a href="/contact">Contact Us</a>
             <a href="/legal">Legal Pages</a>
           </div>
