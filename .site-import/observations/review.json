@@ -1,0 +1,965 @@
+[
+  {
+    "site": "source",
+    "layout": "desktop",
+    "url": "https://veterenda.dotclickpro.com/",
+    "screenshots": [
+      {
+        "section": "home-hero",
+        "scroll": 59,
+        "text": "PROPERTY SOLUTIONS\nWITH PURPOSE\nTHE STANDARD IS PERSONAL.\nYour needs.\nOur mission.\n\nOne trusted team for the spaces you live in, work in, and care abo",
+        "path": "/tmp/browser/veteran/source-desktop-section-0.png"
+      },
+      {
+        "section": "assurance-strip",
+        "scroll": 118,
+        "text": "VETERAN OWNED & OPERATED\nAVAILABLE 24/7\nONE TEAM. NINE SERVICES.\n(857) 345-5076",
+        "path": "/tmp/browser/veteran/source-desktop-section-1.png"
+      },
+      {
+        "section": "services-overview section",
+        "scroll": 178,
+        "text": "WHAT WE DO / 01\u201406\nOne team for\nevery next step.\n\nFrom clearing a space to caring for a home, we bring focus and a clear plan to every service.\n\nVIEW ",
+        "path": "/tmp/browser/veteran/source-desktop-section-2.png"
+      },
+      {
+        "section": "process-section section",
+        "scroll": 238,
+        "text": "A SIMPLE WAY FORWARD\nGood service starts\nwith a conversation.\n\nFrom your first request to the agreed work, we keep the next step clear.\n\n01\nTell us wh",
+        "path": "/tmp/browser/veteran/source-desktop-section-3.png"
+      },
+      {
+        "section": "mission-section",
+        "scroll": 298,
+        "text": "ABOUT VETERAN SOLUTIONS & SERVICES\nA company built\non service.\n\nWe\u2019re a veteran-owned business here to help you care for your property and move your n",
+        "path": "/tmp/browser/veteran/source-desktop-section-4.png"
+      },
+      {
+        "section": "comparison-section section",
+        "scroll": 358,
+        "text": "THE TRANSFORMATION / 01\u201403\nSee the space.\nSee the possibility.\nTHREE INTERACTIVE VIEWS\n\nMove each slider to explore the potential of a room, an exteri",
+        "path": "/tmp/browser/veteran/source-desktop-section-5.png"
+      },
+      {
+        "section": "demolition-feature",
+        "scroll": 418,
+        "text": "CLEAR & PREPARE / DEMOLITION\nEvery new beginning\nneeds a clear start.\n\nSelective removal, demolition requests and debris planning. Let\u2019s discuss what ",
+        "path": "/tmp/browser/veteran/source-desktop-section-6.png"
+      },
+      {
+        "section": "personal-training-section",
+        "scroll": 478,
+        "text": "PROPERTY CARE / VETERAN OWNED\nPERSONAL TRAINING\nA personal approach\nto your goals.\n\nVeteran Solutions & Services is built around caring for people and",
+        "path": "/tmp/browser/veteran/source-desktop-section-7.png"
+      },
+      {
+        "section": "quote-section section",
+        "scroll": 538,
+        "text": "ONE LESS THING ON YOUR LIST\nLet\u2019s take care\nof your next project.\n\nSomething to clear, clean or completely reimagine? Tell us what you have in mind.\n\n",
+        "path": "/tmp/browser/veteran/source-desktop-section-8.png"
+      },
+      {
+        "section": "faq-section section",
+        "scroll": 598,
+        "text": "A LITTLE MORE CLARITY\nGood questions.\nClear answers.\n\nStill have something on your mind?\nGive us a call.\n\nCan I request more than one service?\nHow do ",
+        "path": "/tmp/browser/veteran/source-desktop-section-9.png"
+      },
+      {
+        "section": "site-footer",
+        "scroll": 655,
+        "text": "VETERAN SOLUTIONS & SERVICES LLC\nYour needs.\nOur mission.\n\nProperty care with purpose.\nOne team. Nine ways to make a difference.\n\n(857) 345-5076\nAvail",
+        "path": "/tmp/browser/veteran/source-desktop-section-10.png"
+      }
+    ],
+    "controls": [
+      {
+        "trigger": "Can I request more than one service?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "How do I get an estimate?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "Do you offer urgent service?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "Which areas do you serve?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "service selector",
+        "status": "pass",
+        "content": "Junk Removal\nPainting\nPool Cleaning\nPower Washing\nRenovating\nProperty Cleaning\nTile Replacement & Installation\nFloor Renovation\nDemolition\nMore than one service\nPersonal Training"
+      }
+    ],
+    "buttons": [
+      "",
+      "Choose your service",
+      "Request my quote",
+      "Can I request more than one service?",
+      "How do I get an estimate?",
+      "Do you offer urgent service?",
+      "Which areas do you serve?"
+    ],
+    "headings": [
+      "One team forevery next step.",
+      "Good service startswith a conversation.",
+      "A company builton service.",
+      "See the space.See the possibility.",
+      "Every new beginningneeds a clear start.",
+      "A personal approachto your goals.",
+      "Let\u2019s take careof your next project.",
+      "Good questions.Clear answers.",
+      "Your needs.Our mission."
+    ],
+    "links": [
+      {
+        "text": "Home",
+        "href": "/"
+      },
+      {
+        "text": "About Us",
+        "href": "/about"
+      },
+      {
+        "text": "Services",
+        "href": "/services"
+      },
+      {
+        "text": "Contact Us",
+        "href": "/contact"
+      },
+      {
+        "text": "Legal Pages",
+        "href": "/legal"
+      },
+      {
+        "text": "Request a quote",
+        "href": "/contact"
+      },
+      {
+        "text": "Explore our services",
+        "href": "/services"
+      }
+    ],
+    "selection": "Painting",
+    "slider": {
+      "value": "51",
+      "stage": "--split: 51%;",
+      "clip": "clip-path: inset(0px 49% 0px 0px);"
+    },
+    "video1": {
+      "time": 0,
+      "ready": 0,
+      "paused": true
+    },
+    "videoBlocked": "Video did not advance",
+    "video2": {
+      "time": 0,
+      "ready": 0,
+      "paused": true
+    },
+    "pause": true,
+    "media": [
+      {
+        "src": "/images/brand-mark.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/hero-poster.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/company-junk.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/company-painting.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/company-pool.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/company-power-washing.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/renovation-interior.jpg",
+        "ok": true
+      },
+      {
+        "src": "/images/company-property.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/logo.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/renovation-interior.jpg",
+        "ok": true
+      },
+      {
+        "src": "/images/comparison-before.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/hero-house.jpg",
+        "ok": true
+      },
+      {
+        "src": "/images/comparison-house-before.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/pool-cleaning.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/comparison-pool-before.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/demolition.jpg",
+        "ok": true
+      },
+      {
+        "src": "/images/property-work-feature.webp",
+        "ok": true
+      }
+    ]
+  },
+  {
+    "site": "source",
+    "layout": "phone",
+    "url": "https://veterenda.dotclickpro.com/",
+    "screenshots": [
+      {
+        "section": "home-hero",
+        "scroll": 1,
+        "text": "THE STANDARD IS PERSONAL.\nYour needs.\nOur mission.\n\nOne trusted team for the spaces you live in, work in, and care about.\n\nREQUEST A QUOTE\nEXPLORE OUR",
+        "path": "/tmp/browser/veteran/source-phone-section-0.png"
+      },
+      {
+        "section": "assurance-strip",
+        "scroll": 500,
+        "text": "VETERAN OWNED & OPERATED\nAVAILABLE 24/7\nONE TEAM. NINE SERVICES.\n(857) 345-5076",
+        "path": "/tmp/browser/veteran/source-phone-section-1.png"
+      },
+      {
+        "section": "services-overview section",
+        "scroll": 2196,
+        "text": "WHAT WE DO / 01\u201406\nOne team for\nevery next step.\n\nFrom clearing a space to caring for a home, we bring focus and a clear plan to every service.\n\nVIEW ",
+        "path": "/tmp/browser/veteran/source-phone-section-2.png"
+      },
+      {
+        "section": "process-section section",
+        "scroll": 4400,
+        "text": "A SIMPLE WAY FORWARD\nGood service starts\nwith a conversation.\n\nFrom your first request to the agreed work, we keep the next step clear.\n\n01\nTell us wh",
+        "path": "/tmp/browser/veteran/source-phone-section-3.png"
+      },
+      {
+        "section": "mission-section",
+        "scroll": 5634,
+        "text": "ABOUT VETERAN SOLUTIONS & SERVICES\nA company built\non service.\n\nWe\u2019re a veteran-owned business here to help you care for your property and move your n",
+        "path": "/tmp/browser/veteran/source-phone-section-4.png"
+      },
+      {
+        "section": "comparison-section section",
+        "scroll": 7299,
+        "text": "THE TRANSFORMATION / 01\u201403\nSee the space.\nSee the possibility.\nTHREE INTERACTIVE VIEWS\n\nMove each slider to explore the potential of a room, an exteri",
+        "path": "/tmp/browser/veteran/source-phone-section-5.png"
+      },
+      {
+        "section": "demolition-feature",
+        "scroll": 8603,
+        "text": "CLEAR & PREPARE / DEMOLITION\nEvery new beginning\nneeds a clear start.\n\nSelective removal, demolition requests and debris planning. Let\u2019s discuss what ",
+        "path": "/tmp/browser/veteran/source-phone-section-6.png"
+      },
+      {
+        "section": "personal-training-section",
+        "scroll": 9293,
+        "text": "PROPERTY CARE / VETERAN OWNED\nPERSONAL TRAINING\nA personal approach\nto your goals.\n\nVeteran Solutions & Services is built around caring for people and",
+        "path": "/tmp/browser/veteran/source-phone-section-7.png"
+      },
+      {
+        "section": "quote-section section",
+        "scroll": 10884,
+        "text": "ONE LESS THING ON YOUR LIST\nLet\u2019s take care\nof your next project.\n\nSomething to clear, clean or completely reimagine? Tell us what you have in mind.\n\n",
+        "path": "/tmp/browser/veteran/source-phone-section-8.png"
+      },
+      {
+        "section": "faq-section section",
+        "scroll": 12022,
+        "text": "A LITTLE MORE CLARITY\nGood questions.\nClear answers.\n\nStill have something on your mind?\nGive us a call.\n\nCan I request more than one service?\nHow do ",
+        "path": "/tmp/browser/veteran/source-phone-section-9.png"
+      },
+      {
+        "section": "site-footer",
+        "scroll": 12733,
+        "text": "VETERAN SOLUTIONS & SERVICES LLC\nYour needs.\nOur mission.\n\nProperty care with purpose.\nOne team. Nine ways to make a difference.\n\n(857) 345-5076\nAvail",
+        "path": "/tmp/browser/veteran/source-phone-section-10.png"
+      }
+    ],
+    "controls": [
+      {
+        "trigger": "phone navigation",
+        "status": "pass",
+        "content": "Veteran Solutions\nHome\nAbout Us\nServices\nContact Us\nLegal Pages\nREQUEST A QUOTE\n(857) 345-5076\nClose"
+      },
+      {
+        "trigger": "Can I request more than one service?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "How do I get an estimate?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "Do you offer urgent service?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "Which areas do you serve?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "service selector",
+        "status": "pass",
+        "content": "Junk Removal\nPainting\nPool Cleaning\nPower Washing\nRenovating\nProperty Cleaning\nTile Replacement & Installation\nFloor Renovation\nDemolition\nMore than one service\nPersonal Training"
+      }
+    ],
+    "buttons": [
+      "",
+      "Choose your service",
+      "Request my quote",
+      "Can I request more than one service?",
+      "How do I get an estimate?",
+      "Do you offer urgent service?",
+      "Which areas do you serve?"
+    ],
+    "headings": [
+      "One team forevery next step.",
+      "Good service startswith a conversation.",
+      "A company builton service.",
+      "See the space.See the possibility.",
+      "Every new beginningneeds a clear start.",
+      "A personal approachto your goals.",
+      "Let\u2019s take careof your next project.",
+      "Good questions.Clear answers.",
+      "Your needs.Our mission."
+    ],
+    "links": [
+      {
+        "text": "Home",
+        "href": "/"
+      },
+      {
+        "text": "About Us",
+        "href": "/about"
+      },
+      {
+        "text": "Services",
+        "href": "/services"
+      },
+      {
+        "text": "Contact Us",
+        "href": "/contact"
+      },
+      {
+        "text": "Legal Pages",
+        "href": "/legal"
+      },
+      {
+        "text": "Request a quote",
+        "href": "/contact"
+      },
+      {
+        "text": "Explore our services",
+        "href": "/services"
+      }
+    ],
+    "menu": "Veteran Solutions\nHome\nAbout Us\nServices\nContact Us\nLegal Pages\nREQUEST A QUOTE\n(857) 345-5076\nClose",
+    "selection": "Painting",
+    "slider": {
+      "value": "51",
+      "stage": "--split: 51%;",
+      "clip": "clip-path: inset(0px 49% 0px 0px);"
+    },
+    "video1": {
+      "time": 0,
+      "ready": 0,
+      "paused": true
+    },
+    "videoBlocked": "Video did not advance",
+    "video2": {
+      "time": 0,
+      "ready": 0,
+      "paused": true
+    },
+    "pause": true,
+    "media": [
+      {
+        "src": "/images/brand-mark.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/hero-poster.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/company-junk.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/company-painting.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/company-pool.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/company-power-washing.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/renovation-interior.jpg",
+        "ok": true
+      },
+      {
+        "src": "/images/company-property.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/logo.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/renovation-interior.jpg",
+        "ok": true
+      },
+      {
+        "src": "/images/comparison-before.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/hero-house.jpg",
+        "ok": true
+      },
+      {
+        "src": "/images/comparison-house-before.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/pool-cleaning.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/comparison-pool-before.webp",
+        "ok": true
+      },
+      {
+        "src": "/images/demolition.jpg",
+        "ok": true
+      },
+      {
+        "src": "/images/property-work-feature.webp",
+        "ok": true
+      }
+    ]
+  },
+  {
+    "site": "preview",
+    "layout": "desktop",
+    "url": "http://localhost:8080",
+    "screenshots": [
+      {
+        "section": "home-hero",
+        "scroll": 0,
+        "text": "PROPERTY SOLUTIONS\nWITH PURPOSE\nTHE STANDARD IS PERSONAL.\nYour needs.\nOur mission.\n\nOne trusted team for the spaces you live in, work in, and care abo",
+        "path": "/tmp/browser/veteran/preview-desktop-section-0.png"
+      },
+      {
+        "section": "assurance-strip",
+        "scroll": 60,
+        "text": "VETERAN OWNED & OPERATED\nAVAILABLE 24/7\nONE TEAM. NINE SERVICES.\n(857) 345-5076",
+        "path": "/tmp/browser/veteran/preview-desktop-section-1.png"
+      },
+      {
+        "section": "services-overview section",
+        "scroll": 869,
+        "text": "WHAT WE DO / 01\u201406\nOne team for\nevery next step.\n\nFrom clearing a space to caring for a home, we bring focus and a clear plan to every service.\n\nVIEW ",
+        "path": "/tmp/browser/veteran/preview-desktop-section-2.png"
+      },
+      {
+        "section": "process-section section",
+        "scroll": 1588,
+        "text": "A SIMPLE WAY FORWARD\nGood service starts\nwith a conversation.\n\nFrom your first request to the agreed work, we keep the next step clear.\n\n01\nTell us wh",
+        "path": "/tmp/browser/veteran/preview-desktop-section-3.png"
+      },
+      {
+        "section": "mission-section",
+        "scroll": 2443,
+        "text": "ABOUT VETERAN SOLUTIONS & SERVICES\nA company built\non service.\n\nWe\u2019re a veteran-owned business here to help you care for your property and move your n",
+        "path": "/tmp/browser/veteran/preview-desktop-section-4.png"
+      },
+      {
+        "section": "comparison-section section",
+        "scroll": 3537,
+        "text": "THE TRANSFORMATION / 01\u201403\nSee the space.\nSee the possibility.\nTHREE INTERACTIVE VIEWS\n\nMove each slider to explore the potential of a room, an exteri",
+        "path": "/tmp/browser/veteran/preview-desktop-section-5.png"
+      },
+      {
+        "section": "demolition-feature",
+        "scroll": 4147,
+        "text": "CLEAR & PREPARE / DEMOLITION\nEvery new beginning\nneeds a clear start.\n\nSelective removal, demolition requests and debris planning. Let\u2019s discuss what ",
+        "path": "/tmp/browser/veteran/preview-desktop-section-6.png"
+      },
+      {
+        "section": "personal-training-section",
+        "scroll": 5048,
+        "text": "PROPERTY CARE / VETERAN OWNED\nPERSONAL TRAINING\nA personal approach\nto your goals.\n\nVeteran Solutions & Services is built around caring for people and",
+        "path": "/tmp/browser/veteran/preview-desktop-section-7.png"
+      },
+      {
+        "section": "quote-section section",
+        "scroll": 6311,
+        "text": "ONE LESS THING ON YOUR LIST\nLet\u2019s take care\nof your next project.\n\nSomething to clear, clean or completely reimagine? Tell us what you have in mind.\n\n",
+        "path": "/tmp/browser/veteran/preview-desktop-section-8.png"
+      },
+      {
+        "section": "faq-section section",
+        "scroll": 6833,
+        "text": "A LITTLE MORE CLARITY\nGood questions.\nClear answers.\n\nStill have something on your mind?\nGive us a call.\n\nCan I request more than one service?\nHow do ",
+        "path": "/tmp/browser/veteran/preview-desktop-section-9.png"
+      },
+      {
+        "section": "site-footer",
+        "scroll": 7530,
+        "text": "VETERAN SOLUTIONS & SERVICES LLC\nYour needs.\nOur mission.\n\nProperty care with purpose.\nOne team. Nine ways to make a difference.\n\n(857) 345-5076\nAvail",
+        "path": "/tmp/browser/veteran/preview-desktop-section-10.png"
+      }
+    ],
+    "controls": [
+      {
+        "trigger": "Can I request more than one service?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "How do I get an estimate?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "Do you offer urgent service?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "Which areas do you serve?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "service selector",
+        "status": "pass",
+        "content": "Junk Removal\nPainting\nPool Cleaning\nPower Washing\nRenovating\nProperty Cleaning\nTile Replacement & Installation\nFloor Renovation\nDemolition\nMore than one service\nPersonal Training"
+      }
+    ],
+    "buttons": [
+      "",
+      "Choose your service",
+      "Request my quote",
+      "Can I request more than one service?",
+      "How do I get an estimate?",
+      "Do you offer urgent service?",
+      "Which areas do you serve?"
+    ],
+    "headings": [
+      "One team forevery next step.",
+      "Good service startswith a conversation.",
+      "A company builton service.",
+      "See the space.See the possibility.",
+      "Every new beginningneeds a clear start.",
+      "A personal approachto your goals.",
+      "Let\u2019s take careof your next project.",
+      "Good questions.Clear answers.",
+      "Your needs.Our mission."
+    ],
+    "links": [
+      {
+        "text": "Home",
+        "href": "/"
+      },
+      {
+        "text": "About Us",
+        "href": "/about"
+      },
+      {
+        "text": "Services",
+        "href": "/services"
+      },
+      {
+        "text": "Contact Us",
+        "href": "/contact"
+      },
+      {
+        "text": "Legal Pages",
+        "href": "/legal"
+      },
+      {
+        "text": "Request a quote",
+        "href": "/contact"
+      },
+      {
+        "text": "Explore our services",
+        "href": "/services"
+      }
+    ],
+    "selection": "Choose your service",
+    "slider": {
+      "value": "51",
+      "stage": "--split:50%",
+      "clip": "clip-path:inset(0px 50% 0px 0px)"
+    },
+    "video1": {
+      "time": 0,
+      "ready": 0,
+      "paused": true
+    },
+    "videoBlocked": "Video did not advance",
+    "video2": {
+      "time": 0,
+      "ready": 0,
+      "paused": true
+    },
+    "pause": true,
+    "media": [
+      {
+        "src": "/site-assets/f0a3c5858a327278.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/6f7df1550472904c.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/58a94b431b74715b.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/0695a946ebede19a.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/268a312bff2a0a69.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/4f8f0842a9551b24.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/bf38b010f24207a7.jpg",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/c82ff7ecf9d14bb2.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/8448ccd12888d989.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/bf38b010f24207a7.jpg",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/138ecd3f6822b5eb.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/3ba8c5a82c95a2b7.jpg",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/0f0c94f6a081f247.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/e8c3906bfaa1516a.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/516e5f40933ff0fc.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/73ade72c9b09495f.jpg",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/fef155f94d897b0d.webp",
+        "ok": true
+      }
+    ]
+  },
+  {
+    "site": "preview",
+    "layout": "phone",
+    "url": "http://localhost:8080",
+    "screenshots": [
+      {
+        "section": "home-hero",
+        "scroll": 61,
+        "text": "THE STANDARD IS PERSONAL.\nYour needs.\nOur mission.\n\nOne trusted team for the spaces you live in, work in, and care about.\n\nREQUEST A QUOTE\nEXPLORE OUR",
+        "path": "/tmp/browser/veteran/preview-phone-section-0.png"
+      },
+      {
+        "section": "assurance-strip",
+        "scroll": 180,
+        "text": "VETERAN OWNED & OPERATED\nAVAILABLE 24/7\nONE TEAM. NINE SERVICES.\n(857) 345-5076",
+        "path": "/tmp/browser/veteran/preview-phone-section-1.png"
+      },
+      {
+        "section": "services-overview section",
+        "scroll": 939,
+        "text": "WHAT WE DO / 01\u201406\nOne team for\nevery next step.\n\nFrom clearing a space to caring for a home, we bring focus and a clear plan to every service.\n\nVIEW ",
+        "path": "/tmp/browser/veteran/preview-phone-section-2.png"
+      },
+      {
+        "section": "process-section section",
+        "scroll": 4400,
+        "text": "A SIMPLE WAY FORWARD\nGood service starts\nwith a conversation.\n\nFrom your first request to the agreed work, we keep the next step clear.\n\n01\nTell us wh",
+        "path": "/tmp/browser/veteran/preview-phone-section-3.png"
+      },
+      {
+        "section": "mission-section",
+        "scroll": 5634,
+        "text": "ABOUT VETERAN SOLUTIONS & SERVICES\nA company built\non service.\n\nWe\u2019re a veteran-owned business here to help you care for your property and move your n",
+        "path": "/tmp/browser/veteran/preview-phone-section-4.png"
+      },
+      {
+        "section": "comparison-section section",
+        "scroll": 7299,
+        "text": "THE TRANSFORMATION / 01\u201403\nSee the space.\nSee the possibility.\nTHREE INTERACTIVE VIEWS\n\nMove each slider to explore the potential of a room, an exteri",
+        "path": "/tmp/browser/veteran/preview-phone-section-5.png"
+      },
+      {
+        "section": "demolition-feature",
+        "scroll": 8603,
+        "text": "CLEAR & PREPARE / DEMOLITION\nEvery new beginning\nneeds a clear start.\n\nSelective removal, demolition requests and debris planning. Let\u2019s discuss what ",
+        "path": "/tmp/browser/veteran/preview-phone-section-6.png"
+      },
+      {
+        "section": "personal-training-section",
+        "scroll": 9293,
+        "text": "PROPERTY CARE / VETERAN OWNED\nPERSONAL TRAINING\nA personal approach\nto your goals.\n\nVeteran Solutions & Services is built around caring for people and",
+        "path": "/tmp/browser/veteran/preview-phone-section-7.png"
+      },
+      {
+        "section": "quote-section section",
+        "scroll": 11029,
+        "text": "ONE LESS THING ON YOUR LIST\nLet\u2019s take care\nof your next project.\n\nSomething to clear, clean or completely reimagine? Tell us what you have in mind.\n\n",
+        "path": "/tmp/browser/veteran/preview-phone-section-8.png"
+      },
+      {
+        "section": "faq-section section",
+        "scroll": 12312,
+        "text": "A LITTLE MORE CLARITY\nGood questions.\nClear answers.\n\nStill have something on your mind?\nGive us a call.\n\nCan I request more than one service?\nHow do ",
+        "path": "/tmp/browser/veteran/preview-phone-section-9.png"
+      },
+      {
+        "section": "site-footer",
+        "scroll": 13024,
+        "text": "VETERAN SOLUTIONS & SERVICES LLC\nYour needs.\nOur mission.\n\nProperty care with purpose.\nOne team. Nine ways to make a difference.\n\n(857) 345-5076\nAvail",
+        "path": "/tmp/browser/veteran/preview-phone-section-10.png"
+      }
+    ],
+    "controls": [
+      {
+        "trigger": "phone navigation",
+        "status": "failed",
+        "reason": "No visible dialog"
+      },
+      {
+        "trigger": "Can I request more than one service?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "How do I get an estimate?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "Do you offer urgent service?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "Which areas do you serve?",
+        "status": "failed",
+        "content": ""
+      },
+      {
+        "trigger": "service selector",
+        "status": "pass",
+        "content": "Junk Removal\nPainting\nPool Cleaning\nPower Washing\nRenovating\nProperty Cleaning\nTile Replacement & Installation\nFloor Renovation\nDemolition\nMore than one service\nPersonal Training"
+      }
+    ],
+    "buttons": [
+      "",
+      "Choose your service",
+      "Request my quote",
+      "Can I request more than one service?",
+      "How do I get an estimate?",
+      "Do you offer urgent service?",
+      "Which areas do you serve?"
+    ],
+    "headings": [
+      "One team forevery next step.",
+      "Good service startswith a conversation.",
+      "A company builton service.",
+      "See the space.See the possibility.",
+      "Every new beginningneeds a clear start.",
+      "A personal approachto your goals.",
+      "Let\u2019s take careof your next project.",
+      "Good questions.Clear answers.",
+      "Your needs.Our mission."
+    ],
+    "links": [
+      {
+        "text": "Home",
+        "href": "/"
+      },
+      {
+        "text": "About Us",
+        "href": "/about"
+      },
+      {
+        "text": "Services",
+        "href": "/services"
+      },
+      {
+        "text": "Contact Us",
+        "href": "/contact"
+      },
+      {
+        "text": "Legal Pages",
+        "href": "/legal"
+      },
+      {
+        "text": "Request a quote",
+        "href": "/contact"
+      },
+      {
+        "text": "Explore our services",
+        "href": "/services"
+      }
+    ],
+    "selection": "Choose your service",
+    "slider": {
+      "value": "51",
+      "stage": "--split:50%",
+      "clip": "clip-path:inset(0px 50% 0px 0px)"
+    },
+    "video1": {
+      "time": 0,
+      "ready": 0,
+      "paused": true
+    },
+    "videoBlocked": "Video did not advance",
+    "video2": {
+      "time": 0,
+      "ready": 0,
+      "paused": true
+    },
+    "pause": true,
+    "media": [
+      {
+        "src": "/site-assets/f0a3c5858a327278.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/6f7df1550472904c.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/58a94b431b74715b.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/0695a946ebede19a.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/268a312bff2a0a69.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/4f8f0842a9551b24.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/bf38b010f24207a7.jpg",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/c82ff7ecf9d14bb2.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/8448ccd12888d989.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/bf38b010f24207a7.jpg",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/138ecd3f6822b5eb.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/3ba8c5a82c95a2b7.jpg",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/0f0c94f6a081f247.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/e8c3906bfaa1516a.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/516e5f40933ff0fc.webp",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/73ade72c9b09495f.jpg",
+        "ok": true
+      },
+      {
+        "src": "/site-assets/fef155f94d897b0d.webp",
+        "ok": true
+      }
+    ]
+  }
+]
