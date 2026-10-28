@@ -34,7 +34,7 @@ export function ImportedServiceSelect({ initialService = "" }: { initialService?
   const [service, setService] = useState(initialService);
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("service");
-    if (requested && services.some(([value]) => value === requested)) setService(requested);
+    if (requested && services.some((entry) => entry[0] === requested)) setService(requested);
   }, []);
   return <Select.Root name="service" required value={service} onValueChange={setService}>
     <Select.Trigger data-slot="select-trigger" className="service-select import-service-trigger" aria-labelledby="service-label">
