@@ -1,0 +1,10 @@
+/* Restore source rules pruned because the initial capture contained closed panels. */
+.menu-sheet { background: var(--navy); color: var(--color-white); border-left: 1px solid var(--border); max-width: 360px; padding: 26px; }
+.import-menu-sheet { position: fixed; z-index: 60; inset-block: 0; right: 0; width: 75%; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+.mobile-nav { display: flex; flex-direction: column; gap: 24px; padding: 28px 16px; font-size: 1.25rem; }
+.import-menu-overlay { position: fixed; inset: 0; z-index: 59; background: var(--navy-deep); opacity: .5; }
+.import-menu-close { position: absolute; top: 16px; right: 16px; color: inherit; }
+.import-service-trigger { display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); background: var(--color-white); }
+.import-service-options { z-index: 65; min-width: var(--radix-select-trigger-width); max-height: var(--radix-select-content-available-height); overflow-y: auto; border: 1px solid var(--border); background: var(--color-white); color: var(--ink); border-radius: 6px; padding: 4px; }
+.import-service-option { padding: 10px 12px; display: flex; justify-content: space-between; gap: 12px; outline: none; font-size: .9375rem; }
+.import-service-option[data-highlighted] { background: var(--paper); }

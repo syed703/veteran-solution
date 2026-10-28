@@ -1,10 +1,21 @@
 import type { CSSProperties } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+import * as Select from "@radix-ui/react-select";
+import * as Accordion from "@radix-ui/react-accordion";
+import repairCSS from "../styles/import-repairs.css?raw";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/captured.css?raw";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [{ title: "Veteran Solutions \u0026 Services | Your needs. Our mission." }] }),
+  head: () => ({ meta: [
+    { title: "Veteran Solutions & Services | Your needs. Our mission." },
+    { name: "description", content: "Veteran-owned property cleaning, renovation, painting and demolition services. Your needs. Our mission." },
+    { property: "og:title", content: "Veteran Solutions & Services" },
+    { property: "og:description", content: "Veteran-owned property care. One trusted team for your next project." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   staticData: { importedDocument: { html: { "className": "has-smooth-scroll lenis", "lang": "en" }, body: {  } } },
   component: Index,
 });
@@ -13,7 +24,7 @@ function Index() {
   useImportedLayout();
   return (
     <>
-      <style>{capturedCSS}</style>
+      <style>{capturedCSS + repairCSS}</style>
       <div className={"site-theme theme-home"}>
         <a className={"skip-link"} href="#main">Skip to content</a>
         <div className={"utility-bar"}>
@@ -39,13 +50,26 @@ function Index() {
               <a className={""} href="/legal">Legal Pages</a>
             </nav>
             <a className={"button button-dark header-quote"} href="/contact">Start a project</a>
-            <button type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-slot="sheet-trigger" className={"mobile-menu"} aria-label="Open navigation">
+            <Dialog.Root>
+            <Dialog.Trigger type="button" data-slot="sheet-trigger" className={"mobile-menu"} aria-label="Open navigation">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-menu"} aria-hidden="true">
                 <path d="M4 5h16" />
                 <path d="M4 12h16" />
                 <path d="M4 19h16" />
               </svg>
-            </button>
+            </Dialog.Trigger>
+              <Dialog.Portal>
+                <Dialog.Overlay className="import-menu-overlay" />
+                <Dialog.Content className="menu-sheet import-menu-sheet" data-slot="sheet-content" aria-describedby={undefined}>
+                  <div data-slot="sheet-header" className="flex flex-col gap-1.5 p-4"><Dialog.Title data-slot="sheet-title" className="font-semibold">Veteran Solutions</Dialog.Title></div>
+                  <nav className="mobile-nav" aria-label="Mobile navigation">
+                    <a href="/">Home</a><a href="/about">About Us</a><a href="/services">Services</a><a href="/contact">Contact Us</a><a href="/legal">Legal Pages</a>
+                    <a className="button button-dark" href="/contact">Request a quote</a><a className="mobile-phone" href="tel:+18573455076">(857) 345-5076</a>
+                  </nav>
+                  <Dialog.Close className="import-menu-close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12" /></svg></Dialog.Close>
+                </Dialog.Content>
+              </Dialog.Portal>
+            </Dialog.Root>
           </div>
         </header>
         <main id="main">
@@ -304,6 +328,7 @@ function ImportedSectionACompanyBuiltonService() {
 }
 
 function ImportedSectionSeeTheSpaceSee() {
+  const [splits, setSplits] = useState([50, 50, 50]);
   return (
     <section className={"comparison-section section"} aria-labelledby="comparison-heading">
       <div className={"\x63ontainer"}>
@@ -319,9 +344,9 @@ function ImportedSectionSeeTheSpaceSee() {
         </div>
         <div className={"comparison-grid"}>
           <article className={"comparison-card reveal-ready revealed"}>
-            <div className={"comparison-stage"} style={{ "--split": "50%" } as CSSProperties}>
+            <div className={"comparison-stage"} style={{ "--split": `${splits[0]}%` } as CSSProperties}>
               <img className={"comparison-after"} src="/site-assets/bf38b010f24207a7.jpg" alt="Illustrative refreshed living room with wood floors" loading="lazy" />
-              <div className={"comparison-before"} style={{ clipPath: "inset(0px 50% 0px 0px)" } as CSSProperties}>
+              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - (splits[0] ?? 50)}% 0px 0px)` } as CSSProperties}>
                 <img src="/site-assets/138ecd3f6822b5eb.webp" alt="Illustrative living room before a refresh" loading="lazy" />
               </div>
               <span className={"comparison-tag comparison-tag-before"}>BEFORE</span>
@@ -335,7 +360,7 @@ function ImportedSectionSeeTheSpaceSee() {
                   </svg>
                 </span>
               </span>
-              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label="Compare before and after: A room, reimagined" aria-valuetext="50% of the before image visible" defaultValue="50" />
+              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label="Compare before and after: A room, reimagined" aria-valuetext={`${splits[0]}% of the before image visible`} value={splits[0]} onChange={event => setSplits(previous => previous.map((value, index) => index === 0 ? Number(event.target.value) : value))} />
             </div>
             <div className={"comparison-card-copy"}>
               <div className={"comparison-card-meta"}>
@@ -347,9 +372,9 @@ function ImportedSectionSeeTheSpaceSee() {
             </div>
           </article>
           <article className={"comparison-card reveal-ready revealed"}>
-            <div className={"comparison-stage"} style={{ "--split": "50%" } as CSSProperties}>
+            <div className={"comparison-stage"} style={{ "--split": `${splits[1]}%` } as CSSProperties}>
               <img className={"comparison-after"} src="/site-assets/3ba8c5a82c95a2b7.jpg" alt="Illustrative clean white home and landscaped yard" loading="lazy" />
-              <div className={"comparison-before"} style={{ clipPath: "inset(0px 50% 0px 0px)" } as CSSProperties}>
+              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - (splits[1] ?? 50)}% 0px 0px)` } as CSSProperties}>
                 <img src="/site-assets/0f0c94f6a081f247.webp" alt="Illustrative home exterior before a refresh" loading="lazy" />
               </div>
               <span className={"comparison-tag comparison-tag-before"}>BEFORE</span>
@@ -363,7 +388,7 @@ function ImportedSectionSeeTheSpaceSee() {
                   </svg>
                 </span>
               </span>
-              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label="Compare before and after: A welcome return" aria-valuetext="50% of the before image visible" defaultValue="50" />
+              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label="Compare before and after: A welcome return" aria-valuetext={`${splits[1]}% of the before image visible`} value={splits[1]} onChange={event => setSplits(previous => previous.map((value, index) => index === 1 ? Number(event.target.value) : value))} />
             </div>
             <div className={"comparison-card-copy"}>
               <div className={"comparison-card-meta"}>
@@ -375,9 +400,9 @@ function ImportedSectionSeeTheSpaceSee() {
             </div>
           </article>
           <article className={"comparison-card reveal-ready revealed"}>
-            <div className={"comparison-stage"} style={{ "--split": "50%" } as CSSProperties}>
+            <div className={"comparison-stage"} style={{ "--split": `${splits[2]}%` } as CSSProperties}>
               <img className={"comparison-after"} src="/site-assets/e8c3906bfaa1516a.webp" alt="Illustrative clear pool and clean deck" loading="lazy" />
-              <div className={"comparison-before"} style={{ clipPath: "inset(0px 50% 0px 0px)" } as CSSProperties}>
+              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - (splits[2] ?? 50)}% 0px 0px)` } as CSSProperties}>
                 <img src="/site-assets/516e5f40933ff0fc.webp" alt="Illustrative pool before cleaning" loading="lazy" />
               </div>
               <span className={"comparison-tag comparison-tag-before"}>BEFORE</span>
@@ -391,7 +416,7 @@ function ImportedSectionSeeTheSpaceSee() {
                   </svg>
                 </span>
               </span>
-              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label="Compare before and after: Ready to enjoy again" aria-valuetext="50% of the before image visible" defaultValue="50" />
+              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label="Compare before and after: Ready to enjoy again" aria-valuetext={`${splits[2]}% of the before image visible`} value={splits[2]} onChange={event => setSplits(previous => previous.map((value, index) => index === 2 ? Number(event.target.value) : value))} />
             </div>
             <div className={"comparison-card-copy"}>
               <div className={"comparison-card-meta"}>
@@ -413,6 +438,7 @@ function ImportedSectionSeeTheSpaceSee() {
 }
 
 function ImportedSectionLetSTakeCareof() {
+  const [requestNotice, setRequestNotice] = useState(false);
   return (
     <section id="quote" className={"quote-section section"}>
       <div className={"\x63ontainer quote-layout"}>
@@ -439,7 +465,7 @@ function ImportedSectionLetSTakeCareof() {
           <p className={"quote-small"}>Your property. Your priorities.<br />Our mission is to help with both.</p>
         </div>
         <div className={"quote-panel reveal-ready revealed"}>
-          <form className={"quote-form"}>
+          <form className={"quote-form"} onSubmit={event => { event.preventDefault(); setRequestNotice(true); }}>
             <div className={"form-heading"}>
               <span className={"eyebrow"}>LET’S GET STARTED</span>
               <h3>Tell us what you need.</h3>
@@ -454,50 +480,18 @@ function ImportedSectionLetSTakeCareof() {
               <label>Property ZIP code{" "}<span>*</span><input required autoComplete="postal-code" inputMode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxLength={10} placeholder="ZIP code" title="Enter a 5-digit US ZIP code, optionally followed by a 4-digit extension." name="zip" defaultValue="" /></label>
             </div>
             <label className={"service-label"} id="service-label">Which service do you need? <span>*</span></label>
-            <button type="button" role="combobox" aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placeholder="" data-slot="select-trigger" data-size="default" className={"\x66lex \x77-fit \x69tems-center \x6austify-between \x67ap-2 \x72ounded-md \x62order \x62order-input \x62g-transparent \x70x-3 \x70y-2 \x74ext-sm \x77hitespace-nowrap \x73hadow-xs \x74ransition-[\x63olor,\x62ox-shadow] \x6futline-none \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x63ursor-not-allowed \x64isabled:\x6fpacity-50 \x61ria-invalid:\x62order-destructive \x61ria-invalid:\x72ing-destructive/\x320 \x64ata-[\x70laceholder]:\x74ext-muted-foreground \x64ata-[\x73ize=\x64efault]:\x68-9 \x64ata-[\x73ize=\x73m]:\x68-8 *:\x64ata-[\x73lot=\x73elect-value]:\x6cine-clamp-1 *:\x64ata-[\x73lot=\x73elect-value]:\x66lex *:\x64ata-[\x73lot=\x73elect-value]:\x69tems-center *:\x64ata-[\x73lot=\x73elect-value]:\x67ap-2 \x64ark:\x62g-input/\x330 \x64ark:\x68over:\x62g-input/\x350 \x64ark:\x61ria-invalid:\x72ing-destructive/\x340 [&\x5fsvg]:\x70ointer-events-none [&\x5fsvg]:\x73hrink-0 [&\x5fsvg:\x6eot([\x63lass*='\x73ize-'])]:\x73ize-4 [&\x5fsvg:\x6eot([\x63lass*='\x74ext-'])]:\x74ext-muted-foreground service-select"} aria-labelledby="service-label">
-              <span data-slot="select-value" style={{ pointerEvents: "none" }}>Choose your service</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x73ize-4 \x6fpacity-50"} aria-hidden="true">
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </button>
-            <div className={"bb-custom-select-container bb-customSelect"}>
-              <span className={"bb-custom-select-opener"} role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="bb-customSelect-JTMYj-panel" aria-activedescendant="bb-customSelect-JTMYj-selectedOption" tabIndex={0}>
-                <span />
-              </span>
-              <select aria-hidden="true" tabIndex={-1} name="service" style={{ position: "absolute", border: "0px", width: "1px", height: "1px", padding: "0px", margin: "-1px", overflow: "hidden", clip: "rect(0px, 0px, 0px, 0px)", whiteSpace: "nowrap", overflowWrap: "normal" } as CSSProperties} defaultValue="">
-                <option value="" selected />
-                <option value="junk-removal">Junk Removal</option>
-                <option value="painting">Painting</option>
-                <option value="pool-cleaning">Pool Cleaning</option>
-                <option value="power-washing">Power Washing</option>
-                <option value="renovating">Renovating</option>
-                <option value="property-cleaning">Property Cleaning</option>
-                <option value="tile-replacement-installation">Tile Replacement &amp; Installation</option>
-                <option value="floor-renovation">Floor Renovation</option>
-                <option value="demolition">Demolition</option>
-                <option value="multiple">More than one service</option>
-                <option value="personal-training">Personal Training</option>
-              </select>
-              <div id="bb-customSelect-JTMYj-panel" className={"bb-custom-select-panel"} role="listbox">
-                <div className={"bb-custom-select-option bb-is-selected bb-has-focus"} role="option" id="bb-customSelect-JTMYj-selectedOption" />
-                <div className={"bb-custom-select-option"} role="option">Junk Removal</div>
-                <div className={"bb-custom-select-option"} role="option">Painting</div>
-                <div className={"bb-custom-select-option"} role="option">Pool Cleaning</div>
-                <div className={"bb-custom-select-option"} role="option">Power Washing</div>
-                <div className={"bb-custom-select-option"} role="option">Renovating</div>
-                <div className={"bb-custom-select-option"} role="option">Property Cleaning</div>
-                <div className={"bb-custom-select-option"} role="option">Tile Replacement &amp; Installation</div>
-                <div className={"bb-custom-select-option"} role="option">Floor Renovation</div>
-                <div className={"bb-custom-select-option"} role="option">Demolition</div>
-                <div className={"bb-custom-select-option"} role="option">More than one service</div>
-                <div className={"bb-custom-select-option"} role="option">Personal Training</div>
-              </div>
-            </div>
+            <Select.Root name="service" required>
+              <Select.Trigger className="service-select import-service-trigger" aria-labelledby="service-label"><Select.Value placeholder="Choose your service" /><Select.Icon>⌄</Select.Icon></Select.Trigger>
+              <Select.Portal><Select.Content position="popper" className="service-options import-service-options"><Select.Viewport>
+                {[["junk-removal", "Junk Removal"], ["painting", "Painting"], ["pool-cleaning", "Pool Cleaning"], ["power-washing", "Power Washing"], ["renovating", "Renovating"], ["property-cleaning", "Property Cleaning"], ["tile-replacement-installation", "Tile Replacement & Installation"], ["floor-renovation", "Floor Renovation"], ["demolition", "Demolition"], ["multiple", "More than one service"], ["personal-training", "Personal Training"]].map(([value, label]) => <Select.Item key={value} value={value ?? ""} data-slot="select-item" className="import-service-option"><Select.ItemText>{label}</Select.ItemText><Select.ItemIndicator>✓</Select.ItemIndicator></Select.Item>)}
+              </Select.Viewport></Select.Content></Select.Portal>
+            </Select.Root>
             <label className={"message-label"}>A little about your project{" "}<span>*</span><textarea name="message" required minLength={10} maxLength={3000} rows={4} placeholder="What needs attention? Include the approximate size, current condition and your preferred timing." /></label>
             <div className={"honeypot"} aria-hidden="true">
               <label>Company website<input tabIndex={-1} autoComplete="off" name="company" defaultValue="" /></label>
             </div>
             <button className={"button button-dark form-submit"} type="submit">Request my quote</button>
+            {requestNotice && <p role="status">Online quote requests are not connected yet. Please call (857) 345-5076 to discuss your project.</p>}
             <p className={"form-note"}>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-check"} aria-hidden="true">
                 <path d="M20 6 9 17l-5-5" />
@@ -520,32 +514,32 @@ function ImportedSectionGoodQuestionsClearAnswers() {
           <h2>Good questions.<br /><em>Clear answers.</em></h2>
           <p>Still have something on your mind?<br /><a href="tel:+18573455076">Give us a call.</a></p>
         </div>
-        <div data-slot="accordion" className={"faq-list"} data-orientation="vertical">
-          <div data-state="closed" data-orientation="vertical" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
-            <h3 data-orientation="vertical" data-state="closed" className={"\x66lex"}>
-              <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_R_d9mi_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Can I request more than one service?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
-            </h3>
-            <div data-state="closed" id="radix-_R_2d9mi_" hidden role="region" aria-labelledby="radix-_R_d9mi_" data-orientation="vertical" data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties} />
-          </div>
-          <div data-state="closed" data-orientation="vertical" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
-            <h3 data-orientation="vertical" data-state="closed" className={"\x66lex"}>
-              <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_R_l9mi_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>How do I get an estimate?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
-            </h3>
-            <div data-state="closed" id="radix-_R_2l9mi_" hidden role="region" aria-labelledby="radix-_R_l9mi_" data-orientation="vertical" data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties} />
-          </div>
-          <div data-state="closed" data-orientation="vertical" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
-            <h3 data-orientation="vertical" data-state="closed" className={"\x66lex"}>
-              <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_R_t9mi_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Do you offer urgent service?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
-            </h3>
-            <div data-state="closed" id="radix-_R_2t9mi_" hidden role="region" aria-labelledby="radix-_R_t9mi_" data-orientation="vertical" data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties} />
-          </div>
-          <div data-state="closed" data-orientation="vertical" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
-            <h3 data-orientation="vertical" data-state="closed" className={"\x66lex"}>
-              <button type="button" aria-expanded="false" data-state="closed" data-orientation="vertical" id="radix-_R_159mi_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Which areas do you serve?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button>
-            </h3>
-            <div data-state="closed" id="radix-_R_359mi_" hidden role="region" aria-labelledby="radix-_R_159mi_" data-orientation="vertical" data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties} />
-          </div>
-        </div>
+        <Accordion.Root type="single" collapsible data-slot="accordion" className={"faq-list"}>
+          <Accordion.Item value="faq-0" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
+            <Accordion.Header className={"\x66lex"}>
+              <Accordion.Trigger id="radix-_R_d9mi_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Can I request more than one service?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></Accordion.Trigger>
+            </Accordion.Header>
+            <Accordion.Content data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties}><div className="pt-0 pb-4">Yes. Choose ‘More than one service’ in the quote form and tell us which services you need. We can review the work together and discuss an appropriate plan.</div></Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="faq-1" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
+            <Accordion.Header className={"\x66lex"}>
+              <Accordion.Trigger id="radix-_R_l9mi_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>How do I get an estimate?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></Accordion.Trigger>
+            </Accordion.Header>
+            <Accordion.Content data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties}><div className="pt-0 pb-4">Complete the quote form with your service, property ZIP code and a brief description, or call (857) 345-5076. We’ll review the scope and may need more details or a property assessment before confirming an estimate.</div></Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="faq-2" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
+            <Accordion.Header className={"\x66lex"}>
+              <Accordion.Trigger id="radix-_R_t9mi_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Do you offer urgent service?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></Accordion.Trigger>
+            </Accordion.Header>
+            <Accordion.Content data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties}><div className="pt-0 pb-4">You can contact us 24/7. Call to discuss urgent work. Scheduling depends on the service, the location and team availability; a request does not confirm a booking.</div></Accordion.Content>
+          </Accordion.Item>
+          <Accordion.Item value="faq-3" data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
+            <Accordion.Header className={"\x66lex"}>
+              <Accordion.Trigger id="radix-_R_159mi_" data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>Which areas do you serve?<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-chevron-down \x70ointer-events-none \x73ize-4 \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></Accordion.Trigger>
+            </Accordion.Header>
+            <Accordion.Content data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={{ "--radix-accordion-content-height": "var(--radix-collapsible-content-height)", "--radix-accordion-content-width": "var(--radix-collapsible-content-width)" } as CSSProperties}><div className="pt-0 pb-4">Include your property ZIP code in your request or call the team. We’ll confirm coverage for your location before arranging the work.</div></Accordion.Content>
+          </Accordion.Item>
+        </Accordion.Root>
       </div>
     </section>
   );
