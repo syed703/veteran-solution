@@ -243,6 +243,12 @@ export type Database = {
           section_key: string
         }[]
       }
+      published_media_paths: {
+        Args: never
+        Returns: {
+          path: string
+        }[]
+      }
       submit_website_enquiry: {
         Args: {
           p_email: string

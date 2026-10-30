@@ -1,0 +1,8 @@
+CREATE POLICY admin_media_read ON storage.objects FOR SELECT TO authenticated USING(bucket_id='website-media' AND public.has_role(auth.uid(),'admin'));
+CREATE POLICY admin_media_insert ON storage.objects FOR INSERT TO authenticated WITH CHECK(bucket_id='website-media' AND public.has_role(auth.uid(),'admin'));
+CREATE POLICY admin_media_update ON storage.objects FOR UPDATE TO authenticated USING(bucket_id='website-media' AND public.has_role(auth.uid(),'admin')) WITH CHECK(bucket_id='website-media' AND public.has_role(auth.uid(),'admin'));
+CREATE POLICY admin_media_delete ON storage.objects FOR DELETE TO authenticated USING(bucket_id='website-media' AND public.has_role(auth.uid(),'admin'));
+CREATE FUNCTION public.published_media_paths() RETURNS TABLE(path text) LANGUAGE sql STABLE SECURITY DEFINER SET search_path=public AS $$ SELECT substring(image_url from 7) FROM public.services WHERE enabled AND image_url LIKE 'media:%' UNION SELECT substring(value #>> '{}' from 7) FROM public.website_content c CROSS JOIN LATERAL jsonb_each(c.published) WHERE jsonb_typeof(value)='string' AND value #>> '{}' LIKE 'media:%' $$;
+REVOKE ALL ON FUNCTION public.published_media_paths() FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.published_media_paths() TO anon,authenticated;
+CREATE POLICY published_media_read ON storage.objects FOR SELECT TO anon,authenticated USING(bucket_id='website-media' AND name IN (SELECT path FROM public.published_media_paths()));
