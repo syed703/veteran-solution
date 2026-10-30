@@ -1,3 +1,11 @@
+# Admin dashboard
+- [ ] Secure email login, admin permissions, profile and logout.
+- [ ] Persistent enquiries, statistics, notes, search, filters and pagination.
+- [ ] Service editing, uploads and public website integration.
+- [ ] Homepage content drafts and publishing.
+- [ ] Verify admin workflows and preserve public pages.
+- [ ] Confirm personal GitHub connection; blocked on owner-managed Git settings.
+
 # Website import
 - [ ] Audit all accessible original inner pages and their links.
 - [ ] Import every discovered inner page without replacing the homepage.
