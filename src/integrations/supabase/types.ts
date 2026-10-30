@@ -14,16 +14,256 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admin_activity: {
+        Row: {
+          action: string
+          actor_id: string | null
+          created_at: string
+          entity: string
+          entity_id: string
+          id: string
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          created_at?: string
+          entity: string
+          entity_id: string
+          id?: string
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          created_at?: string
+          entity?: string
+          entity_id?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      enquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          phone: string
+          service: string
+          source: string
+          status: string
+          updated_at: string
+          zip: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          phone: string
+          service: string
+          source?: string
+          status?: string
+          updated_at?: string
+          zip: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string
+          service?: string
+          source?: string
+          status?: string
+          updated_at?: string
+          zip?: string
+        }
+        Relationships: []
+      }
+      enquiry_notes: {
+        Row: {
+          author_id: string
+          body: string
+          created_at: string
+          enquiry_id: string
+          id: string
+        }
+        Insert: {
+          author_id: string
+          body: string
+          created_at?: string
+          enquiry_id: string
+          id?: string
+        }
+        Update: {
+          author_id?: string
+          body?: string
+          created_at?: string
+          enquiry_id?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enquiry_notes_enquiry_id_fkey"
+            columns: ["enquiry_id"]
+            isOneToOne: false
+            referencedRelation: "enquiries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          display_name: string
+          id: string
+          timezone: string
+          updated_at: string
+        }
+        Insert: {
+          display_name?: string
+          id: string
+          timezone?: string
+          updated_at?: string
+        }
+        Update: {
+          display_name?: string
+          id?: string
+          timezone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          created_at: string
+          description: string
+          display_order: number
+          enabled: boolean
+          id: string
+          image_alt: string
+          image_url: string
+          slug: string
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          display_order?: number
+          enabled?: boolean
+          id?: string
+          image_alt?: string
+          image_url?: string
+          slug: string
+          summary?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          display_order?: number
+          enabled?: boolean
+          id?: string
+          image_alt?: string
+          image_url?: string
+          slug?: string
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      website_content: {
+        Row: {
+          draft: Json
+          label: string
+          published: Json
+          published_at: string | null
+          section_key: string
+          updated_at: string
+        }
+        Insert: {
+          draft?: Json
+          label: string
+          published?: Json
+          published_at?: string | null
+          section_key: string
+          updated_at?: string
+        }
+        Update: {
+          draft?: Json
+          label?: string
+          published?: Json
+          published_at?: string | null
+          section_key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      admin_overview: { Args: never; Returns: Json }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      public_website_content: {
+        Args: never
+        Returns: {
+          published: Json
+          section_key: string
+        }[]
+      }
+      published_media_paths: {
+        Args: never
+        Returns: {
+          path: string
+        }[]
+      }
+      submit_website_enquiry: {
+        Args: {
+          p_email: string
+          p_message: string
+          p_name: string
+          p_phone: string
+          p_service: string
+          p_source: string
+          p_zip: string
+        }
+        Returns: string
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +390,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin"],
+    },
   },
 } as const
