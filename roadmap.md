@@ -1,4 +1,6 @@
 # Admin dashboard
+- [x] Verified designated developer setup and atomic permanent client ownership handover implemented; developer role is permanently revoked on client claim.
+- [x] Authorization safeguards and signed-out setup/route protection checked; authenticated handover awaits creation and verification of designated accounts.
 - [x] Current phase limited to admin-only work; public integration unchanged.
 - [x] Owner-claim login, notifications, session cleanup, upload previews and dialog layout implemented.
 - [x] Six protected admin URLs redirect when signed out; login modes and mobile layout checked.
