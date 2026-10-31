@@ -22,7 +22,7 @@ function Content() {
 function Editor({ page, saved }: { page: CmsPage; saved: { draft: unknown; published_at: string | null } | undefined }) {
   const [values, setValues] = useState<Record<string, string>>(() => {
     const draft = saved?.draft && typeof saved.draft === 'object' ? saved.draft as Record<string, unknown> : {};
-    return Object.fromEntries(page.fields.map(f => [f.key, typeof draft[f.key] === 'string' ? draft[f.key] : f.value]));
+    return Object.fromEntries(page.fields.map(f => { const value = draft[f.key]; return [f.key, typeof value === 'string' ? value : f.value]; }));
   });
   const groups = [...new Set(page.fields.map(f => f.group))];
   const [group, setGroup] = useState(groups.includes('Home Hero') ? 'Home Hero' : groups.includes('Page Intro') ? 'Page Intro' : groups[0] ?? 'General');
@@ -35,7 +35,7 @@ function Editor({ page, saved }: { page: CmsPage; saved: { draft: unknown; publi
   return <section className="admin-panel"><div className="admin-panel-heading"><h2>{page.label}</h2><p>{saved?.published_at ? `Published ${dateLabel(saved.published_at)}` : 'Original website content'}</p></div>
     <div className="admin-panel-body admin-form"><div className="admin-filters"><Select value={group} onValueChange={setGroup}><SelectTrigger aria-label="Content section"><SelectValue /></SelectTrigger><SelectContent>{groups.map(g => <SelectItem key={g} value={g}>{g === 'Comparison Section' ? 'Before & After' : g}</SelectItem>)}</SelectContent></Select><input aria-label="Search content fields" placeholder="Search fields" value={search} onChange={e => setSearch(e.target.value)} /></div>
       <div className="admin-actions"><Button variant="outline" disabled={busy} onClick={() => save(false)}><Save />Save draft</Button><Button disabled={busy} onClick={() => save(true)}><Send />Publish changes</Button></div>
-      {fields.map((field, i) => <div key={field.key} className="admin-form"><label htmlFor={field.key}>{field.type === 'image' && group === 'Comparison Section' ? `${i < 10 ? '' : ''}${field.label}` : field.label}</label>
+      {fields.map(field => <div key={field.key} className="admin-form"><label htmlFor={field.key}>{field.label}</label>
         {field.type === 'text' && field.value.length > 120 ? <textarea id={field.key} maxLength={6000} value={values[field.key] ?? ''} onChange={e => setValues(v => ({ ...v, [field.key]: e.target.value }))} /> : <input id={field.key} maxLength={6000} value={values[field.key] ?? ''} onChange={e => setValues(v => ({ ...v, [field.key]: e.target.value }))} />}
         {field.type === 'image' && <><AdminImage value={values[field.key] ?? ''} /><MediaUpload onBusyChange={b => setUploads(v => ({ ...v, [field.key]: b }))} onUploaded={image => setValues(v => ({ ...v, [field.key]: image }))} /></>}
       </div>)}

@@ -46,7 +46,7 @@ export function ImportedServiceSelect({ initialService = "" }: { initialService?
     </Select.Trigger>
     <Select.Portal><Select.Content className="import-service-options" position="popper" sideOffset={4}>
       <Select.Viewport>{services.map(([value, label]) => <Select.Item key={value} value={value} className="import-service-option">
-        <Select.ItemText>{label}</Select.ItemText><Select.ItemIndicator><Check size={16} /></Select.ItemIndicator>
+        <Select.ItemText>{cms(`service-${value}`, label)}</Select.ItemText><Select.ItemIndicator><Check size={16} /></Select.ItemIndicator>
       </Select.Item>)}</Select.Viewport>
     </Select.Content></Select.Portal>
   </Select.Root>;
@@ -74,6 +74,7 @@ const accordionContentStyle = {
 } as CSSProperties;
 
 export function ImportedFaq() {
+  const cms = useCmsValues('page:shared');
   return <Accordion.Root type="single" collapsible data-slot="accordion" className={"faq-list"}>
     {faqs.map(([question, answer], index) => <Accordion.Item key={question} value={`faq-${index}`} data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
       <Accordion.Header className={"\x66lex"}>

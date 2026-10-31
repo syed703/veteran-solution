@@ -10,13 +10,18 @@ export function CmsProvider({ content, children }: { content: PublicSite['conten
   return <CmsContext.Provider value={content}>{children}</CmsContext.Provider>;
 }
 export function cmsFieldValue(content: PublicSite['content'], page: string, field: string, fallback: string) {
-  return content[page]?.[field] ?? fallback;
+  const value = content[page]?.[field];
+  if (value === undefined) return fallback;
+  const type = cmsPages.find(p => p.key === page)?.fields.find(f => f.key === field)?.type;
+  if ((type === 'link' || type === 'image') && !safeContentUrl(value, type === 'image')) return fallback;
+  return value;
 }
 export function useCmsValues(page: string) {
   const content = useContext(CmsContext);
   return (field: string, fallback: string) => cmsFieldValue(content, page, field, fallback);
 }
 export function safeContentUrl(value: string, image = false) {
+  if (/[\u0000-\u0020\\]/.test(value)) return false;
   if (image) return /^(\/site-assets\/|media:images\/|https:\/\/)/.test(value);
   return /^(\/(?!\/)|#|https:\/\/|mailto:|tel:)/.test(value);
 }
