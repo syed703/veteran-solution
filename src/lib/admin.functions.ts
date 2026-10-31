@@ -2,6 +2,7 @@ import { createServerFn, createMiddleware } from '@tanstack/react-start';
 import { requireSupabaseAuth } from '@/integrations/supabase/auth-middleware';
 import { z } from 'zod';
 import { enquiryStatuses, serviceSchema } from './admin-rules';
+import { cmsPages, safeContentUrl } from './cms';
 const requireAdmin = createMiddleware({ type: 'function' }).middleware([requireSupabaseAuth]).server(async ({ context, next }) => {
   const { data, error } = await context.supabase.rpc('has_role', { _user_id: context.userId, _role: 'admin' });
   if (error || !data) throw new Error('Admin access required.');
@@ -35,7 +36,7 @@ const actionSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('note'), id: z.string().uuid(), body: z.string().trim().min(1).max(3000) }),
   z.object({ kind: z.literal('service'), service: serviceSchema }),
   z.object({ kind: z.literal('delete-service'), id: z.string().uuid() }),
-  z.object({ kind: z.literal('content'), key: z.enum(['hero', 'about', 'quote']), label: z.string(), fields: z.record(z.string().max(6000)), publish: z.boolean() }),
+  z.object({ kind: z.literal('content'), key: z.string().max(180), label: z.string().max(180), fields: z.record(z.string().max(6000)), publish: z.boolean() }).superRefine,
   z.object({ kind: z.literal('profile'), name: z.string().trim().max(120), timezone: z.string().min(1).max(100) }),
 ]);
 export const adminAction = createServerFn({ method: 'POST' }).middleware([requireAdmin]).inputValidator(actionSchema).handler(async ({ data, context }) => {
