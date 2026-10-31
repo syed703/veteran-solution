@@ -1,0 +1,7 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import { Button } from '@/components/ui/button';
+import { adminHead } from '@/lib/admin-query';
+export const Route=createFileRoute('/reset-password')({head:()=>adminHead('Reset password'),component:Reset});
+function Reset(){const [recovery,setRecovery]=useState(false);const [message,setMessage]=useState('');const [busy,setBusy]=useState(false);useEffect(()=>{setRecovery(new URLSearchParams(window.location.hash.slice(1)).get('type')==='recovery');},[]);return <main className="admin-login"><div className="admin-login-panel"><h1>New password</h1>{recovery?<form onSubmit={async e=>{e.preventDefault();const f=new FormData(e.currentTarget);if(f.get('password')!==f.get('confirm')){setMessage('Passwords do not match.');return;}setBusy(true);const {error}=await supabase.auth.updateUser({password:String(f.get('password'))});setMessage(error?'Unable to update password. Request a new reset link.':'Password updated.');setBusy(false);}}><label>New password<input name="password" type="password" minLength={8} required/></label><label>Confirm password<input name="confirm" type="password" minLength={8} required/></label><Button disabled={busy}>Update password</Button></form>:<p>Open the password reset link from your email.</p>}<p role="status">{message}</p><Link to="/admin/login">Back to sign in</Link></div></main>;}
