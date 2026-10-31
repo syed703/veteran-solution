@@ -10,6 +10,8 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { supabase } from '@/integrations/supabase/client';
+import { Toaster } from '@/components/ui/sonner';
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -129,11 +131,32 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  useEffect(() => {
+    const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (!['SIGNED_IN', 'SIGNED_OUT', 'USER_UPDATED'].includes(event)) return;
+      // Defer work outside the auth callback: fetching here can deadlock auth.
+      setTimeout(() => {
+        if (event === 'SIGNED_OUT') {
+          void queryClient.cancelQueries().then(() => {
+            queryClient.clear();
+            if (router.state.location.pathname.startsWith('/admin') && router.state.location.pathname !== '/admin/login')
+              void router.navigate({ to: '/admin/login', replace: true });
+          });
+        } else {
+          void queryClient.invalidateQueries();
+          void router.invalidate();
+        }
+      }, 0);
+    });
+    return () => data.subscription.unsubscribe();
+  }, [queryClient, router]);
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <Toaster position="top-right" richColors />
     </QueryClientProvider>
   );
 }

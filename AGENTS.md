@@ -10,6 +10,12 @@
 <!-- LOVABLE:END -->
 
 ## Website import
+## Admin management
+- Keep private admin reads and mutations behind authenticated server middleware plus a database-backed role check; route gates alone are not authorization.
+- Use one root auth subscription and clear cached private records on sign-out to prevent stale-account data.
+- Store enquiry service slugs as historical snapshots; removing a catalogue service must not remove its enquiries.
+
+## Website import conventions
 - Keep imported homepage markup and interactions in its route file, with source CSS retained separately, to preserve captured structure and visual fidelity.
 - Use existing Radix primitives for captured sheet, select, and accordion controls so keyboard access and focus behavior remain consistent.
 - Quote submission must not report delivery until a real delivery service is connected; show the available phone contact instead.

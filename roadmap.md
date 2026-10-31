@@ -1,4 +1,5 @@
 # Admin dashboard
+- [ ] Current phase: admin-only CRUD, authentication, notifications and session verification; public integration deferred by request.
 - [ ] Secure email login, admin permissions, profile and logout.
 - [ ] Persistent enquiries, statistics, notes, search, filters and pagination.
 - [ ] Service editing, uploads and public website integration.
