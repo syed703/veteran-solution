@@ -1,3 +1,8 @@
+# Complete website content management
+- [ ] Connect every existing public page to published content without changing its captured layout.
+- [ ] Add page and section selection, draft editing, image uploads/previews and publishing.
+- [ ] Test authenticated save/publish/refresh and all three Before & After image pairs.
+
 # Admin dashboard
 - [x] Verified designated developer setup and atomic permanent client ownership handover implemented; developer role is permanently revoked on client claim.
 - [x] Authorization safeguards and signed-out setup/route protection checked; authenticated handover awaits creation and verification of designated accounts.
