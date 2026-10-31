@@ -41,6 +41,30 @@ export type Database = {
         }
         Relationships: []
       }
+      admin_ownership: {
+        Row: {
+          developer_revoked: boolean
+          developer_user_id: string | null
+          owner_user_id: string | null
+          singleton: boolean
+          transferred_at: string | null
+        }
+        Insert: {
+          developer_revoked?: boolean
+          developer_user_id?: string | null
+          owner_user_id?: string | null
+          singleton?: boolean
+          transferred_at?: string | null
+        }
+        Update: {
+          developer_revoked?: boolean
+          developer_user_id?: string | null
+          owner_user_id?: string | null
+          singleton?: boolean
+          transferred_at?: string | null
+        }
+        Relationships: []
+      }
       enquiries: {
         Row: {
           created_at: string
@@ -251,6 +275,7 @@ export type Database = {
           path: string
         }[]
       }
+      revoke_temporary_admin: { Args: never; Returns: boolean }
       submit_website_enquiry: {
         Args: {
           p_email: string

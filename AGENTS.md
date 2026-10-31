@@ -14,6 +14,7 @@
 - Keep private admin reads and mutations behind authenticated server middleware plus a database-backed role check; route gates alone are not authorization.
 - Use one root auth subscription and clear cached private records on sign-out to prevent stale-account data.
 - Keep owner-claim decisions in the database RPC; client access helpers must fail closed and never grant roles from an email string.
+- Run the designated-account claim on every login before reading roles; singleton ownership state and an advisory transaction lock make owner handover revoke the pinned temporary developer role permanently without changing existing RLS.
 - Store enquiry service slugs as historical snapshots; removing a catalogue service must not remove its enquiries.
 
 ## Website import conventions

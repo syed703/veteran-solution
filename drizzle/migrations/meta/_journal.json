@@ -29,6 +29,20 @@
       "when": 1793424083236,
       "tag": "0003_restrict_initial_admin_to_verified_owner",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793425848587,
+      "tag": "0004_temporary_developer_admin_and_owner_handover",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1793425957375,
+      "tag": "0005_restrict_ownership_table_privileges",
+      "breakpoints": true
     }
   ]
 }
