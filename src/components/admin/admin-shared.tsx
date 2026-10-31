@@ -10,6 +10,7 @@ export function useAdminAction() {
      query.invalidateQueries({ queryKey: ['admin-data'] }),
      query.invalidateQueries({ queryKey: ['enquiries'] }),
      query.invalidateQueries({ queryKey: ['notes'] }),
+     query.invalidateQueries({ queryKey: ['public-site'] }),
    ]);
    const change=variables.data;
    toast.success(change.kind==='content' ? (change.publish?'Published content saved.':'Draft saved. Published content is unchanged.') : change.kind==='delete-enquiry'?'Enquiry deleted.':change.kind==='delete-service'?'Service deleted.':change.kind==='note'?'Internal note added.':change.kind==='status'?'Enquiry status updated.':'Change saved.');

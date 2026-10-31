@@ -18,6 +18,7 @@
 - Store enquiry service slugs as historical snapshots; removing a catalogue service must not remove its enquiries.
 
 ## Website import conventions
+- Manage captured content through stable per-page field IDs in the CMS catalogue, React text/attribute bindings and a published-only loader; retain original DOM structure and never render editor-supplied HTML.
 - Keep imported homepage markup and interactions in its route file, with source CSS retained separately, to preserve captured structure and visual fidelity.
 - Use existing Radix primitives for captured sheet, select, and accordion controls so keyboard access and focus behavior remain consistent.
 - Quote submission must not report delivery until a real delivery service is connected; show the available phone contact instead.

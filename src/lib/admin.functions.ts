@@ -36,7 +36,7 @@ const actionSchema = z.discriminatedUnion('kind', [
   z.object({ kind: z.literal('note'), id: z.string().uuid(), body: z.string().trim().min(1).max(3000) }),
   z.object({ kind: z.literal('service'), service: serviceSchema }),
   z.object({ kind: z.literal('delete-service'), id: z.string().uuid() }),
-  z.object({ kind: z.literal('content'), key: z.string().max(180), label: z.string().max(180), fields: z.record(z.string().max(6000)), publish: z.boolean() }).superRefine,
+  z.object({ kind: z.literal('content'), key: z.string().max(180), label: z.string().max(180), fields: z.record(z.string().max(6000)), publish: z.boolean() }),
   z.object({ kind: z.literal('profile'), name: z.string().trim().max(120), timezone: z.string().min(1).max(100) }),
 ]);
 export const adminAction = createServerFn({ method: 'POST' }).middleware([requireAdmin]).inputValidator(actionSchema).handler(async ({ data, context }) => {
@@ -48,7 +48,16 @@ export const adminAction = createServerFn({ method: 'POST' }).middleware([requir
     case 'note': result = await db.from('enquiry_notes').insert({ enquiry_id: data.id, author_id: context.userId, body: data.body }); break;
     case 'service': { const { id, ...values } = data.service; result = id ? await db.from('services').update(values).eq('id', id).select('id').single() : await db.from('services').insert(values); break; }
     case 'delete-service': result = await db.from('services').delete().eq('id', data.id).select('id').single(); break;
-    case 'content': result = await db.from('website_content').upsert({ section_key: data.key, label: data.label, draft: data.fields, ...(data.publish ? { published: data.fields, published_at: new Date().toISOString() } : {}) }, { onConflict: 'section_key' }); break;
+    case 'content': {
+      const page = cmsPages.find(p => p.key === data.key);
+      if (!page) throw new Error('Select an existing website page.');
+      for (const [key, value] of Object.entries(data.fields)) {
+        const field = page.fields.find(f => f.key === key);
+        if (!field) throw new Error('Unknown content field.');
+        if ((field.type === 'link' || field.type === 'image') && !safeContentUrl(value, field.type === 'image')) throw new Error(`Enter a valid ${field.type} for ${field.label}.`);
+      }
+      result = await db.from('website_content').upsert({ section_key: data.key, label: page.label, draft: data.fields, ...(data.publish ? { published: data.fields, published_at: new Date().toISOString() } : {}) }, { onConflict: 'section_key' }); break;
+    }
     case 'profile': result = await db.from('profiles').update({ display_name: data.name, timezone: data.timezone, updated_at: new Date().toISOString() }).eq('id', context.userId).select('id').single(); break;
   }
   if (result?.error) throw new Error('Could not save this change. Check the values and try again.');
