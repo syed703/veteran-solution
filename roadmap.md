@@ -1,7 +1,9 @@
 # Complete website content management
-- [ ] Connect every existing public page to published content without changing its captured layout.
-- [ ] Add page and section selection, draft editing, image uploads/previews and publishing.
-- [ ] Test authenticated save/publish/refresh and all three Before & After image pairs.
+- [x] Connect all 16 existing public pages to published content without changing captured layouts.
+- [x] Add page/section selection, draft editing, image uploads/previews, shared FAQ editing and publishing.
+- [x] Authenticated text/image draft isolation, publish and refresh tested on all 16 pages; original content restored.
+- [x] All six Before & After uploads, published images, refresh and slider behavior verified; original images restored.
+- [x] Mobile content editor and CMS/security/routing tests verified.
 
 # Admin dashboard
 - [x] Verified designated developer setup and atomic permanent client ownership handover implemented; developer role is permanently revoked on client claim.
@@ -10,11 +12,11 @@
 - [x] Owner-claim login, notifications, session cleanup, upload previews and dialog layout implemented.
 - [x] Six protected admin URLs redirect when signed out; login modes and mobile layout checked.
 - [x] Sixteen admin permission/routing tests pass.
-- [ ] Signed-in CRUD, uploads, profile, publishing and logout verification: blocked because there are no auth users; owner must create and verify the reserved account.
+- [ ] Remaining signed-in enquiry/service/profile/logout checks are outside this CMS task; developer access is now available.
 - [ ] Secure email login, admin permissions, profile and logout.
 - [ ] Persistent enquiries, statistics, notes, search, filters and pagination.
 - [ ] Service editing, uploads and public website integration.
-- [ ] Homepage content drafts and publishing.
+- [x] Homepage and all-page content drafts, uploads and publishing verified with the developer account.
 - [ ] Verify admin workflows and preserve public pages.
 - [ ] Confirm personal GitHub connection; blocked on owner-managed Git settings (no repository or branch changed).
 

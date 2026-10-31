@@ -1,4 +1,5 @@
 import { useCmsValues } from '@/lib/cms';
+import { sharedServices as services, sharedFaqs as faqs } from '@/lib/cms-shared';
 import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import * as Accordion from "@radix-ui/react-accordion";
@@ -26,12 +27,6 @@ export function ImportedPageMenu() {
   </Dialog.Root>;
 }
 
-const services: [string, string][] = [
-  ["junk-removal", "Junk Removal"], ["painting", "Painting"], ["pool-cleaning", "Pool Cleaning"],
-  ["power-washing", "Power Washing"], ["renovating", "Renovating"], ["property-cleaning", "Property Cleaning"],
-  ["tile-replacement-installation", "Tile Replacement & Installation"], ["floor-renovation", "Floor Renovation"],
-  ["demolition", "Demolition"], ["multiple", "More than one service"], ["personal-training", "Personal Training"],
-];
 
 export function ImportedServiceSelect({ initialService = "" }: { initialService?: string }) {
   const cms = useCmsValues("page:shared");
@@ -46,7 +41,7 @@ export function ImportedServiceSelect({ initialService = "" }: { initialService?
     </Select.Trigger>
     <Select.Portal><Select.Content className="import-service-options" position="popper" sideOffset={4}>
       <Select.Viewport>{services.map(([value, label]) => <Select.Item key={value} value={value} className="import-service-option">
-        <Select.ItemText>{label}</Select.ItemText><Select.ItemIndicator><Check size={16} /></Select.ItemIndicator>
+        <Select.ItemText>{cms(`service-${value}`, label)}</Select.ItemText><Select.ItemIndicator><Check size={16} /></Select.ItemIndicator>
       </Select.Item>)}</Select.Viewport>
     </Select.Content></Select.Portal>
   </Select.Root>;
@@ -61,12 +56,6 @@ export function useImportedQuoteNotice() {
   return { onSubmit, notice };
 }
 
-const faqs = [
-  ["Can I request more than one service?", "Yes. Choose ‘More than one service’ in the quote form and tell us which services you need. We can review the work together and discuss an appropriate plan."],
-  ["How do I get an estimate?", "Complete the quote form with your service, property ZIP code and a brief description, or call (857) 345-5076. We’ll review the scope and may need more details or a property assessment before confirming an estimate."],
-  ["Do you offer urgent service?", "You can contact us 24/7. Call to discuss urgent work. Scheduling depends on the service, the location and team availability; a request does not confirm a booking."],
-  ["Which areas do you serve?", "Include your property ZIP code in your request or call the team. We’ll confirm coverage for your location before arranging the work."],
-];
 
 const accordionContentStyle = {
   "--radix-accordion-content-height": "var(--radix-collapsible-content-height)",
@@ -74,12 +63,13 @@ const accordionContentStyle = {
 } as CSSProperties;
 
 export function ImportedFaq() {
+  const cms = useCmsValues('page:shared');
   return <Accordion.Root type="single" collapsible data-slot="accordion" className={"faq-list"}>
     {faqs.map(([question, answer], index) => <Accordion.Item key={question} value={`faq-${index}`} data-slot="accordion-item" className={"\x62order-b \x6cast:\x62order-b-0"}>
       <Accordion.Header className={"\x66lex"}>
-        <Accordion.Trigger data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>{question}<ChevronDown size={16} className={"\x70ointer-events-none \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true" /></Accordion.Trigger>
+        <Accordion.Trigger data-slot="accordion-trigger" className={"\x66lex \x66lex-1 \x69tems-start \x6austify-between \x67ap-4 \x72ounded-md \x70y-4 \x74ext-left \x74ext-sm \x66ont-medium \x74ransition-all \x6futline-none \x68over:\x75nderline \x66ocus-visible:\x62order-ring \x66ocus-visible:\x72ing-[\x33px] \x66ocus-visible:\x72ing-ring/\x350 \x64isabled:\x70ointer-events-none \x64isabled:\x6fpacity-50 [&[\x64ata-state=\x6fpen]>\x73vg]:\x72otate-180"}>{cms(`faq-${index}-question`, question ?? "")}<ChevronDown size={16} className={"\x70ointer-events-none \x73hrink-0 \x74ranslate-y-0.\x35 \x74ext-muted-foreground \x74ransition-transform \x64uration-200"} aria-hidden="true" /></Accordion.Trigger>
       </Accordion.Header>
-      <Accordion.Content data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={accordionContentStyle}><div className="pt-0 pb-4">{answer}</div></Accordion.Content>
+      <Accordion.Content data-slot="accordion-content" className={"\x6fverflow-hidden \x74ext-sm \x64ata-[\x73tate=\x63losed]:\x61nimate-accordion-up \x64ata-[\x73tate=\x6fpen]:\x61nimate-accordion-down"} style={accordionContentStyle}><div className="pt-0 pb-4">{cms(`faq-${index}-answer`, answer ?? "")}</div></Accordion.Content>
     </Accordion.Item>)}
   </Accordion.Root>;
 }
