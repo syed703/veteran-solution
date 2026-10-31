@@ -4,6 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { adminHead } from '@/lib/admin-query';
+import { resolveAdminAccess } from '@/lib/admin-access';
 export const Route = createFileRoute('/admin/login')({ head: () => adminHead('Sign in'), validateSearch: (s: Record<string, unknown>) => ({ denied: s['denied'] === true ? true : undefined } as { denied?: boolean }), component: Login });
 function Login() {
  const [mode,setMode]=useState<'login'|'signup'|'forgot'>('login');
@@ -37,9 +38,11 @@ function Login() {
  const r=await supabase.auth.signInWithPassword({email,password});if(r.error)throw r.error;
  setSignedIn(true);
  const user=await supabase.auth.getUser();if(!user.data.user)throw new Error('Please sign in again.');
- const role=await supabase.rpc('has_role',{_user_id:user.data.user.id,_role:'admin'});if(role.error)throw role.error;
- let allowed=role.data;
- if(!allowed){const claim=await supabase.rpc('claim_initial_admin');if(claim.error)throw claim.error;allowed=claim.data;}
+ const userId=user.data.user.id;
+ const allowed=await resolveAdminAccess(
+ ()=>supabase.rpc('has_role',{_user_id:userId,_role:'admin'}),
+ ()=>supabase.rpc('claim_initial_admin'),
+ );
  if(!allowed){setError('Admin access denied. The first administrator must use the verified owner email.');}
  else{await router.invalidate();await navigate({to:'/admin',replace:true});}
  }
