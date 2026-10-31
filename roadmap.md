@@ -12,11 +12,11 @@
 - [x] Owner-claim login, notifications, session cleanup, upload previews and dialog layout implemented.
 - [x] Six protected admin URLs redirect when signed out; login modes and mobile layout checked.
 - [x] Sixteen admin permission/routing tests pass.
-- [ ] Signed-in CRUD, uploads, profile, publishing and logout verification: blocked because there are no auth users; owner must create and verify the reserved account.
+- [ ] Remaining signed-in enquiry/service/profile/logout checks are outside this CMS task; developer access is now available.
 - [ ] Secure email login, admin permissions, profile and logout.
 - [ ] Persistent enquiries, statistics, notes, search, filters and pagination.
 - [ ] Service editing, uploads and public website integration.
-- [ ] Homepage content drafts and publishing.
+- [x] Homepage and all-page content drafts, uploads and publishing verified with the developer account.
 - [ ] Verify admin workflows and preserve public pages.
 - [ ] Confirm personal GitHub connection; blocked on owner-managed Git settings (no repository or branch changed).
 

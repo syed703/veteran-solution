@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { CmsProvider, useCmsValues } from '@/lib/cms';
 import { publicSiteQuery } from '@/lib/public-site';
+import { sharedServices } from '@/lib/cms-shared';
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -447,6 +448,7 @@ function ImportedSectionSeeTheSpaceSee() {
 
 function ImportedSectionLetSTakeCareof() {
   const cms = useCmsValues("page:home");
+  const sharedCms = useCmsValues('page:shared');
   const [requestNotice, setRequestNotice] = useState(false);
   return (
     <section id="quote" className={"quote-section section"}>
@@ -492,7 +494,7 @@ function ImportedSectionLetSTakeCareof() {
             <Select.Root name="service" required>
               <Select.Trigger className="service-select import-service-trigger" aria-labelledby="service-label"><Select.Value placeholder={cms("f0261", "Choose your service")} /><Select.Icon>{cms("f0262", "⌄")}</Select.Icon></Select.Trigger>
               <Select.Portal><Select.Content position="popper" className="service-options import-service-options"><Select.Viewport>
-                {[["junk-removal", "Junk Removal"], ["painting", "Painting"], ["pool-cleaning", "Pool Cleaning"], ["power-washing", "Power Washing"], ["renovating", "Renovating"], ["property-cleaning", "Property Cleaning"], ["tile-replacement-installation", "Tile Replacement & Installation"], ["floor-renovation", "Floor Renovation"], ["demolition", "Demolition"], ["multiple", "More than one service"], ["personal-training", "Personal Training"]].map(([value, label]) => <Select.Item key={value} value={value ?? ""} data-slot="select-item" className="import-service-option"><Select.ItemText>{label}</Select.ItemText><Select.ItemIndicator>{cms("f0263", "✓")}</Select.ItemIndicator></Select.Item>)}
+                {sharedServices.map(([value, label]) => <Select.Item key={value} value={value} data-slot="select-item" className="import-service-option"><Select.ItemText>{sharedCms(`service-${value}`, label)}</Select.ItemText><Select.ItemIndicator>{cms("f0263", "✓")}</Select.ItemIndicator></Select.Item>)}
               </Select.Viewport></Select.Content></Select.Portal>
             </Select.Root>
             <label className={"message-label"}>{cms("f0264", "A little about your project")}{" "}<span>*</span><textarea name="message" required minLength={10} maxLength={3000} rows={4} placeholder={cms("f0265", "What needs attention? Include the approximate size, current condition and your preferred timing.")} /></label>
