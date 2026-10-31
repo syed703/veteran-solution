@@ -14,8 +14,10 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LegalRouteImport } from './routes/legal'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as LegalPrivacyRouteImport } from './routes/legal_.privacy'
 import { Route as LegalTermsRouteImport } from './routes/legal_.terms'
 import { Route as ServicesDemolitionRouteImport } from './routes/services_.demolition'
@@ -27,6 +29,7 @@ import { Route as ServicesPowerWashingRouteImport } from './routes/services_.pow
 import { Route as ServicesPropertyCleaningRouteImport } from './routes/services_.property-cleaning'
 import { Route as ServicesRenovatingRouteImport } from './routes/services_.renovating'
 import { Route as ServicesTileReplacementInstallationRouteImport } from './routes/services_.tile-replacement-installation'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +55,11 @@ const LegalRoute = LegalRouteImport.update({
   path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -61,6 +69,11 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
   id: '/legal_/privacy',
@@ -119,14 +132,21 @@ const ServicesTileReplacementInstallationRoute =
     path: '/services/tile-replacement-installation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
-  '/admin': typeof AuthenticatedAdminRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
   '/services/demolition': typeof ServicesDemolitionRoute
@@ -138,14 +158,16 @@ export interface FileRoutesByFullPath {
   '/services/property-cleaning': typeof ServicesPropertyCleaningRoute
   '/services/renovating': typeof ServicesRenovatingRoute
   '/services/tile-replacement-installation': typeof ServicesTileReplacementInstallationRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
-  '/admin': typeof AuthenticatedAdminRoute
+  '/admin/login': typeof AdminLoginRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
   '/services/demolition': typeof ServicesDemolitionRoute
@@ -157,6 +179,7 @@ export interface FileRoutesByTo {
   '/services/property-cleaning': typeof ServicesPropertyCleaningRoute
   '/services/renovating': typeof ServicesRenovatingRoute
   '/services/tile-replacement-installation': typeof ServicesTileReplacementInstallationRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -165,8 +188,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
-  '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
   '/legal_/privacy': typeof LegalPrivacyRoute
   '/legal_/terms': typeof LegalTermsRoute
   '/services_/demolition': typeof ServicesDemolitionRoute
@@ -178,6 +203,7 @@ export interface FileRoutesById {
   '/services_/property-cleaning': typeof ServicesPropertyCleaningRoute
   '/services_/renovating': typeof ServicesRenovatingRoute
   '/services_/tile-replacement-installation': typeof ServicesTileReplacementInstallationRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -186,8 +212,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/legal'
+    | '/reset-password'
     | '/services'
     | '/admin'
+    | '/admin/login'
     | '/legal/privacy'
     | '/legal/terms'
     | '/services/demolition'
@@ -199,14 +227,16 @@ export interface FileRouteTypes {
     | '/services/property-cleaning'
     | '/services/renovating'
     | '/services/tile-replacement-installation'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
     | '/legal'
+    | '/reset-password'
     | '/services'
-    | '/admin'
+    | '/admin/login'
     | '/legal/privacy'
     | '/legal/terms'
     | '/services/demolition'
@@ -218,6 +248,7 @@ export interface FileRouteTypes {
     | '/services/property-cleaning'
     | '/services/renovating'
     | '/services/tile-replacement-installation'
+    | '/admin'
   id:
     | '__root__'
     | '/'
@@ -225,8 +256,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/legal'
+    | '/reset-password'
     | '/services'
     | '/_authenticated/admin'
+    | '/admin/login'
     | '/legal_/privacy'
     | '/legal_/terms'
     | '/services_/demolition'
@@ -238,6 +271,7 @@ export interface FileRouteTypes {
     | '/services_/property-cleaning'
     | '/services_/renovating'
     | '/services_/tile-replacement-installation'
+    | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -246,7 +280,9 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   LegalRoute: typeof LegalRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ServicesRoute: typeof ServicesRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalTermsRoute: typeof LegalTermsRoute
   ServicesDemolitionRoute: typeof ServicesDemolitionRoute
@@ -297,6 +333,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -310,6 +353,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin'
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/legal_/privacy': {
       id: '/legal_/privacy'
@@ -388,15 +438,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesTileReplacementInstallationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -408,7 +476,9 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   LegalRoute: LegalRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   ServicesRoute: ServicesRoute,
+  AdminLoginRoute: AdminLoginRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalTermsRoute: LegalTermsRoute,
   ServicesDemolitionRoute: ServicesDemolitionRoute,
