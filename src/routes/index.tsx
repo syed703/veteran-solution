@@ -82,7 +82,7 @@ function Index() {
             <div className={"hero-photo"}>
               <img src={cms("f0042", "/site-assets/6f7df1550472904c.webp")} alt={cms("f0043", "Aerial view of a residential property")} fetchPriority="high" />
               <video className={"hero-video"} autoPlay muted loop playsInline preload="auto" poster={cms("f0044", "/site-assets/6f7df1550472904c.webp")} aria-hidden="true">
-                <source media="(prefers-reduced-motion: no-preference)" src="/site-assets/cb078f882496fc7b.mp4" type="video/mp4" />
+                <source media="(prefers-reduced-motion: no-preference)" src={cms('hero-video', '/site-assets/cb078f882496fc7b.mp4')} type="video/mp4" />
               </video>
             </div>
             <div className={"hero-shade"} />

@@ -1,7 +1,9 @@
 # Complete website content management
-- [ ] Connect every existing public page to published content without changing its captured layout.
-- [ ] Add page and section selection, draft editing, image uploads/previews and publishing.
-- [ ] Test authenticated save/publish/refresh and all three Before & After image pairs.
+- [x] Connect all 16 existing public pages to published content without changing captured layouts.
+- [x] Add page/section selection, draft editing, image uploads/previews, shared FAQ editing and publishing.
+- [x] Authenticated text/image draft isolation, publish and refresh tested on all 16 pages; original content restored.
+- [x] All six Before & After uploads, published images, refresh and slider behavior verified; original images restored.
+- [x] Mobile content editor and CMS/security/routing tests verified.
 
 # Admin dashboard
 - [x] Verified designated developer setup and atomic permanent client ownership handover implemented; developer role is permanently revoked on client claim.

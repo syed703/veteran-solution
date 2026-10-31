@@ -17,6 +17,7 @@ export const cmsPages: CmsPage[] = catalogue.map(page => ({ ...page, fields: [
       { key: `faq-${index}-answer`, label: `Answer ${index + 1}`, value: answer ?? '', group: 'FAQs', type: 'text' },
     ]),
   ] : []),
+  ...(page.key === 'page:home' ? [{ key: 'hero-video', label: 'Background video URL', group: 'Home Hero', type: 'link', value: '/site-assets/cb078f882496fc7b.mp4' }] : []),
 ] }));
 const CmsContext = createContext<PublicSite['content']>({});
 export function CmsProvider({ content, children }: { content: PublicSite['content']; children: ReactNode }) {
