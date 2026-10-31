@@ -1,7 +1,7 @@
 import { queryOptions } from "@tanstack/react-query";
 import { getPublicSite, type PublicService, type PublicSite } from "./public-site.functions";
 
-export const publicSiteQuery = queryOptions({ queryKey: ["public-site"], queryFn: () => getPublicSite(), staleTime: 30_000 });
+export const publicSiteQuery = queryOptions({ queryKey: ["public-site"], queryFn: () => getPublicSite(), staleTime: 0, refetchOnWindowFocus: true });
 
 // Original captured catalogue, used only when the live catalogue cannot be loaded.
 export const originalServices: PublicService[] = [

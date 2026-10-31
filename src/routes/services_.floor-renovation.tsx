@@ -1,3 +1,6 @@
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { CmsProvider, useCmsValues } from '@/lib/cms';
+import { publicSiteQuery } from '@/lib/public-site';
 import type { CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import repairCSS from "../styles/import-repairs.css?raw";
@@ -6,40 +9,42 @@ import capturedCSS from "../styles/pages/services.floor-renovation.css?raw";
 import { ImportedPageMenu, ImportedServiceSelect, useImportedQuoteNotice } from "../components/imported-page-controls";
 
 export const Route = createFileRoute("/services_/floor-renovation")({
-  head: () => ({ meta: [{ title: "Floor Renovation | Veteran Solutions \u0026 Services" }] }),
+  head: () => ({ meta: [{ title: "Floor Renovation | Veteran Solutions & Services" }, { name: 'description', content: "Services / Floor Renovation — Veteran Solutions and Services, veteran-owned property care." }, { property: 'og:title', content: "Floor Renovation | Veteran Solutions & Services" }, { property: 'og:description', content: "Services / Floor Renovation — Veteran Solutions and Services, veteran-owned property care." }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] }),
   staticData: { importedDocument: { html: { "className": "has-smooth-scroll lenis", "lang": "en" }, body: {  } } },
-  component: Index,
+  loader: ({ context }) => context.queryClient.ensureQueryData(publicSiteQuery),
+  component: CmsIndex,
 });
 
 function Index() {
+  const cms = useCmsValues("page:services/floor-renovation");
   return (
     <>
       <style>{capturedCSS + repairCSS + innerRepairCSS}</style>
       <div className={"site-theme theme-service"} style={{ "--red": "#a6111d" } as CSSProperties}>
-        <a className={"skip-link"} href="#main">Skip to content</a>
+        <a className={"skip-link"} href={cms("f0001", "#main")}>{cms("f0002", "Skip to content")}</a>
         <div className={"utility-bar"}>
           <div className={"\x63ontainer utility-inner"}>
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-shield-check"} aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Proudly veteran owned &amp; operated</span>
-            <span className={"utility-right"}><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-clock3 lucide-clock-3"} aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6h4" /></svg> Available 24/7 <i />{" "}<a href="tel:+18573455076">(857) 345-5076</a></span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-shield-check"} aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> {cms("f0003", " Proudly veteran owned & operated")}</span>
+            <span className={"utility-right"}><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-clock3 lucide-clock-3"} aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6h4" /></svg> {cms("f0004", " Available 24/7 ")}<i />{" "}<a href={cms("f0005", "tel:+18573455076")}>{cms("f0006", "(857) 345-5076")}</a></span>
           </div>
         </div>
         <header className={"site-header"}>
           <div className={"\x63ontainer header-inner"}>
-            <a aria-label="Veteran Solutions and Services home" className={"brand"} href="/">
-              <img width="80" height="44" alt="Veteran eagle and property emblem" src="/site-assets/f0a3c5858a327278.webp" />
+            <a aria-label={cms("f0007", "Veteran Solutions and Services home")} className={"brand"} href="/">
+              <img width="80" height="44" alt={cms("f0008", "Veteran eagle and property emblem")} src={cms("f0009", "/site-assets/f0a3c5858a327278.webp")} />
               <span>
-                <b>VETERAN</b>
-                <small>SOLUTIONS &amp; SERVICES LLC</small>
+                <b>{cms("f0010", "VETERAN")}</b>
+                <small>{cms("f0011", "SOLUTIONS & SERVICES LLC")}</small>
               </span>
             </a>
-            <nav className={"desktop-nav"} aria-label="Main navigation">
-              <a className={""} href="/">Home</a>
-              <a className={""} href="/about">About Us</a>
-              <a className={"active"} href="/services">Services</a>
-              <a className={""} href="/contact">Contact Us</a>
-              <a className={""} href="/legal">Legal Pages</a>
+            <nav className={"desktop-nav"} aria-label={cms("f0012", "Main navigation")}>
+              <a className={""} href="/">{cms("f0013", "Home")}</a>
+              <a className={""} href={cms("f0014", "/about")}>{cms("f0015", "About Us")}</a>
+              <a className={"active"} href={cms("f0016", "/services")}>{cms("f0017", "Services")}</a>
+              <a className={""} href={cms("f0018", "/contact")}>{cms("f0019", "Contact Us")}</a>
+              <a className={""} href={cms("f0020", "/legal")}>{cms("f0021", "Legal Pages")}</a>
             </nav>
-            <a className={"button button-dark header-quote"} href="/contact">Start a project</a>
+            <a className={"button button-dark header-quote"} href={cms("f0022", "/contact")}>{cms("f0023", "Start a project")}</a>
             <ImportedPageMenu />
           </div>
         </header>
@@ -48,70 +53,70 @@ function Index() {
             <section className={"service-detail-hero interior-service-hero"}>
               <div className={"\x63ontainer"}>
                 <div className={"breadcrumb"}>
-                  <a href="/">Home</a>
+                  <a href="/">{cms("f0024", "Home")}</a>
                   <span>/</span>
-                  <a href="/services">Our services</a>
+                  <a href={cms("f0025", "/services")}>{cms("f0026", "Our services")}</a>
                   <span>/</span>
-                  <span>Floor Renovation</span>
+                  <span>{cms("f0027", "Floor Renovation")}</span>
                 </div>
                 <div className={"detail-hero-grid"}>
                   <div className={"detail-hero-copy"}>
-                    <span className={"eyebrow"}><span className={"label-line"} />08 / REFRESH &amp; RENEW</span>
-                    <h1>Floor Renovation</h1>
-                    <p className={"detail-tagline"}>A fresh foundation for your space.</p>
-                    <p>Restore the feel of your rooms with flooring improvements planned around your home and the way you live.</p>
+                    <span className={"eyebrow"}><span className={"label-line"} />{cms("f0028", "08 / REFRESH & RENEW")}</span>
+                    <h1>{cms("f0029", "Floor Renovation")}</h1>
+                    <p className={"detail-tagline"}>{cms("f0030", "A fresh foundation for your space.")}</p>
+                    <p>{cms("f0031", "Restore the feel of your rooms with flooring improvements planned around your home and the way you live.")}</p>
                     <div className={"service-hero-meta"}>
-                      <span>VETERAN OWNED &amp; OPERATED</span>
-                      <span>ONE TEAM / NINE SERVICES</span>
+                      <span>{cms("f0032", "VETERAN OWNED & OPERATED")}</span>
+                      <span>{cms("f0033", "ONE TEAM / NINE SERVICES")}</span>
                     </div>
-                    <a className={"button button-dark"} href="#quote">Request a quote</a>
+                    <a className={"button button-dark"} href={cms("f0034", "#quote")}>{cms("f0035", "Request a quote")}</a>
                   </div>
                   <div className={"detail-hero-image"}>
-                    <img alt="A flooring specialist working on natural wood floorboards" fetchPriority="high" src="/site-assets/86b371f036587688.webp" style={{ objectPosition: "center center" } as CSSProperties} />
-                    <img className={"detail-company-thumb"} alt="Veteran Solutions worker renovating a wood floor" loading="lazy" src="/site-assets/bbf6bdeeff5f9e79.webp" />
-                    <span className={"detail-image-label"}>YOUR PROPERTY. OUR PURPOSE.</span>
+                    <img alt={cms("f0036", "A flooring specialist working on natural wood floorboards")} fetchPriority="high" src={cms("f0037", "/site-assets/86b371f036587688.webp")} style={{ objectPosition: "center center" } as CSSProperties} />
+                    <img className={"detail-company-thumb"} alt={cms("f0038", "Veteran Solutions worker renovating a wood floor")} loading="lazy" src={cms("f0039", "/site-assets/bbf6bdeeff5f9e79.webp")} />
+                    <span className={"detail-image-label"}>{cms("f0040", "YOUR PROPERTY. OUR PURPOSE.")}</span>
                   </div>
                 </div>
                 <div className={"service-hero-foot"}>
-                  <span>THE WORK STARTS WITH A CLEAR PLAN.</span>
-                  <a href="#scope">Explore the scope</a>
+                  <span>{cms("f0041", "THE WORK STARTS WITH A CLEAR PLAN.")}</span>
+                  <a href={cms("f0042", "#scope")}>{cms("f0043", "Explore the scope")}</a>
                 </div>
               </div>
             </section>
             <section className={"detail-overview section"} id="scope">
               <div className={"\x63ontainer detail-overview-grid"}>
                 <div className={"detail-overview-title reveal-ready revealed"}>
-                  <span className={"eyebrow"}><span className={"label-line"} />THE RIGHT START / 08</span>
-                  <h2>A fresh foundation for your space.</h2>
-                  <span className={"detail-overview-watermark"} aria-hidden="true">08</span>
+                  <span className={"eyebrow"}><span className={"label-line"} />{cms("f0044", "THE RIGHT START / 08")}</span>
+                  <h2>{cms("f0045", "A fresh foundation for your space.")}</h2>
+                  <span className={"detail-overview-watermark"} aria-hidden="true">{cms("f0046", "08")}</span>
                 </div>
                 <div className={"detail-overview-content reveal-ready revealed"}>
-                  <p className={"detail-description"}>Floors set the tone for every room. We review the existing flooring and your preferred finish, then discuss renovation or replacement options. Preparation, material choice and the condition beneath the floor all shape the agreed work.</p>
+                  <p className={"detail-description"}>{cms("f0047", "Floors set the tone for every room. We review the existing flooring and your preferred finish, then discuss renovation or replacement options. Preparation, material choice and the condition beneath the floor all shape the agreed work.")}</p>
                   <div className={"scope-heading"}>
-                    <span>01 / THE SCOPE</span>
-                    <h3>What we can help with</h3>
+                    <span>{cms("f0048", "01 / THE SCOPE")}</span>
+                    <h3>{cms("f0049", "What we can help with")}</h3>
                   </div>
                   <ul className={"scope-list"}>
                     <li>
-                      <span>01</span>
-                      <p>Flooring condition and scope assessment</p>
+                      <span>{cms("f0050", "01")}</span>
+                      <p>{cms("f0051", "Flooring condition and scope assessment")}</p>
                     </li>
                     <li>
-                      <span>02</span>
-                      <p>Floor renovation and replacement enquiries</p>
+                      <span>{cms("f0052", "02")}</span>
+                      <p>{cms("f0053", "Floor renovation and replacement enquiries")}</p>
                     </li>
                     <li>
-                      <span>03</span>
-                      <p>Surface and subfloor preparation planning</p>
+                      <span>{cms("f0054", "03")}</span>
+                      <p>{cms("f0055", "Surface and subfloor preparation planning")}</p>
                     </li>
                     <li>
-                      <span>04</span>
-                      <p>Material and finish coordination</p>
+                      <span>{cms("f0056", "04")}</span>
+                      <p>{cms("f0057", "Material and finish coordination")}</p>
                     </li>
                   </ul>
                   <div className={"scope-note"}>
-                    <span>BEFORE WE GET STARTED</span>
-                    <p>Let us know your floor type, room size and any uneven or damaged areas. The final scope follows a review of the existing surface.</p>
+                    <span>{cms("f0058", "BEFORE WE GET STARTED")}</span>
+                    <p>{cms("f0059", "Let us know your floor type, room size and any uneven or damaged areas. The final scope follows a review of the existing surface.")}</p>
                   </div>
                 </div>
               </div>
@@ -132,14 +137,15 @@ function Index() {
 }
 
 function ImportedSectionLetSTakeCareof() {
+  const cms = useCmsValues("page:services/floor-renovation");
   const { onSubmit, notice } = useImportedQuoteNotice();
   return (
     <section id="quote" className={"quote-section section"}>
       <div className={"\x63ontainer quote-layout"}>
         <div className={"quote-intro reveal-ready revealed"}>
-          <span className={"eyebrow"}><span className={"label-line"} />ONE LESS THING ON YOUR LIST</span>
-          <h2>Let’s take care<br />of <em>your next project.</em></h2>
-          <p>Something to clear, clean or completely reimagine? Tell us what you have in mind.</p>
+          <span className={"eyebrow"}><span className={"label-line"} />{cms("f0060", "ONE LESS THING ON YOUR LIST")}</span>
+          <h2>{cms("f0061", "Let’s take care")}<br />{cms("f0062", "of ")}<em>{cms("f0063", "your next project.")}</em></h2>
+          <p>{cms("f0064", "Something to clear, clean or completely reimagine? Tell us what you have in mind.")}</p>
           <div className={"contact-detail"}>
             <span className={"contact-icon"}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-phone"} aria-hidden="true">
@@ -147,45 +153,45 @@ function ImportedSectionLetSTakeCareof() {
               </svg>
             </span>
             <div>
-              <small>Prefer to talk it through?</small>
-              <a href="tel:+18573455076">(857) 345-5076</a>
+              <small>{cms("f0065", "Prefer to talk it through?")}</small>
+              <a href={cms("f0066", "tel:+18573455076")}>{cms("f0067", "(857) 345-5076")}</a>
             </div>
           </div>
           <div className={"quote-points"}>
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-shield-check"} aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> Veteran owned &amp; operated</span>
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-clock3 lucide-clock-3"} aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6h4" /></svg> Available 24/7</span>
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-check"} aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> A clear scope before work begins</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-shield-check"} aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg> {cms("f0068", " Veteran owned & operated")}</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-clock3 lucide-clock-3"} aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6h4" /></svg> {cms("f0069", " Available 24/7")}</span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-check"} aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg> {cms("f0070", " A clear scope before work begins")}</span>
           </div>
-          <p className={"quote-small"}>Your property. Your priorities.<br />Our mission is to help with both.</p>
+          <p className={"quote-small"}>{cms("f0071", "Your property. Your priorities.")}<br />{cms("f0072", "Our mission is to help with both.")}</p>
         </div>
         <div className={"quote-panel reveal-ready revealed"}>
           <form className={"quote-form"} onSubmit={onSubmit}>
             <div className={"form-heading"}>
-              <span className={"eyebrow"}>LET’S GET STARTED</span>
-              <h3>Tell us what you need.</h3>
-              <p>A few details help us understand your project.</p>
+              <span className={"eyebrow"}>{cms("f0073", "LET’S GET STARTED")}</span>
+              <h3>{cms("f0074", "Tell us what you need.")}</h3>
+              <p>{cms("f0075", "A few details help us understand your project.")}</p>
             </div>
             <div className={"form-row"}>
-              <label>Full name <span>*</span><input required autoComplete="name" maxLength={120} placeholder="Your full name" defaultValue="" name="name" /></label>
-              <label>Phone number <span>*</span><input required autoComplete="tel" maxLength={30} placeholder="(555) 000-0000" type="tel" defaultValue="" name="phone" /></label>
+              <label>{cms("f0076", "Full name ")}<span>*</span><input required autoComplete="name" maxLength={120} placeholder={cms("f0077", "Your full name")} defaultValue="" name="name" /></label>
+              <label>{cms("f0078", "Phone number ")}<span>*</span><input required autoComplete="tel" maxLength={30} placeholder={cms("f0079", "(555) 000-0000")} type="tel" defaultValue="" name="phone" /></label>
             </div>
             <div className={"form-row"}>
-              <label>Email address <span>*</span><input required autoComplete="email" maxLength={180} placeholder="you@example.com" type="email" defaultValue="" name="email" /></label>
-              <label>Property ZIP code <span>*</span><input required autoComplete="postal-code" inputMode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxLength={10} placeholder="ZIP code" title="Enter a 5-digit US ZIP code, optionally followed by a 4-digit extension." defaultValue="" name="zip" /></label>
+              <label>{cms("f0080", "Email address ")}<span>*</span><input required autoComplete="email" maxLength={180} placeholder={cms("f0081", "you@example.com")} type="email" defaultValue="" name="email" /></label>
+              <label>{cms("f0082", "Property ZIP code ")}<span>*</span><input required autoComplete="postal-code" inputMode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxLength={10} placeholder={cms("f0083", "ZIP code")} title={cms("f0084", "Enter a 5-digit US ZIP code, optionally followed by a 4-digit extension.")} defaultValue="" name="zip" /></label>
             </div>
-            <label className={"service-label"} id="service-label">Which service do you need? <span>*</span></label>
+            <label className={"service-label"} id="service-label">{cms("f0085", "Which service do you need? ")}<span>*</span></label>
             <ImportedServiceSelect />
-            <label className={"message-label"}>A little about your project <span>*</span><textarea name="message" required minLength={10} maxLength={3000} rows={4} placeholder="What needs attention? Include the approximate size, current condition and your preferred timing." /></label>
+            <label className={"message-label"}>{cms("f0086", "A little about your project ")}<span>*</span><textarea name="message" required minLength={10} maxLength={3000} rows={4} placeholder={cms("f0087", "What needs attention? Include the approximate size, current condition and your preferred timing.")} /></label>
             <div className={"honeypot"} aria-hidden="true">
-              <label>Company website<input tabIndex={-1} autoComplete="off" defaultValue="" name="company" /></label>
+              <label>{cms("f0088", "Company website")}<input tabIndex={-1} autoComplete="off" defaultValue="" name="company" /></label>
             </div>
-            <button className={"button button-dark form-submit"} type="submit">Request my quote</button>
-            {notice && <p role="status">Online quote requests are not connected yet. Please call (857) 345-5076 to discuss your project.</p>}
+            <button className={"button button-dark form-submit"} type="submit">{cms("f0089", "Request my quote")}</button>
+            {notice && <p role="status">{cms("f0090", "Online quote requests are not connected yet. Please call (857) 345-5076 to discuss your project.")}</p>}
             <p className={"form-note"}>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-check"} aria-hidden="true">
                 <path d="M20 6 9 17l-5-5" />
               </svg>
-              <span>We’ll use these details to contact you about your request. <a href="/legal/privacy">Privacy Policy</a></span>
+              <span>{cms("f0091", "We’ll use these details to contact you about your request. ")}<a href={cms("f0092", "/legal/privacy")}>{cms("f0093", "Privacy Policy")}</a></span>
             </p>
           </form>
         </div>
@@ -195,57 +201,58 @@ function ImportedSectionLetSTakeCareof() {
 }
 
 function ImportedSectionMoreWaysTomoveForward() {
+  const cms = useCmsValues("page:services/floor-renovation");
   return (
     <section className={"related-section section"}>
       <div className={"\x63ontainer"}>
         <div className={"section-heading reveal-ready revealed"}>
           <div>
-            <span className={"eyebrow"}><span className={"label-line"} />KEEP EXPLORING</span>
-            <h2>More ways to<br /><em>move forward.</em></h2>
+            <span className={"eyebrow"}><span className={"label-line"} />{cms("f0094", "KEEP EXPLORING")}</span>
+            <h2>{cms("f0095", "More ways to")}<br /><em>{cms("f0096", "move forward.")}</em></h2>
           </div>
-          <a className={"underlined-link"} href="/services">View all services</a>
+          <a className={"underlined-link"} href={cms("f0097", "/services")}>{cms("f0098", "View all services")}</a>
         </div>
         <div className={"featured-grid"}>
           <article className={"service-card reveal-ready revealed"} style={{ "--service-color": "#a6111d", "--service-tint": "#f4eeea" } as CSSProperties}>
-            <a aria-label="Explore Painting" className={"service-image"} href="/services/painting">
-              <img alt="Veteran Solutions painter working on a home exterior" loading="lazy" src="/site-assets/0695a946ebede19a.webp" style={{ objectPosition: "center center" } as CSSProperties} />
-              <span className={"service-number"}>02</span>
-              <span className={"image-category"}>Refresh &amp; renew</span>
+            <a aria-label={cms("f0099", "Explore Painting")} className={"service-image"} href={cms("f0100", "/services/painting")}>
+              <img alt={cms("f0101", "Veteran Solutions painter working on a home exterior")} loading="lazy" src={cms("f0102", "/site-assets/0695a946ebede19a.webp")} style={{ objectPosition: "center center" } as CSSProperties} />
+              <span className={"service-number"}>{cms("f0103", "02")}</span>
+              <span className={"image-category"}>{cms("f0104", "Refresh & renew")}</span>
             </a>
             <div className={"service-copy"}>
-              <a href="/services/painting">
-                <h3>Painting</h3>
+              <a href={cms("f0105", "/services/painting")}>
+                <h3>{cms("f0106", "Painting")}</h3>
               </a>
-              <p>Bring a fresh perspective to your property with thoughtfully prepared interior and exterior painting.</p>
-              <a className={"underlined-link"} href="/services/painting">Explore service</a>
+              <p>{cms("f0107", "Bring a fresh perspective to your property with thoughtfully prepared interior and exterior painting.")}</p>
+              <a className={"underlined-link"} href={cms("f0108", "/services/painting")}>{cms("f0109", "Explore service")}</a>
             </div>
           </article>
           <article className={"service-card reveal-ready revealed"} style={{ "--service-color": "#a6111d", "--service-tint": "#f4f0ea" } as CSSProperties}>
-            <a aria-label="Explore Renovating" className={"service-image"} href="/services/renovating">
-              <img alt="Bright finished interior with natural wood flooring" loading="lazy" src="/site-assets/bf38b010f24207a7.jpg" style={{ objectPosition: "center center" } as CSSProperties} />
-              <span className={"service-number"}>05</span>
-              <span className={"image-category"}>Refresh &amp; renew</span>
+            <a aria-label={cms("f0110", "Explore Renovating")} className={"service-image"} href={cms("f0111", "/services/renovating")}>
+              <img alt={cms("f0112", "Bright finished interior with natural wood flooring")} loading="lazy" src={cms("f0113", "/site-assets/bf38b010f24207a7.jpg")} style={{ objectPosition: "center center" } as CSSProperties} />
+              <span className={"service-number"}>{cms("f0114", "05")}</span>
+              <span className={"image-category"}>{cms("f0115", "Refresh & renew")}</span>
             </a>
             <div className={"service-copy"}>
-              <a href="/services/renovating">
-                <h3>Renovating</h3>
+              <a href={cms("f0116", "/services/renovating")}>
+                <h3>{cms("f0117", "Renovating")}</h3>
               </a>
-              <p>Turn a space that needs attention into one that feels considered, practical and ready for everyday life.</p>
-              <a className={"underlined-link"} href="/services/renovating">Explore service</a>
+              <p>{cms("f0118", "Turn a space that needs attention into one that feels considered, practical and ready for everyday life.")}</p>
+              <a className={"underlined-link"} href={cms("f0119", "/services/renovating")}>{cms("f0120", "Explore service")}</a>
             </div>
           </article>
           <article className={"service-card reveal-ready revealed"} style={{ "--service-color": "#a6111d", "--service-tint": "#f1f0ec" } as CSSProperties}>
-            <a aria-label={"Explore Tile Replacement & Installation"} className={"service-image"} href="/services/tile-replacement-installation">
-              <img alt="Veteran Solutions worker installing tile" loading="lazy" src="/site-assets/5401e4713d7507d4.webp" style={{ objectPosition: "center center" } as CSSProperties} />
-              <span className={"service-number"}>07</span>
-              <span className={"image-category"}>Refresh &amp; renew</span>
+            <a aria-label={cms("f0121", "Explore Tile Replacement & Installation")} className={"service-image"} href={cms("f0122", "/services/tile-replacement-installation")}>
+              <img alt={cms("f0123", "Veteran Solutions worker installing tile")} loading="lazy" src={cms("f0124", "/site-assets/5401e4713d7507d4.webp")} style={{ objectPosition: "center center" } as CSSProperties} />
+              <span className={"service-number"}>{cms("f0125", "07")}</span>
+              <span className={"image-category"}>{cms("f0126", "Refresh & renew")}</span>
             </a>
             <div className={"service-copy"}>
-              <a href="/services/tile-replacement-installation">
-                <h3>Tile Replacement &amp; Installation</h3>
+              <a href={cms("f0127", "/services/tile-replacement-installation")}>
+                <h3>{cms("f0128", "Tile Replacement & Installation")}</h3>
               </a>
-              <p>Refresh worn tile or finish a new space with carefully planned replacement and installation.</p>
-              <a className={"underlined-link"} href="/services/tile-replacement-installation">Explore service</a>
+              <p>{cms("f0129", "Refresh worn tile or finish a new space with carefully planned replacement and installation.")}</p>
+              <a className={"underlined-link"} href={cms("f0130", "/services/tile-replacement-installation")}>{cms("f0131", "Explore service")}</a>
             </div>
           </article>
         </div>
@@ -255,47 +262,53 @@ function ImportedSectionMoreWaysTomoveForward() {
 }
 
 function ImportedFooterYourNeedsOurMission() {
+  const cms = useCmsValues("page:services/floor-renovation");
   return (
     <footer className={"site-footer"}>
       <div className={"\x63ontainer"}>
         <div className={"footer-top"}>
           <div className={"footer-brand"}>
-            <span className={"eyebrow light"}>VETERAN SOLUTIONS &amp; SERVICES LLC</span>
-            <h2>Your needs.<br /><em>Our mission.</em></h2>
-            <p>Property care with purpose.<br />One team. Nine ways to make a difference.</p>
-            <a className={"footer-phone"} href="tel:+18573455076"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-phone"} aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg>(857) 345-5076</a>
-            <span className={"footer-hours"}><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-clock3 lucide-clock-3"} aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6h4" /></svg> Available 24/7</span>
+            <span className={"eyebrow light"}>{cms("f0132", "VETERAN SOLUTIONS & SERVICES LLC")}</span>
+            <h2>{cms("f0133", "Your needs.")}<br /><em>{cms("f0134", "Our mission.")}</em></h2>
+            <p>{cms("f0135", "Property care with purpose.")}<br />{cms("f0136", "One team. Nine ways to make a difference.")}</p>
+            <a className={"footer-phone"} href={cms("f0137", "tel:+18573455076")}><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-phone"} aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg>{cms("f0138", "(857) 345-5076")}</a>
+            <span className={"footer-hours"}><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-clock3 lucide-clock-3"} aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6h4" /></svg> {cms("f0139", " Available 24/7")}</span>
           </div>
           <div className={"footer-links"}>
-            <h3>Explore</h3>
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/services">Services</a>
-            <a href="/contact">Contact Us</a>
-            <a href="/legal">Legal Pages</a>
+            <h3>{cms("f0140", "Explore")}</h3>
+            <a href="/">{cms("f0141", "Home")}</a>
+            <a href={cms("f0142", "/about")}>{cms("f0143", "About Us")}</a>
+            <a href={cms("f0144", "/services")}>{cms("f0145", "Services")}</a>
+            <a href={cms("f0146", "/contact")}>{cms("f0147", "Contact Us")}</a>
+            <a href={cms("f0148", "/legal")}>{cms("f0149", "Legal Pages")}</a>
           </div>
           <div className={"footer-links footer-services"}>
-            <h3>Our services</h3>
-            <a href="/services/junk-removal">Junk Removal</a>
-            <a href="/services/painting">Painting</a>
-            <a href="/services/pool-cleaning">Pool Cleaning</a>
-            <a href="/services/power-washing">Power Washing</a>
-            <a href="/services/renovating">Renovating</a>
-            <a href="/services/property-cleaning">Property Cleaning</a>
-            <a href="/services/tile-replacement-installation">Tile Replacement &amp; Installation</a>
-            <a href="/services/floor-renovation">Floor Renovation</a>
-            <a href="/services/demolition">Demolition</a>
+            <h3>{cms("f0150", "Our services")}</h3>
+            <a href={cms("f0151", "/services/junk-removal")}>{cms("f0152", "Junk Removal")}</a>
+            <a href={cms("f0153", "/services/painting")}>{cms("f0154", "Painting")}</a>
+            <a href={cms("f0155", "/services/pool-cleaning")}>{cms("f0156", "Pool Cleaning")}</a>
+            <a href={cms("f0157", "/services/power-washing")}>{cms("f0158", "Power Washing")}</a>
+            <a href={cms("f0159", "/services/renovating")}>{cms("f0160", "Renovating")}</a>
+            <a href={cms("f0161", "/services/property-cleaning")}>{cms("f0162", "Property Cleaning")}</a>
+            <a href={cms("f0163", "/services/tile-replacement-installation")}>{cms("f0164", "Tile Replacement & Installation")}</a>
+            <a href={cms("f0165", "/services/floor-renovation")}>{cms("f0166", "Floor Renovation")}</a>
+            <a href={cms("f0167", "/services/demolition")}>{cms("f0168", "Demolition")}</a>
           </div>
         </div>
-        <div className={"footer-wordmark"} aria-hidden="true">VETERAN<span>★</span></div>
+        <div className={"footer-wordmark"} aria-hidden="true">{cms("f0169", "VETERAN")}<span>★</span></div>
         <div className={"footer-bottom"}>
-          <span>© 2026 Veteran Solutions and Services LLC</span>
+          <span>{cms("f0170", "© 2026 Veteran Solutions and Services LLC")}</span>
           <span className={"footer-policy-links"}>
-            <a href="/legal/privacy">Privacy Policy</a>
-            <a href="/legal/terms">Terms of Use</a>
+            <a href={cms("f0171", "/legal/privacy")}>{cms("f0172", "Privacy Policy")}</a>
+            <a href={cms("f0173", "/legal/terms")}>{cms("f0174", "Terms of Use")}</a>
           </span>
         </div>
       </div>
     </footer>
   );
+}
+
+function CmsIndex() {
+  const { data } = useSuspenseQuery(publicSiteQuery);
+  return <CmsProvider content={data.content}><Index /></CmsProvider>;
 }

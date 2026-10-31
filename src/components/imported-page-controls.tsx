@@ -1,3 +1,4 @@
+import { useCmsValues } from '@/lib/cms';
 import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import * as Accordion from "@radix-ui/react-accordion";
@@ -6,19 +7,20 @@ import * as Select from "@radix-ui/react-select";
 import { Menu, X, ChevronDown, Check } from "lucide-react";
 
 export function ImportedPageMenu() {
+  const cms = useCmsValues("page:shared");
   const [open, setOpen] = useState(false);
   return <Dialog.Root open={open} onOpenChange={setOpen}>
-    <Dialog.Trigger className="mobile-menu" data-slot="sheet-trigger" aria-label="Open navigation"><Menu size={26} /></Dialog.Trigger>
+    <Dialog.Trigger className="mobile-menu" data-slot="sheet-trigger" aria-label={cms("f0001", "Open navigation")}><Menu size={26} /></Dialog.Trigger>
     <Dialog.Portal>
       <Dialog.Overlay className="import-menu-overlay" />
       <Dialog.Content className="menu-sheet import-menu-sheet" data-slot="sheet-content" aria-describedby={undefined}>
-        <div data-slot="sheet-header" className="flex flex-col gap-1.5 p-4"><Dialog.Title data-slot="sheet-title" className="font-semibold import-menu-brand"><img src="/site-assets/f0a3c5858a327278.webp" alt="Veteran Solutions and Services LLC" width="80" height="44" /></Dialog.Title></div>
-        <nav className="mobile-nav" aria-label="Mobile navigation" onClick={() => setOpen(false)}>
-          <Link to="/">Home</Link><Link to="/about">About Us</Link><Link to="/services">Services</Link><Link to="/contact">Contact Us</Link><Link to="/legal">Legal Pages</Link>
-          <Link className="button button-dark" to="/contact">Request a quote</Link>
-          <a className="mobile-phone" href="tel:+18573455076">(857) 345-5076</a>
+        <div data-slot="sheet-header" className="flex flex-col gap-1.5 p-4"><Dialog.Title data-slot="sheet-title" className="font-semibold import-menu-brand"><img src={cms("f0002", "/site-assets/f0a3c5858a327278.webp")} alt={cms("f0003", "Veteran Solutions and Services LLC")} width="80" height="44" /></Dialog.Title></div>
+        <nav className="mobile-nav" aria-label={cms("f0004", "Mobile navigation")} onClick={() => setOpen(false)}>
+          <Link to="/">{cms("f0005", "Home")}</Link><Link to="/about">{cms("f0006", "About Us")}</Link><Link to="/services">{cms("f0007", "Services")}</Link><Link to="/contact">{cms("f0008", "Contact Us")}</Link><Link to="/legal">{cms("f0009", "Legal Pages")}</Link>
+          <Link className="button button-dark" to="/contact">{cms("f0010", "Request a quote")}</Link>
+          <a className="mobile-phone" href={cms("f0011", "tel:+18573455076")}>{cms("f0012", "(857) 345-5076")}</a>
         </nav>
-        <Dialog.Close className="import-menu-close" aria-label="Close"><X size={16} /></Dialog.Close>
+        <Dialog.Close className="import-menu-close" aria-label={cms("f0013", "Close")}><X size={16} /></Dialog.Close>
       </Dialog.Content>
     </Dialog.Portal>
   </Dialog.Root>;
@@ -32,6 +34,7 @@ const services: [string, string][] = [
 ];
 
 export function ImportedServiceSelect({ initialService = "" }: { initialService?: string }) {
+  const cms = useCmsValues("page:shared");
   const [service, setService] = useState(initialService);
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("service");
@@ -39,7 +42,7 @@ export function ImportedServiceSelect({ initialService = "" }: { initialService?
   }, []);
   return <Select.Root name="service" required value={service} onValueChange={setService}>
     <Select.Trigger data-slot="select-trigger" className="service-select import-service-trigger" aria-labelledby="service-label">
-      <Select.Value placeholder="Choose your service" /><Select.Icon><ChevronDown size={16} /></Select.Icon>
+      <Select.Value placeholder={cms("f0014", "Choose your service")} /><Select.Icon><ChevronDown size={16} /></Select.Icon>
     </Select.Trigger>
     <Select.Portal><Select.Content className="import-service-options" position="popper" sideOffset={4}>
       <Select.Viewport>{services.map(([value, label]) => <Select.Item key={value} value={value} className="import-service-option">
