@@ -14,13 +14,15 @@ function Login() {
  useEffect(()=>{let active=true; void supabase.auth.getUser().then(async ({data})=>{
    if(!active || !data.user)return;
    setSignedIn(true);
-   const result=await supabase.rpc('has_role',{_user_id:data.user.id,_role:'admin'});
-   if(active && result.data && !result.error)void navigate({to:'/admin',replace:true});
+   try {
+     const allowed=await resolveAdminAccess(()=>supabase.rpc('has_role',{_user_id:data.user.id,_role:'admin'}),()=>supabase.rpc('claim_initial_admin'));
+     if(active && allowed)void navigate({to:'/admin',replace:true});
+   } catch { if(active)setError('Unable to verify admin access. Please try again.'); }
  });return()=>{active=false;};},[navigate]);
  return <main className="admin-login"><div className="admin-login-panel">
  <Link to="/" className="admin-brand"><img src="/favicon.png" alt="Veteran Solution"/><span>VETERAN<small>ADMINISTRATION</small></span></Link>
- <h1>{mode==='login'?'Welcome back':mode==='signup'?'Owner account setup':'Reset your password'}</h1>
- <p>{mode==='signup'?'The first administrator is reserved for the verified owner email. Other accounts do not receive administrator access.':'Veteran Solution administration'}</p>
+ <h1>{mode==='login'?'Welcome back':mode==='signup'?'Authorized account setup':'Reset your password'}</h1>
+ <p>{mode==='signup'?'Only the designated client owner and temporary developer receive access after email verification. Client ownership permanently ends developer access.':'Veteran Solution administration'}</p>
  {denied&&<p className="admin-error">This account has not been granted admin access.</p>}
  {error&&<p role="alert" className="admin-error">{error}</p>}{notice&&<p role="status">{notice}</p>}
  <form onSubmit={async e=>{
@@ -43,7 +45,7 @@ function Login() {
  ()=>supabase.rpc('has_role',{_user_id:userId,_role:'admin'}),
  ()=>supabase.rpc('claim_initial_admin'),
  );
- if(!allowed){setError('Admin access denied. The first administrator must use the verified owner email.');}
+ if(!allowed){setError('Admin access denied. Use a designated verified account. Temporary developer access ends when the client takes ownership.');}
  else{await router.invalidate();await navigate({to:'/admin',replace:true});}
  }
  }catch{setError(mode==='login'?'Sign-in failed. Check your email and password.':'Unable to complete this request. Please try again.');}
@@ -51,9 +53,9 @@ function Login() {
  }}>
  <label>Email<input name="email" type="email" autoComplete="email" required/></label>
  {mode!=='forgot'&&<label>Password<input name="password" type="password" minLength={8} autoComplete={mode==='signup'?'new-password':'current-password'} required/></label>}
- <Button type="submit" disabled={busy}>{busy?'Please wait…':mode==='login'?'Sign in':mode==='signup'?'Create owner account':'Send reset link'}</Button>
+ <Button type="submit" disabled={busy}>{busy?'Please wait…':mode==='login'?'Sign in':mode==='signup'?'Create authorized account':'Send reset link'}</Button>
  </form><div className="admin-actions mt-5">
- <Button variant="ghost" disabled={busy} onClick={()=>{setMode(mode==='login'?'signup':'login');setError('');setNotice('');}}>{mode==='login'?'Owner account setup':'Back to sign in'}</Button>
+ <Button variant="ghost" disabled={busy} onClick={()=>{setMode(mode==='login'?'signup':'login');setError('');setNotice('');}}>{mode==='login'?'Authorized account setup':'Back to sign in'}</Button>
  {mode==='login'&&<Button variant="ghost" disabled={busy} onClick={()=>{setMode('forgot');setError('');setNotice('');}}>Forgot password?</Button>}
  {signedIn&&<Button variant="ghost" disabled={busy} onClick={async()=>{await query.cancelQueries();query.clear();const result=await supabase.auth.signOut();if(result.error){setError('Unable to sign out.');return;}setSignedIn(false);setNotice('Signed out.');}}>Sign out</Button>}
  </div></div></main>;

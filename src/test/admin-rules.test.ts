@@ -13,15 +13,15 @@ describe('Admin permissions', () => {
   it('accepts a verified owner only after the database approves the claim', async () => {
     expect(await resolveAdminAccess(async()=>({data:false,error:null}), async()=>({data:true,error:null}))).toBe(true);
   });
-  it('does not claim another role for an existing admin', async () => {
-    const claim=vi.fn();
+  it('runs ownership handover even for an existing admin', async () => {
+    const claim=vi.fn(async()=>({data:false,error:null}));
     expect(await resolveAdminAccess(async()=>({data:true,error:null}),claim)).toBe(true);
-    expect(claim).not.toHaveBeenCalled();
+    expect(claim).toHaveBeenCalledOnce();
   });
   it('fails closed when permission verification fails', async () => {
-    const claim=vi.fn();
+    const claim=vi.fn(async()=>({data:false,error:null}));
     await expect(resolveAdminAccess(async()=>({data:null,error:new Error('Offline')}),claim)).rejects.toThrow();
-    expect(claim).not.toHaveBeenCalled();
+    expect(claim).toHaveBeenCalledOnce();
   });
 });
 describe('Management rules', () => {
