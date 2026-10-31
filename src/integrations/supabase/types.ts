@@ -229,6 +229,8 @@ export type Database = {
     }
     Functions: {
       admin_overview: { Args: never; Returns: Json }
+      admin_setup_open: { Args: never; Returns: boolean }
+      claim_initial_admin: { Args: never; Returns: boolean }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
