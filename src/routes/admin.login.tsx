@@ -48,7 +48,14 @@ function Login() {
  if(!allowed){setError('Admin access denied. Use a designated verified account. Temporary developer access ends when the client takes ownership.');}
  else{await router.invalidate();await navigate({to:'/admin',replace:true});}
  }
- }catch{setError(mode==='login'?'Sign-in failed. Check your email and password.':'Unable to complete this request. Please try again.');}
+ }catch(err){const m=err instanceof Error?err.message:'';const code=(err as {code?:string})?.code??'';
+ let msg=mode==='login'?'Sign-in failed. Check your email and password.':'Unable to complete this request. Please try again.';
+ if(/weak|easy to guess|pwned/i.test(m)||code==='weak_password')msg='This password has appeared in known data leaks. Choose a stronger, unique password (12+ characters mixing words, numbers and symbols).';
+ else if(/email not confirmed/i.test(m)||code==='email_not_confirmed')msg='Please confirm your email first using the link we sent, then sign in.';
+ else if(/already registered|already exists/i.test(m)||code==='user_already_exists')msg='An account with this email already exists. Sign in instead, or use Forgot password.';
+ else if(/rate limit|too many/i.test(m)||code==='over_email_send_rate_limit')msg='Too many attempts. Please wait a few minutes and try again.';
+ else if(/at least|characters/i.test(m))msg=m;
+ setError(msg);}
  finally{setBusy(false);}
  }}>
  <label>Email<input name="email" type="email" autoComplete="email" required/></label>
