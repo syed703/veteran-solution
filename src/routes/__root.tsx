@@ -134,6 +134,11 @@ function RootComponent() {
   const router = useRouter();
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        sessionStorage.setItem('veteran-recovery', '1');
+        setTimeout(() => { void router.navigate({ to: '/reset-password' }); }, 0);
+        return;
+      }
       if (!['SIGNED_IN', 'SIGNED_OUT', 'USER_UPDATED'].includes(event)) return;
       // Defer work outside the auth callback: fetching here can deadlock auth.
       setTimeout(() => {
