@@ -357,7 +357,7 @@ function ImportedSectionSeeTheSpaceSee() {
           {projects.map((project, index) => <article key={project.id} className={"comparison-card reveal-ready revealed"}>
             <div className={"comparison-stage"} style={{ "--split": `${(splits[project.id] ?? 50)}%` } as CSSProperties}>
               <img className={"comparison-after"} src={project.afterImage} alt={project.afterAlt} loading="lazy" />
-              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - ((splits[project.id] ?? 50) ?? 50)}% 0px 0px)` } as CSSProperties}>
+              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - (splits[project.id] ?? 50)}% 0px 0px)` } as CSSProperties}>
                 <img src={project.beforeImage} alt={project.beforeAlt} loading="lazy" />
               </div>
               <span className={"comparison-tag comparison-tag-before"}>{project.beforeLabel}</span>
