@@ -50,6 +50,13 @@
       "when": 1793701498067,
       "tag": "0006_section_content_and_unused_media_guards",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1793704999063,
+      "tag": "0007_comparison_project_draft_publish",
+      "breakpoints": true
     }
   ]
 }

@@ -254,6 +254,10 @@ export type Database = {
     Functions: {
       admin_media_unused: { Args: { p_path: string }; Returns: boolean }
       admin_overview: { Args: never; Returns: Json }
+      admin_save_comparisons: {
+        Args: { p_draft: Json; p_published?: Json }
+        Returns: undefined
+      }
       admin_save_content: {
         Args: {
           p_fields: Json
