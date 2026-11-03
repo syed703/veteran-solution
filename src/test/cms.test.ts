@@ -29,5 +29,6 @@ describe('Published website content', () => {
     expect(safeContentUrl('/\\evil.example')).toBe(false);
     expect(safeContentUrl('media:images/test.webp', true)).toBe(true);
     expect(cmsFieldValue({ 'page:home': { f0014: 'javascript:alert(1)' } }, 'page:home', 'f0014', '/about')).toBe('/about');
+    expect(cmsBackgroundCss('url("/site-assets/p.webp")', '/site-assets/p.webp', 'https://example.com/</style>')).not.toContain('<');
   });
 });
