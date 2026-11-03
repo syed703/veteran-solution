@@ -44,7 +44,7 @@ export const listMedia = createServerFn({ method: 'POST' }).middleware([admin]).
       const path = `images/${file.name}`;
       const signed = await db.storage.from('website-media').createSignedUrl(path, 3600);
       if (signed.error) throw new Error('Unable to preview library image.');
-      images.push({ path, filename: String(file.metadata?.originalName ?? file.metadata?.name ?? file.name), size: Number(file.metadata?.size ?? 0), type: String(file.metadata?.mimetype ?? ''), used: used.has(`media:${path}`), url: signed.data.signedUrl });
+      images.push({ path, filename: String(file.metadata?.['originalName'] ?? file.metadata?.['name'] ?? file.name), size: Number(file.metadata?.['size'] ?? 0), type: String(file.metadata?.['mimetype'] ?? ''), used: used.has(`media:${path}`), url: signed.data.signedUrl });
     }
     if (result.data.length < 100) break;
   }
