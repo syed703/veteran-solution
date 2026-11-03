@@ -1,8 +1,8 @@
 # Before & After project cards
-- [ ] Create expandable project cards with paired image controls and add/edit/delete/order/enable actions.
-- [ ] Store repeatable projects in existing content records with independent draft/publish and protected media references.
-- [ ] Preserve homepage comparison markup and sliders while rendering published projects dynamically.
-- [ ] Test authenticated add/edit/delete/publish, image selection, draft isolation, persistence and responsive layouts.
+- [x] Create expandable project cards with paired image controls and add/edit/delete/order/enable actions.
+- [x] Store repeatable projects in existing content records with independent draft/publish and protected media references.
+- [x] Preserve homepage comparison markup and sliders while rendering published projects dynamically.
+- [x] Verified authenticated add, uploads, Media Library selection, edit, display order/reorder, enable/disable, private preview, draft isolation, publication, refresh, delete cancellation and confirmed deletion. Checked 1280/768/390 layouts, public images and slider; all 38 tests passed. Original comparisons/order restored and every temporary project/upload removed.
 
 # External development backend and Vercel
 - [x] Fix only build-related errors: automatic production build succeeded at 09:23 UTC on 2026-11-03, all 25 tests passed, and the managed Cloud connection is unchanged.
