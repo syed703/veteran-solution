@@ -1,5 +1,5 @@
 # External development backend and Vercel
-- [ ] Repair and verify the existing build without replacing the Cloud connection.
+- [ ] Fix only build-related errors and verify production compilation; leave Cloud and Vercel settings unchanged.
 - [ ] Document the live Cloud schema, policies, storage and authentication dependencies.
 - [ ] Generate a complete external-only bootstrap SQL and storage configuration.
 - [ ] Document exact Vercel configuration and required manual access.

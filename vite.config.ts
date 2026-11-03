@@ -8,7 +8,7 @@ import { defineConfig, type LovableViteTanstackOptions } from "@lovable.dev/vite
 
 export default defineConfig({
   // Vercel sets VERCEL=1; Lovable retains its managed deployment target.
-  nitro: process.env.VERCEL === "1" ? { preset: "vercel" } : undefined,
+  ...(process.env['VERCEL'] === "1" ? { nitro: { preset: "vercel" } } : {}),
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
