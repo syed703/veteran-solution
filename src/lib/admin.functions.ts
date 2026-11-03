@@ -56,7 +56,7 @@ export const adminAction = createServerFn({ method: 'POST' }).middleware([requir
         if (!field) throw new Error('Unknown content field.');
         if ((field.type === 'link' || field.type === 'image') && !safeContentUrl(value, field.type === 'image')) throw new Error(`Enter a valid ${field.type} for ${field.label}.`);
       }
-      result = await db.from('website_content').upsert({ section_key: data.key, label: page.label, draft: data.fields, ...(data.publish ? { published: data.fields, published_at: new Date().toISOString() } : {}) }, { onConflict: 'section_key' }); break;
+      result = await db.rpc('admin_save_content', { p_key: data.key, p_label: page.label, p_fields: data.fields, p_publish: data.publish }); break;
     }
     case 'profile': result = await db.from('profiles').update({ display_name: data.name, timezone: data.timezone, updated_at: new Date().toISOString() }).eq('id', context.userId).select('id').single(); break;
   }

@@ -18,6 +18,8 @@
 - Keep owner-claim decisions in the database RPC; client access helpers must fail closed and never grant roles from an email string.
 - Run the designated-account claim on every login before reading roles; singleton ownership state and an advisory transaction lock make owner handover revoke the pinned temporary developer role permanently without changing existing RLS.
 - Store enquiry service slugs as historical snapshots; removing a catalogue service must not remove its enquiries.
+- Reuse private website-media storage for the media library; database policies prevent replacing or deleting referenced draft, published or service images, and replacements create new immutable objects.
+- Merge section changes atomically through admin_save_content; authenticated draft previews must never alter public queries or caches.
 
 ## Website import conventions
 - Manage captured content through stable per-page field IDs in the CMS catalogue, React text/attribute bindings and a published-only loader; retain original DOM structure and never render editor-supplied HTML.

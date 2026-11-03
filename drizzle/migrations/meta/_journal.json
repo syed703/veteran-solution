@@ -43,6 +43,13 @@
       "when": 1793425957375,
       "tag": "0005_restrict_ownership_table_privileges",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793701498067,
+      "tag": "0006_section_content_and_unused_media_guards",
+      "breakpoints": true
     }
   ]
 }

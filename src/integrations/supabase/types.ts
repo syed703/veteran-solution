@@ -252,7 +252,17 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      admin_media_unused: { Args: { p_path: string }; Returns: boolean }
       admin_overview: { Args: never; Returns: Json }
+      admin_save_content: {
+        Args: {
+          p_fields: Json
+          p_key: string
+          p_label: string
+          p_publish: boolean
+        }
+        Returns: undefined
+      }
       admin_setup_open: { Args: never; Returns: boolean }
       claim_initial_admin: { Args: never; Returns: boolean }
       has_role: {
