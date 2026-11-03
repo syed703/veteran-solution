@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { CmsProvider, useCmsValues } from '@/lib/cms';
+import { CmsProvider, useCmsValues, cmsBackgroundCss } from '@/lib/cms';
 import { publicSiteQuery } from '@/lib/public-site';
 import { createFileRoute } from "@tanstack/react-router";
 import repairCSS from "../styles/import-repairs.css?raw";
@@ -18,7 +18,7 @@ function Index() {
   const cms = useCmsValues("page:about");
   return (
     <>
-      <style>{capturedCSS + repairCSS + innerRepairCSS}</style>
+      <style>{cmsBackgroundCss(capturedCSS, '/site-assets/4dd973ced60ebb70.webp', cms('intro-background', '/site-assets/4dd973ced60ebb70.webp')) + repairCSS + innerRepairCSS}</style>
       <div className={"site-theme theme-about"}>
         <a className={"skip-link"} href={cms("f0001", "#main")}>{cms("f0002", "Skip to content")}</a>
         <div className={"utility-bar"}>

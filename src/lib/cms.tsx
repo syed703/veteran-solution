@@ -8,6 +8,16 @@ import type { PublicSite } from './public-site.functions';
 
 export type CmsField = { key: string; label: string; group: string; type: string; value: string };
 export type CmsPage = { key: string; label: string; path: string; fields: CmsField[] };
+const backgroundPhotos: Record<string, { value: string; group: string }> = {
+  'page:about': { value: '/site-assets/4dd973ced60ebb70.webp', group: 'Page Intro' },
+  'page:contact': { value: '/site-assets/0a8023b1ca436a12.webp', group: 'Contact Page Intro' },
+  'page:legal': { value: '/site-assets/0a8023b1ca436a12.webp', group: 'Page Intro' },
+  'page:services': { value: '/site-assets/0fbef83303bf4070.webp', group: 'Page Intro' },
+};
+export function cmsBackgroundCss(css: string, original: string, replacement: string) {
+  if (!safeContentUrl(replacement, true)) return css;
+  return css.replaceAll(`url("${original}")`, `url(${JSON.stringify(replacement).replaceAll('<', '\\3c ')})`);
+}
 export const cmsPages: CmsPage[] = catalogue.map(page => ({ ...page, fields: [
   ...page.fields.map(field => {
     const comparisonLabels: Record<string, string> = { f0199: 'Living room — After image', f0201: 'Living room — Before image', f0210: 'Exterior — After image', f0212: 'Exterior — Before image', f0221: 'Pool — After image', f0223: 'Pool — Before image' };
@@ -21,6 +31,7 @@ export const cmsPages: CmsPage[] = catalogue.map(page => ({ ...page, fields: [
     ]),
   ] : []),
   ...(page.key === 'page:home' ? [{ key: 'hero-video', label: 'Background video URL', group: 'Home Hero', type: 'link', value: '/site-assets/cb078f882496fc7b.mp4' }] : []),
+  ...(backgroundPhotos[page.key] ? [{ key: 'intro-background', label: 'Background photo', group: backgroundPhotos[page.key]?.group ?? 'Page Intro', type: 'image', value: backgroundPhotos[page.key]?.value ?? '' }] : []),
 ] }));
 const CmsContext = createContext<PublicSite['content']>({});
 export function CmsProvider({ content, children }: { content: PublicSite['content']; children: ReactNode }) {
