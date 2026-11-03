@@ -23,6 +23,7 @@
 
 ## Website import conventions
 - Manage captured content through stable per-page field IDs in the CMS catalogue, React text/attribute bindings and a published-only loader; retain original DOM structure and never render editor-supplied HTML.
+- Replace captured CSS photo URLs through escaped CMS image values while retaining original gradients and mobile rules; image filenames come from Storage info custom metadata, not list metadata.
 - Keep shared FAQ and service-selector defaults in a client-safe content module, so the CMS and public controls use the same fields without duplicating defaults.
 - Keep imported homepage markup and interactions in its route file, with source CSS retained separately, to preserve captured structure and visual fidelity.
 - Use existing Radix primitives for captured sheet, select, and accordion controls so keyboard access and focus behavior remain consistent.
