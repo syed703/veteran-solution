@@ -1,11 +1,11 @@
 import { Link, Outlet, useRouter, useLocation } from '@tanstack/react-router';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
-import { LayoutDashboard, Inbox, BriefcaseBusiness, FilePenLine, Settings, UserRound, LogOut, ExternalLink, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Inbox, BriefcaseBusiness, FilePenLine, Settings, UserRound, LogOut, ExternalLink, Menu, X, Images } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-const links = [{ to: '/admin', label: 'Overview', icon: LayoutDashboard }, { to: '/admin/enquiries', label: 'Enquiries', icon: Inbox }, { to: '/admin/services', label: 'Services', icon: BriefcaseBusiness }, { to: '/admin/content', label: 'Website content', icon: FilePenLine }, { to: '/admin/profile', label: 'My profile', icon: UserRound }, { to: '/admin/settings', label: 'Settings', icon: Settings }] as const;
+const links = [{ to: '/admin', label: 'Overview', icon: LayoutDashboard }, { to: '/admin/enquiries', label: 'Enquiries', icon: Inbox }, { to: '/admin/services', label: 'Services', icon: BriefcaseBusiness }, { to: '/admin/content', label: 'Website content', icon: FilePenLine }, { to: '/admin/media', label: 'Media library', icon: Images }, { to: '/admin/profile', label: 'My profile', icon: UserRound }, { to: '/admin/settings', label: 'Settings', icon: Settings }] as const;
 export async function signOut(queryClient: ReturnType<typeof useQueryClient>, router: ReturnType<typeof useRouter>) { await queryClient.cancelQueries(); queryClient.clear(); const { error } = await supabase.auth.signOut(); if (error) { toast.error('Unable to sign out. Please try again.'); return; } await router.navigate({ to: '/admin/login', replace: true }); }
 export function AdminShell() {
   const [open, setOpen] = useState(false); const router = useRouter(); const query = useQueryClient(); const path = useLocation().pathname;
