@@ -1,5 +1,5 @@
 # External development backend and Vercel
-- [ ] Fix only build-related errors and verify production compilation; leave Cloud and Vercel settings unchanged.
+- [x] Fix only build-related errors: automatic production build succeeded at 09:23 UTC on 2026-11-03, all 25 tests passed, and the managed Cloud connection is unchanged.
 - [ ] Document the live Cloud schema, policies, storage and authentication dependencies.
 - [ ] Generate a complete external-only bootstrap SQL and storage configuration.
 - [ ] Document exact Vercel configuration and required manual access.
