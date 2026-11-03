@@ -12,6 +12,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 import { supabase } from '@/integrations/supabase/client';
 import { Toaster } from '@/components/ui/sonner';
+import { recoveryEvent, recoveryStorageKey } from '@/lib/password-recovery';
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -133,16 +134,22 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
   useEffect(() => {
-    const { data } = supabase.auth.onAuthStateChange((event) => {
+    const { data } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'PASSWORD_RECOVERY') {
-        sessionStorage.setItem('veteran-recovery', '1');
-        setTimeout(() => { void router.navigate({ to: '/reset-password' }); }, 0);
+        if (!session?.user.id) return;
+        sessionStorage.setItem(recoveryStorageKey, session.user.id);
+        setTimeout(() => {
+          window.dispatchEvent(new Event(recoveryEvent));
+          if (router.state.location.pathname !== '/reset-password')
+            void router.navigate({ to: '/reset-password', replace: true });
+        }, 0);
         return;
       }
       if (!['SIGNED_IN', 'SIGNED_OUT', 'USER_UPDATED'].includes(event)) return;
       // Defer work outside the auth callback: fetching here can deadlock auth.
       setTimeout(() => {
         if (event === 'SIGNED_OUT') {
+          sessionStorage.removeItem(recoveryStorageKey);
           void queryClient.cancelQueries().then(() => {
             queryClient.clear();
             if (router.state.location.pathname.startsWith('/admin') && router.state.location.pathname !== '/admin/login')

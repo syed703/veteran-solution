@@ -18,6 +18,8 @@
 - [x] Automatic production build succeeded on 2026-11-03; all 25 CMS/security/routing tests passed. Deployment has not been requested.
 
 # Admin dashboard
+- [x] Repaired recovery callback timing and live-session validation; verified missing/expired errors, fields and refresh with the developer's real authenticated session plus a test recovery marker. Redirect allowlist is correct, all 28 tests pass, and automatic production build succeeded at 09:48 UTC.
+- [ ] Verify a real emailed recovery link, private password update and subsequent password login; blocked on the developer opening their email and entering their own password after publishing the fix.
 - [x] Verified the designated developer's real authenticated session: overview, enquiries, nine service records, CMS, profile, settings, direct refresh, sign-out and all protected redirects; no workspace-loading failure reproduced. Automatic production build succeeded at 09:30 UTC; all 25 tests passed. Password entry itself was not tested (managed session used).
 - [x] Verified designated developer setup and atomic permanent client ownership handover implemented; developer role is permanently revoked on client claim.
 - [x] Authorization safeguards and signed-out setup/route protection checked; authenticated handover awaits creation and verification of designated accounts.
