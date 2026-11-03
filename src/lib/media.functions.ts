@@ -39,12 +39,16 @@ export const listMedia = createServerFn({ method: 'POST' }).middleware([admin]).
   for (let offset = 0; ; offset += 100) {
     const result = await db.storage.from('website-media').list('images', { limit: 100, offset, sortBy: { column: 'created_at', order: 'desc' } });
     if (result.error) throw new Error('Unable to load media library.');
-    for (const file of result.data) {
-      if (!file.id) continue;
+    const files = result.data.filter(file => file.id);
+    const signedBatch = await db.storage.from('website-media').createSignedUrls(files.map(file => `images/${file.name}`), 3600);
+    if (signedBatch.error) throw new Error('Unable to preview library images.');
+    const urls = new Map(signedBatch.data.map(item => [item.path, item.signedUrl]));
+    const details = await Promise.all(files.map(file => db.storage.from('website-media').info(`images/${file.name}`)));
+    for (const [index, file] of files.entries()) {
       const path = `images/${file.name}`;
-      const signed = await db.storage.from('website-media').createSignedUrl(path, 3600);
-      if (signed.error) throw new Error('Unable to preview library image.');
-      images.push({ path, filename: String(file.metadata?.['originalName'] ?? file.metadata?.['name'] ?? file.name), size: Number(file.metadata?.['size'] ?? 0), type: String(file.metadata?.['mimetype'] ?? ''), used: used.has(`media:${path}`), url: signed.data.signedUrl });
+      const detail = details[index];
+      if (detail?.error) throw new Error('Unable to load image details.');
+      images.push({ path, filename: String(detail?.data?.metadata?.['originalName'] ?? file.name), size: Number(file.metadata?.['size'] ?? 0), type: String(file.metadata?.['mimetype'] ?? ''), used: used.has(`media:${path}`), url: urls.get(path) ?? '' });
     }
     if (result.data.length < 100) break;
   }
