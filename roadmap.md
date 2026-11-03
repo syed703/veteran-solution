@@ -5,7 +5,7 @@
 - [x] All six Before & After uploads, published images, refresh and slider behavior verified; original images restored.
 - [x] Mobile content editor and CMS/security/routing tests verified.
 - [x] Final shared-selector draft isolation, saved-draft refresh, publishing and public refresh verified on Home, Contact and Painting; original label restored.
-- [ ] Current production-build result unavailable: the automatic build log is absent in this session; deployment has not been requested.
+- [x] Automatic production build succeeded on 2026-11-03; all 25 CMS/security/routing tests passed. Deployment has not been requested.
 
 # Admin dashboard
 - [x] Verified designated developer setup and atomic permanent client ownership handover implemented; developer role is permanently revoked on client claim.
