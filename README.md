@@ -16,6 +16,8 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 
 ## Development
 
+External backend and Vercel setup, exact environment variables, schema/storage setup and later client migration are documented in [the deployment guide](docs/external-backend-deployment.md). This configuration does not switch the existing managed Cloud connection or deploy to Vercel by itself.
+
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh

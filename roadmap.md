@@ -2,7 +2,7 @@
 - [ ] Apply existing schema securely to the developer's external project; blocked on external database administration access.
 - [ ] Configure external production variables and deploy to Vercel; blocked on Vercel project access.
 - [ ] Verify authenticated workflows on the external deployment after schema and deployment are available.
-- [ ] Prepare portable deployment configuration and migration instructions without changing the current Cloud connection.
+- [x] Prepare portable deployment configuration and migration instructions without changing the current Cloud connection.
 
 # Complete website content management
 - [x] Connect all 16 existing public pages to published content without changing captured layouts.

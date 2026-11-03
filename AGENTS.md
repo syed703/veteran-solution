@@ -11,6 +11,7 @@
 
 ## Website import
 ## Admin management
+- Select the Vercel Nitro preset only when VERCEL=1; preserve the managed Cloud target and use matching browser/server backend variables on external deployments so backend migration never requires redesigning routes or CMS fields.
 - Keep private admin reads and mutations behind authenticated server middleware plus a database-backed role check; route gates alone are not authorization.
 - Use one root auth subscription and clear cached private records on sign-out to prevent stale-account data.
 - Keep owner-claim decisions in the database RPC; client access helpers must fail closed and never grant roles from an email string.
