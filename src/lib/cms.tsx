@@ -1,4 +1,7 @@
-import { createContext, useContext, type ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useServerFn } from '@tanstack/react-start';
+import { getDraftContent } from './media.functions';
 import catalogue from './cms-catalogue.json';
 import { sharedFaqs, sharedServices } from './cms-shared';
 import type { PublicSite } from './public-site.functions';
@@ -21,7 +24,12 @@ export const cmsPages: CmsPage[] = catalogue.map(page => ({ ...page, fields: [
 ] }));
 const CmsContext = createContext<PublicSite['content']>({});
 export function CmsProvider({ content, children }: { content: PublicSite['content']; children: ReactNode }) {
-  return <CmsContext.Provider value={content}>{children}</CmsContext.Provider>;
+  const [preview, setPreview] = useState(false);
+  useEffect(() => { setPreview(new URLSearchParams(window.location.search).get('cms-preview') === '1'); }, []);
+  const getDraft = useServerFn(getDraftContent);
+  const draft = useQuery({ queryKey: ['admin-draft-preview'], queryFn: () => getDraft(), enabled: preview, staleTime: 0, retry: false });
+  const displayed = preview && draft.data ? Object.fromEntries([...new Set([...Object.keys(content), ...Object.keys(draft.data)])].map(key => [key, { ...content[key], ...draft.data[key] }])) : content;
+  return <CmsContext.Provider value={displayed}>{children}{preview && <div role={draft.error ? 'alert' : 'status'} className="admin-preview-error">{draft.error ? 'Admin sign-in is required to preview drafts.' : draft.isPending ? 'Loading draft preview…' : 'Private draft preview — not published'}</div>}</CmsContext.Provider>;
 }
 export function cmsFieldValue(content: PublicSite['content'], page: string, field: string, fallback: string) {
   const value = content[page]?.[field];
