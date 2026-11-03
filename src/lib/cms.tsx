@@ -53,6 +53,9 @@ export function useCmsValues(page: string) {
   const content = useContext(CmsContext);
   return (field: string, fallback: string) => cmsFieldValue(content, page, field, fallback);
 }
+export function useCmsRecord(page: string) {
+  return useContext(CmsContext)[page] ?? {};
+}
 export function safeContentUrl(value: string, image = false) {
   if (/[\u0000-\u0020\\]/.test(value)) return false;
   if (image) return /^(\/site-assets\/|media:images\/|https:\/\/)/.test(value);

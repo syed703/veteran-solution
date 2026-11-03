@@ -1,7 +1,8 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { CmsProvider, useCmsValues } from '@/lib/cms';
+import { CmsProvider, useCmsValues, useCmsRecord } from '@/lib/cms';
 import { publicSiteQuery } from '@/lib/public-site';
 import { sharedServices } from '@/lib/cms-shared';
+import { readComparisons, publishedComparisons } from '@/lib/comparison-projects';
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -337,7 +338,8 @@ function ImportedSectionACompanyBuiltonService() {
 
 function ImportedSectionSeeTheSpaceSee() {
   const cms = useCmsValues("page:home");
-  const [splits, setSplits] = useState([50, 50, 50]);
+  const projects = publishedComparisons(readComparisons(useCmsRecord('page:home')));
+  const [splits, setSplits] = useState<Record<string, number>>({});
   return (
     <section className={"comparison-section section"} aria-labelledby="comparison-heading">
       <div className={"\x63ontainer"}>
@@ -352,14 +354,14 @@ function ImportedSectionSeeTheSpaceSee() {
           </div>
         </div>
         <div className={"comparison-grid"}>
-          <article className={"comparison-card reveal-ready revealed"}>
-            <div className={"comparison-stage"} style={{ "--split": `${splits[0]}%` } as CSSProperties}>
-              <img className={"comparison-after"} src={cms("f0199", "/site-assets/bf38b010f24207a7.jpg")} alt={cms("f0200", "Illustrative refreshed living room with wood floors")} loading="lazy" />
-              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - (splits[0] ?? 50)}% 0px 0px)` } as CSSProperties}>
-                <img src={cms("f0201", "/site-assets/138ecd3f6822b5eb.webp")} alt={cms("f0202", "Illustrative living room before a refresh")} loading="lazy" />
+          {projects.map((project, index) => <article key={project.id} className={"comparison-card reveal-ready revealed"}>
+            <div className={"comparison-stage"} style={{ "--split": `${(splits[project.id] ?? 50)}%` } as CSSProperties}>
+              <img className={"comparison-after"} src={project.afterImage} alt={project.afterAlt} loading="lazy" />
+              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - (splits[project.id] ?? 50)}% 0px 0px)` } as CSSProperties}>
+                <img src={project.beforeImage} alt={project.beforeAlt} loading="lazy" />
               </div>
-              <span className={"comparison-tag comparison-tag-before"}>{cms("f0203", "BEFORE")}</span>
-              <span className={"comparison-tag comparison-tag-after"}>{cms("f0204", "AFTER")}</span>
+              <span className={"comparison-tag comparison-tag-before"}>{project.beforeLabel}</span>
+              <span className={"comparison-tag comparison-tag-after"}>{project.afterLabel}</span>
               <span className={"comparison-divider"} aria-hidden="true">
                 <span className={"comparison-handle"}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-move-horizontal"} aria-hidden="true">
@@ -369,73 +371,17 @@ function ImportedSectionSeeTheSpaceSee() {
                   </svg>
                 </span>
               </span>
-              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label={cms("f0205", "Compare before and after: A room, reimagined")} aria-valuetext={`${splits[0]}% of the before image visible`} value={splits[0]} onChange={event => setSplits(previous => previous.map((value, index) => index === 0 ? Number(event.target.value) : value))} />
+              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label={project.ariaLabel || `Compare before and after: ${project.title}`} aria-valuetext={`${(splits[project.id] ?? 50)}% of the before image visible`} value={(splits[project.id] ?? 50)} onChange={event => setSplits(previous => ({ ...previous, [project.id]: Number(event.target.value) }))} />
             </div>
             <div className={"comparison-card-copy"}>
               <div className={"comparison-card-meta"}>
-                <span>{cms("f0206", "01 / RENOVATING")}</span>
-                <span>{cms("f0207", "DRAG TO COMPARE")}</span>
+                <span>{`${String(index + 1).padStart(2, '0')} / ${project.category}`}</span>
+                <span>{project.instruction}</span>
               </div>
-              <h3>{cms("f0208", "A room, reimagined")}</h3>
-              <p>{cms("f0209", "See how refreshed finishes can change the feel of a room.")}</p>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
             </div>
-          </article>
-          <article className={"comparison-card reveal-ready revealed"}>
-            <div className={"comparison-stage"} style={{ "--split": `${splits[1]}%` } as CSSProperties}>
-              <img className={"comparison-after"} src={cms("f0210", "/site-assets/3ba8c5a82c95a2b7.jpg")} alt={cms("f0211", "Illustrative clean white home and landscaped yard")} loading="lazy" />
-              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - (splits[1] ?? 50)}% 0px 0px)` } as CSSProperties}>
-                <img src={cms("f0212", "/site-assets/0f0c94f6a081f247.webp")} alt={cms("f0213", "Illustrative home exterior before a refresh")} loading="lazy" />
-              </div>
-              <span className={"comparison-tag comparison-tag-before"}>{cms("f0214", "BEFORE")}</span>
-              <span className={"comparison-tag comparison-tag-after"}>{cms("f0215", "AFTER")}</span>
-              <span className={"comparison-divider"} aria-hidden="true">
-                <span className={"comparison-handle"}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-move-horizontal"} aria-hidden="true">
-                    <path d="m18 8 4 4-4 4" />
-                    <path d="M2 12h20" />
-                    <path d="m6 8-4 4 4 4" />
-                  </svg>
-                </span>
-              </span>
-              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label={cms("f0216", "Compare before and after: A welcome return")} aria-valuetext={`${splits[1]}% of the before image visible`} value={splits[1]} onChange={event => setSplits(previous => previous.map((value, index) => index === 1 ? Number(event.target.value) : value))} />
-            </div>
-            <div className={"comparison-card-copy"}>
-              <div className={"comparison-card-meta"}>
-                <span>{cms("f0217", "02 / EXTERIOR CARE")}</span>
-                <span>{cms("f0218", "DRAG TO COMPARE")}</span>
-              </div>
-              <h3>{cms("f0219", "A welcome return")}</h3>
-              <p>{cms("f0220", "Explore the difference careful exterior attention can make.")}</p>
-            </div>
-          </article>
-          <article className={"comparison-card reveal-ready revealed"}>
-            <div className={"comparison-stage"} style={{ "--split": `${splits[2]}%` } as CSSProperties}>
-              <img className={"comparison-after"} src={cms("f0221", "/site-assets/e8c3906bfaa1516a.webp")} alt={cms("f0222", "Illustrative clear pool and clean deck")} loading="lazy" />
-              <div className={"comparison-before"} style={{ clipPath: `inset(0px ${100 - (splits[2] ?? 50)}% 0px 0px)` } as CSSProperties}>
-                <img src={cms("f0223", "/site-assets/516e5f40933ff0fc.webp")} alt={cms("f0224", "Illustrative pool before cleaning")} loading="lazy" />
-              </div>
-              <span className={"comparison-tag comparison-tag-before"}>{cms("f0225", "BEFORE")}</span>
-              <span className={"comparison-tag comparison-tag-after"}>{cms("f0226", "AFTER")}</span>
-              <span className={"comparison-divider"} aria-hidden="true">
-                <span className={"comparison-handle"}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={"lucide lucide-move-horizontal"} aria-hidden="true">
-                    <path d="m18 8 4 4-4 4" />
-                    <path d="M2 12h20" />
-                    <path d="m6 8-4 4 4 4" />
-                  </svg>
-                </span>
-              </span>
-              <input type="range" min="0" max="100" step="1" className={"comparison-range"} aria-label={cms("f0227", "Compare before and after: Ready to enjoy again")} aria-valuetext={`${splits[2]}% of the before image visible`} value={splits[2]} onChange={event => setSplits(previous => previous.map((value, index) => index === 2 ? Number(event.target.value) : value))} />
-            </div>
-            <div className={"comparison-card-copy"}>
-              <div className={"comparison-card-meta"}>
-                <span>{cms("f0228", "03 / POOL CLEANING")}</span>
-                <span>{cms("f0229", "DRAG TO COMPARE")}</span>
-              </div>
-              <h3>{cms("f0230", "Ready to enjoy again")}</h3>
-              <p>{cms("f0231", "Picture an inviting pool and a space ready to use.")}</p>
-            </div>
-          </article>
+          </article>)}
         </div>
         <div className={"comparison-bottom"}>
           <p>{cms("f0232", "These are illustrative concepts, not completed client projects. Actual before and after photos can be added when available.")}</p>

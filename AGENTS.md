@@ -20,6 +20,7 @@
 - Store enquiry service slugs as historical snapshots; removing a catalogue service must not remove its enquiries.
 - Reuse private website-media storage for the media library; database policies prevent replacing or deleting referenced draft, published or service images, and replacements create new immutable objects.
 - Merge section changes atomically through admin_save_content; authenticated draft previews must never alter public queries or caches.
+- Store repeatable comparison projects as flat string fields and an ID manifest in existing homepage content; a dedicated admin-gated RPC separates draft and per-project publication, preserving storage reference policies and original slider markup.
 
 ## Website import conventions
 - Manage captured content through stable per-page field IDs in the CMS catalogue, React text/attribute bindings and a published-only loader; retain original DOM structure and never render editor-supplied HTML.
