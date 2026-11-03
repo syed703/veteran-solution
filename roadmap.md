@@ -1,4 +1,8 @@
 # External development backend and Vercel
+- [ ] Repair and verify the existing build without replacing the Cloud connection.
+- [ ] Document the live Cloud schema, policies, storage and authentication dependencies.
+- [ ] Generate a complete external-only bootstrap SQL and storage configuration.
+- [ ] Document exact Vercel configuration and required manual access.
 - [ ] Apply existing schema securely to the developer's external project; blocked on external database administration access.
 - [ ] Configure external production variables and deploy to Vercel; blocked on Vercel project access.
 - [ ] Verify authenticated workflows on the external deployment after schema and deployment are available.
