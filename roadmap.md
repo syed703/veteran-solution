@@ -9,6 +9,10 @@
 - [x] Prepare portable deployment configuration and migration instructions without changing the current Cloud connection.
 
 # Complete website content management
+- [ ] Complete section coverage, section-only save/publish and private draft previews.
+- [ ] Add secure shared Media Library with selection, replacement and unused-image deletion.
+- [ ] Add dedicated Before & After editing and verify real published images and slider behavior.
+- [ ] Verify every CMS page, authenticated media workflow, public persistence and production build.
 - [x] Connect all 16 existing public pages to published content without changing captured layouts.
 - [x] Add page/section selection, draft editing, image uploads/previews, shared FAQ editing and publishing.
 - [x] Authenticated text/image draft isolation, publish and refresh tested on all 16 pages; original content restored.
