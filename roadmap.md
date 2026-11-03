@@ -1,3 +1,9 @@
+# Before & After project cards
+- [ ] Create expandable project cards with paired image controls and add/edit/delete/order/enable actions.
+- [ ] Store repeatable projects in existing content records with independent draft/publish and protected media references.
+- [ ] Preserve homepage comparison markup and sliders while rendering published projects dynamically.
+- [ ] Test authenticated add/edit/delete/publish, image selection, draft isolation, persistence and responsive layouts.
+
 # External development backend and Vercel
 - [x] Fix only build-related errors: automatic production build succeeded at 09:23 UTC on 2026-11-03, all 25 tests passed, and the managed Cloud connection is unchanged.
 - [ ] Document the live Cloud schema, policies, storage and authentication dependencies.
