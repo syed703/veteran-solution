@@ -18,6 +18,7 @@
 - [x] Automatic production build succeeded on 2026-11-03; all 25 CMS/security/routing tests passed. Deployment has not been requested.
 
 # Admin dashboard
+- [ ] Verify the designated developer's signed-in overview, all six admin pages, refresh, data retrieval and sign-out; fix reproduced failures only.
 - [x] Verified designated developer setup and atomic permanent client ownership handover implemented; developer role is permanently revoked on client claim.
 - [x] Authorization safeguards and signed-out setup/route protection checked; authenticated handover awaits creation and verification of designated accounts.
 - [x] Current phase limited to admin-only work; public integration unchanged.
