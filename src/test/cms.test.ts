@@ -1,6 +1,13 @@
 import { describe, it, expect } from 'vitest';
 import { cmsPages, cmsFieldValue, safeContentUrl } from '../lib/cms';
+import { sharedServices } from '../lib/cms-shared';
 describe('Published website content', () => {
+  it('preserves the nine original service identities in shared selectors and their CMS fields', () => {
+    const originalSlugs = ['junk-removal', 'painting', 'pool-cleaning', 'power-washing', 'renovating', 'property-cleaning', 'tile-replacement-installation', 'floor-renovation', 'demolition'];
+    expect(sharedServices.slice(0, 9).map(([slug]) => slug)).toEqual(originalSlugs);
+    const selectorFields = cmsPages.find(page => page.key === 'page:shared')?.fields.filter(field => field.group === 'Service selector').map(field => field.key);
+    expect(selectorFields).toEqual(sharedServices.map(([slug]) => `service-${slug}`));
+  });
   it('keeps drafts off public pages and renders only published field values', () => {
     expect(cmsFieldValue({}, 'page:home', 'f0195', 'See the space.')).toBe('See the space.');
     expect(cmsFieldValue({ 'page:home': { f0195: 'Published heading' } }, 'page:home', 'f0195', 'See the space.')).toBe('Published heading');
